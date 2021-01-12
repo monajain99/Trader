@@ -7,10 +7,24 @@ class User(db.Model, UserMixin):
 
   id = db.Column(db.Integer, primary_key = True)
   username = db.Column(db.String(40), nullable = False, unique = True)
+  full_name = db.Column(db.String(100), nullable = False, unique = True)
   email = db.Column(db.String(255), nullable = False, unique = True)
   hashed_password = db.Column(db.String(255), nullable = False)
+  buying_power = db.Column(db.Integer, nullable=True)
+  image_url = db.Column(db.String(300), nullable=True)
+  about = db.Column(db.String(2000), nullable=True)
+  
+  account = db.relationship('Account', back_populates='user', cascade="all, delete, delete-orphan")
+  portfolio = db.relationship('Portfolio', back_populates='user', cascade="all, delete, delete-orphan")
 
+  # watchlist = db.relationship('Watchlist', back_populates='user', cascade="all, delete, delete-orphan")
+  
 
+    # savings_account = db.relationship('Savings_Account', back_populates='user', cascade="all, delete, delete-orphan")
+    # user = db.relationship('User', back_populates='savings_account', )
+    # checkings_account = db.relationship('Checkings_Account', back_populates='user', cascade="all, delete, delete-orphan")
+
+    # user = db.relationship('User', back_populates='checkings_account', )
   @property
   def password(self):
     return self.hashed_password
