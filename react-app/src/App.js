@@ -7,6 +7,8 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -45,9 +47,10 @@ function App() {
         <ProtectedRoute path="/users/:userId" exact={true} authenticated={authenticated}>
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path="/" exact={true} authenticated={authenticated}>
+        <Route path="/" exact={true} authenticated={authenticated}>
+          {authenticated ? <Redirect to='/profile'/> : " "}
           <h1>My Home Page</h1>
-        </ProtectedRoute>
+        </Route>
       </Switch>
     </BrowserRouter>
   );

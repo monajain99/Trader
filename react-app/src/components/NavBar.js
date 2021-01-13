@@ -4,14 +4,13 @@ import DemoButton from "./auth/DemoButton";
 import "../styles/Navbar.css";
 import ProfileButton from "./auth/ProfileButton";
 import LogoutButton from "./auth/LogoutButton";
-
+import { Row, Col, Container } from "react-bootstrap"
 // import Logo from "../assets/cropped.png";
 
 const NavBar = ({ setAuthenticated, authenticated, user }) => {
   let location = useLocation();
   const currentPage = location.pathname;
   return (
-    
     <div className="navContainer">
       <nav className="navbar">
         <ul className="linkList">
