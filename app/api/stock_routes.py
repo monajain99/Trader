@@ -1,11 +1,18 @@
 from flask import Blueprint, jsonify
 import alpaca_trade_api as tradeapi
 from app.config import Config
+from app.models import Stock
 
 
 stock_routes = Blueprint('stocks', __name__)
 
 @stock_routes.route('/')
+def stocks():
+    stocks = Stock.query.all()
+    return {"stocks": [stock.to_dict() for stock in stocks]}
+
+
+@stock_routes.route('/asset')
 def getStocks():
     api = tradeapi.REST(Config.API_KEY, Config.SECRET_KEY, base_url=Config.API_URL)
     print("stock route hit")
@@ -23,8 +30,9 @@ def getStocks():
     return(stockList)
 
 
-@stock_routes.route('/<string:ticker>')
-def stock(ticker):
+@stock_routes.route('/asset/<string:ticker>')
+def price(ticker):
+    priceList = {}
     api = tradeapi.REST(Config.API_KEY, Config.SECRET_KEY, base_url=Config.API_URL)
     barset = api.get_barset('AAPL', 'day', limit=5)
     aapl_bars = barset['AAPL']

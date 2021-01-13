@@ -16,9 +16,9 @@ def add_account():
     user_id = request.json['currentUserId']
     balance = request.json['userBalance']
 
-    new_savings = Account(balance, user_id)
+    new_balance = Account(balance, user_id)
 
-    db.session.add(new_savings)
+    db.session.add(new_balance)
     db.session.commit()
 
-    return {"id": new_savings.id}
+    return {"id": new_balance.id}

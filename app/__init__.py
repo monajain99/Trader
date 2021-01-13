@@ -8,7 +8,7 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
-from .api.portfolio_routes import portfolio_routes
+from .api.trade_routes import trade_routes
 from .api.accout_routes import account_routes
 from .api.stock_routes import stock_routes
 
@@ -34,8 +34,8 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
-app.register_blueprint(portfolio_routes, url_prefix='/api/portfolio')
-app.register_blueprint(portfolio_routes, url_prefix='/api/account')
+app.register_blueprint(trade_routes, url_prefix='/api/trade')
+app.register_blueprint(account_routes, url_prefix='/api/account')
 app.register_blueprint(stock_routes, url_prefix='/api/stocks')
 
 db.init_app(app)

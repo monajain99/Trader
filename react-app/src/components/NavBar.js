@@ -1,14 +1,17 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import DemoButton from "./auth/DemoButton";
-// import "../styles/Navbar.css";
+import "../styles/Navbar.css";
 import ProfileButton from "./auth/ProfileButton";
 import LogoutButton from "./auth/LogoutButton";
 
 // import Logo from "../assets/cropped.png";
 
 const NavBar = ({ setAuthenticated, authenticated, user }) => {
+  let location = useLocation();
+  const currentPage = location.pathname;
   return (
+    
     <div className="navContainer">
       <nav className="navbar">
         <ul className="linkList">

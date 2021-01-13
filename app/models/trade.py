@@ -1,8 +1,8 @@
 from .db import db
 from .user import User
 
-class Portfolio(db.Model):
-    __tablename__ = 'portfolio'
+class Trade(db.Model):
+    __tablename__ = 'trades'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String, nullable=True)
@@ -10,23 +10,24 @@ class Portfolio(db.Model):
     volume = db.Column(db.Integer, nullable=True)
     price = db.Column(db.Float, nullable=True)
     transaction_date = db.Column(db.Integer, nullable=True)
-    user_id = db.Column(db.Integer, db.ForeignKey(
-        'users.id'), nullable=False)
+    stock_id = db.Column(db.Integer, db.ForeignKey('stocks.id'), nullable=False)
     account_id = db.Column(db.Integer, db.ForeignKey(
         'account.id'), nullable=False)
 
-    user = db.relationship('User', back_populates='portfolio' )
+    # user = db.relationship('User', back_populates='trade' )
     
-    account = db.relationship('Account', back_populates='user' )
+    stock = db.relationship('Stock', back_populates="trades", lazy=True) ##
     
-    def __init__(self, name, ticker, volume, price, transaction_date, user_id, account_id):
-        self.user_id = user_id
-        self.name = name
-        self.ticker = ticker
-        self.volume = volume
-        self.price = price
-        self.account_id = account_id
-        self.transaction_date = transaction_date
+    # account = db.relationship('Account', back_populates='user' )
+    
+    # def __init__(self, name, ticker, volume, price, transaction_date, stock_id, account_id):
+    #     self.name = name
+    #     self.ticker = ticker
+    #     self.volume = volume
+    #     self.price = price
+    #     self.transaction_date = transaction_date
+    #     self.account_id = account_id
+    #     self.stock_id = stock_id
 
 
     def to_dict(self):
@@ -36,8 +37,8 @@ class Portfolio(db.Model):
         "ticker": self.ticker,
         "volume": self.volume,
         "price": self.price,
-        "user_id": self.user_id,
         "account_id": self.account_id,
+        "stock_id": self.stock_id,
         "transaction_date": self.transaction_date
         }
 

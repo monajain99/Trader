@@ -1,15 +1,15 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField
 from wtforms.validators import DataRequired
-from app.models import User, Portfolio
+from app.models import User, Trade
 
-class AddTrade(FlaskForm):
+class AddAccount(FlaskForm):
     volume = IntegerField('Quantity', validators=[DataRequired()])
     ticker = StringField('Stock Symbol', validators=[DataRequired()])
     price = IntegerField('Price', validators=[DataRequired()])
     
-class AddPortfolio(FlaskForm):
-    volume = IntegerField('Quantity', validators=[DataRequired()])
-    ticker = StringField('Stock Symbol', validators=[DataRequired()])
-    price = IntegerField('Price', validators=[DataRequired()])
+# class Trade(FlaskForm):
+#     volume = IntegerField('Quantity', validators=[DataRequired()])
+#     ticker = StringField('Stock Symbol', validators=[DataRequired()])
+#     price = IntegerField('Price', validators=[DataRequired()])
     
