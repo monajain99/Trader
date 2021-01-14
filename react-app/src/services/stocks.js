@@ -7,4 +7,3 @@ export const getStocks = async ( ticker ) => {
   });
   return await response.json();
 }
-export default getStocks;

@@ -17,7 +17,6 @@ def getTrade(id):
 @trade_routes.route('/', methods=['POST'])
 def addTrade():
     data = request.json
-    print(data["name"])
     name=data["name"]
     ticker=data["ticker"]
     volume=data["volume"]
@@ -40,35 +39,12 @@ def addTrade():
     return trade.to_dict()
 
 
-# @trade_routes.route('/', methods=['POST'])
-# def addTrade():
-#     print(request.json)
-#     data = request.json
-#     stock = Stock.query.filter_by(ticker=data['ticker'].upper()).one()
-#     trade = Trade(
-#         name=data['name'],
-#         price=data['price'],
-#         quantity=data['quantity'],
-#         stock=stock,
-#         account_id=data['account_id'])
-#     account = Account.query.get(data['account.id'])
-#     account.balance += data['type']
-#     db.session.add(trade)
-#     db.session.add(account)
-#     db.session.commit()
-#     return trade.to_dict()
-
-
-
-# @trade_routes.route.route('/<int:id>', methods=['PUT'])
-# def quick_load(id):
-#     user_id = request.json['currentUserId']
-#     weight = Trade.query.filter(Trade.user_id == user_id).one()
-#     newTotal = request.json['newTotal']
-
-#     weight.total_Cash = newTotal
-
-#     db.session.add(weight)
-#     db.session.commit()
-
-    # return jsonify(weight.to_dict())
+@trade_routes.route('/', methods=['DELETE'])
+def deleteTrade():
+    id = request.json["id"]
+    trade = Trade.query.filter(Trade.id == id).first()
+    if (trade):
+        db.session.delete(trade)
+        db.session.commit()
+        return "Trade Deleted"
+    return "no Trades"

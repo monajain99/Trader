@@ -38,7 +38,10 @@ const Trades = ({ accountId, currentUserId}) => {
                 <div>No of Shares {trade.volume}</div>
                 <div>Purchase Date {trade.transaction_date}</div>
                 <div>Trade Value {trade.price * trade.volume}</div>
-                
+                <button
+                  onClick={}
+                >
+                </button>
               </>
             );
           })
