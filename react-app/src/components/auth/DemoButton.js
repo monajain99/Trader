@@ -20,7 +20,7 @@ const DemoButton = ({ setAuthenticated, authenticated, isLink = false }) => {
   }
 
   return (
-    <button className="navBtn" onClick={handleLoginClick}>
+    <button className="demoButton" onClick={handleLoginClick}>
       Login as a Demo User
     </button>
   );

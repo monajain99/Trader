@@ -7,11 +7,12 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
+  const [full_name, setFullName] = useState("");
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const user = await signUp(username, email, password);
+      const user = await signUp(username, email, password, full_name);
       if (!user.errors) {
         setAuthenticated(true);
       }
@@ -25,6 +26,11 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
+
+  const updateFullName = (e) => {
+    setFullName(e.target.value);
+  };
+  
 
   const updatePassword = (e) => {
     setPassword(e.target.value);
@@ -74,6 +80,16 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           name="repeat_password"
           onChange={updateRepeatPassword}
           value={repeatPassword}
+          required={true}
+        ></input>
+      </div>
+      <div>
+        <label>Full Name</label>
+        <input
+          type="text"
+          name="full_name"
+          onChange={updateFullName}
+          value={full_name}
           required={true}
         ></input>
       </div>

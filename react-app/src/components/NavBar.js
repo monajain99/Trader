@@ -2,95 +2,69 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import DemoButton from "./auth/DemoButton";
 import "../styles/Navbar.css";
-import ProfileButton from "./auth/ProfileButton";
 import LogoutButton from "./auth/LogoutButton";
 import { Row, Col, Container } from "react-bootstrap"
+
 // import Logo from "../assets/cropped.png";
 
 const NavBar = ({ setAuthenticated, authenticated, user }) => {
   let location = useLocation();
   const currentPage = location.pathname;
   return (
-    <div className="navContainer">
-      <nav className="navbar">
-        <ul className="linkList">
-          <li className="left">
-            <NavLink
-              to="/"
-              exact={true}
-              className="links"
-              activeClassName="active"
-            >
-              <img
-                // src={Logo}
-                alt="Logo"
-                style={{ maxWidth: 80, height: "auto" }}
-              />
-            </NavLink>
-          </li>
-          {/* <div className="middle">{authenticated && <SearchInput />}</div> */}
-          <div className="right">
+    <Container>
+      <Row>
+        <Col>
+          <NavLink to="/" exact={true} activeClassName="active">
+            <img alt="Logo" style={{ maxWidth: 80, height: "auto" }} />
+          </NavLink>
+        </Col>
+        <Col>
+          <ul className="NavbarContainer">
             {authenticated ? (
-              <>
-                {/* <li>
-                  <NavLink
-                    to="/upload"
-                    exact={true}
-                    className="links"
-                    activeClassName="active"
-                  >
-                    Upload
-                  </NavLink>
-                </li> */}
-                <li>
-                  <ProfileButton
-                    user={user}
-                    setAuthenticated={setAuthenticated}
-                  />
-                </li>
-              </>
+              ""
             ) : (
-              <>
-                <li>
-                  <NavLink
-                    to="/login"
-                    exact={true}
-                    className="links"
-                    activeClassName="active"
-                  >
-                    Log In
+              <li className="navbar_links">
+                <NavLink to="/login" exact={true} activeClassName="active">
+                  <p className="navbar_link">Log In</p>
+                </NavLink>
+              </li>
+              )}
+            {authenticated ? (
+              ""
+            ) : (
+                <li className="navbar_links">
+                  <NavLink to="/sign-up" exact={true} activeClassName="active">
+                    <p className="navbar_link">Sign Up</p>{" "}
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    to="/sign-up"
-                    exact={true}
-                    className="links"
-                    activeClassName="active"
-                  >
-                    Sign Up
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to="/users" exact={true} activeClassName="active">
-                    Users
-                  </NavLink>
-                </li>
-                <li>
-                  <LogoutButton setAuthenticated={setAuthenticated} />
-                </li>
-                <li>
-                  <DemoButton
-                    setAuthenticated={setAuthenticated}
-                    authenticated={authenticated}
-                  />
-                </li>
-              </>
+              )}
+
+            {authenticated ? (
+              <li className="navbar_links">
+                <NavLink to="/users" exact={true} activeClassName="active">
+                  <p className="navbar_link">Users</p>
+                </NavLink>
+              </li>
+            ) : (
+              ""
             )}
-          </div>
-        </ul>
-      </nav>
-    </div>
+            {authenticated ? (
+              <li className="navbar_links">
+                <LogoutButton setAuthenticated={setAuthenticated} />
+              </li>
+            ) : (
+              ""
+            )}
+            <li className="navbar_links">
+              <DemoButton
+                setAuthenticated={setAuthenticated}
+                authenticated={authenticated}
+              />
+            </li>
+          </ul>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

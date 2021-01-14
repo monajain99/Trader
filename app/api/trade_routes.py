@@ -12,25 +12,51 @@ def getTrade(id):
     trades = Trade.query.filter(Trade.account_id == id).all()
     if (trades):
         return {'trade_items': [trade.to_dict() for trade in trades]}
-    return "Please create a Trade"
+    return "No trades"
 
 @trade_routes.route('/', methods=['POST'])
 def addTrade():
-    print(request.json)
     data = request.json
-    stock = Stock.query.filter_by(ticker=data['ticker'].upper()).one()
+    print(data["name"])
+    name=data["name"]
+    ticker=data["ticker"]
+    volume=data["volume"]
+    price=data["price"]
+    transaction_date=data["transaction_date"]
+    stock_id=data["stock_id"]
+    account_id=data["account_id"]
+        
     trade = Trade(
-        name=data['name'],
-        price=data['price'],
-        quantity=data['quantity'],
-        stock=stock,
-        account_id=data['account_id'])
-    account = Account.query.get(data['account.id'])
-    account.balance += data['type']
+        name=name,
+        ticker=ticker,
+        volume=volume,
+        price=price,
+        transaction_date=transaction_date,
+        stock_id=stock_id,
+        account_id=account_id
+    )
     db.session.add(trade)
-    db.session.add(account)
     db.session.commit()
     return trade.to_dict()
+
+
+# @trade_routes.route('/', methods=['POST'])
+# def addTrade():
+#     print(request.json)
+#     data = request.json
+#     stock = Stock.query.filter_by(ticker=data['ticker'].upper()).one()
+#     trade = Trade(
+#         name=data['name'],
+#         price=data['price'],
+#         quantity=data['quantity'],
+#         stock=stock,
+#         account_id=data['account_id'])
+#     account = Account.query.get(data['account.id'])
+#     account.balance += data['type']
+#     db.session.add(trade)
+#     db.session.add(account)
+#     db.session.commit()
+#     return trade.to_dict()
 
 
 

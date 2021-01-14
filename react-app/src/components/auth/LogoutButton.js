@@ -9,7 +9,11 @@ const LogoutButton = ({setAuthenticated}) => {
     window.location.href='/'
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return (
+    <button className="demoButton" onClick={onLogout}>
+      Logout
+    </button>
+  );
 };
 
 export default LogoutButton;

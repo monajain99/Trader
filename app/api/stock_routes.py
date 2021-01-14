@@ -12,6 +12,13 @@ def stocks():
     return {"stocks": [stock.to_dict() for stock in stocks]}
 
 
+# @stock_routes.route('/add', methods=[POST, DELETE, UPDATE])
+# def addStocks(id):
+#     stock = Stock.query.get(id)
+#     return stock.to_dict()
+
+
+
 @stock_routes.route('/asset')
 def getStocks():
     api = tradeapi.REST(Config.API_KEY, Config.SECRET_KEY, base_url=Config.API_URL)
@@ -42,9 +49,6 @@ def price(ticker):
     percent_change = (week_close - week_open)/week_open
     return ('^^^^^^^^^^^^^^^^^^^^^^^^^^^^AAPL moved{}%'.format(percent_change))
 
-# @stock_routes.route('/add', methods=[POST, DELETE, UPDATE])
-# def stocks(id):
-#     stock = Stock.query.get(id)
-#     return stock.to_dict()
+
 
 

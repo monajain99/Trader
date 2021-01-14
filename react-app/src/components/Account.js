@@ -1,36 +1,32 @@
 import React, { useState, useEffect } from "react";
-import alpacaApi from "../services/trade";
+import axios from "axios";
+import alpacaApi from "../services/trades";
+import { getAccount } from "../services/account"
+import Trades from "./Trades"
 
-import "bootstrap/dist/css/bootstrap.min.css";
-
-const Account = () => {
-  const [user, setUser] = useState({});
-  const [buying_power, setBuying_power] = useState([]);
-  const [cash, setCash] = useState([0]);
-  const [long_market_value, setLong_market_value] = useState([0]);
-  const [portfolio_value, setPortfolio_value] = useState([0]);
-
+const Account = ({ setAuthenticated, currentUser, currentUserId }) => {
+  // console.log(currentUserId);
+  const [loaded, setLoaded] = useState(false);
+  const [accountBalance, setAccountBalance] = useState();
+  const [accountId, setAccountId] = useState("")
+  const [portfolio, setPortfolio] = useState();
+  
+  
   useEffect(() => {
-    const api = alpacaApi();
-
-    api.getAccount().then((response) => {
-      const data = response.data;
-
-      if (response.ok) {
-        setBuying_power(data.buying_power);
-        setCash(data.cash);
-        setLong_market_value(data.long_market_value);
-        setPortfolio_value(data.portfolio_value);
-      }
-    });
+    (async () => {
+      const data = await axios.get(`/api/account/${currentUserId}`);
+      setAccountBalance(data.data.balance[0].balance);
+      setAccountId(data.data.balance[0].id)
+      setLoaded(true)
+    })();
   }, []);
 
+if (!loaded) return null;
   return (
     <div>
-      Buying power {buying_power}
-      <div>Cash {cash}</div>
-      PortFolio Value
-      {portfolio_value}
+      Buying power {accountBalance}
+      {console.log(accountId)}
+      <Trades currentUserId={currentUserId} accountId={accountId} />
     </div>
   );
 };

@@ -11,7 +11,7 @@ def user_account(id):
     return {'balance': [balance.to_dict()]}
 
 
-@account_routes.route('', methods=['POST'])
+@account_routes.route('/', methods=['POST'])
 def add_account():
     user_id = request.json['currentUserId']
     balance = request.json['userBalance']

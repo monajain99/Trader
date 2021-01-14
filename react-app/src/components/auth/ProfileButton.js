@@ -25,31 +25,11 @@ const ProfileButton = ({ user, setAuthenticated }) => {
   }, [showMenu]);
 
   return (
-    <div className="profile-button">
-      <button
-        className="profile-button__trigger"
-        style={{
-          color: "#4A4E69",
-          fontSize: 14,
-          backgroundColor: "transparent",
-        }}
-        onClick={openMenu}
-      >
-        <i className="fas fa-ellipsis-v"></i>
+   
+      <button onClick={onLogoutClick}>
+        Log Out
       </button>
-      {showMenu && (
-        <ul className="profile-button__dropdown">
-          <li>
-            {/* <Link to={`/profile/${user.id}`}>{user.username}</Link> */}
-          </li>
-          <li>
-            <button className="button" onClick={onLogoutClick}>
-              Log Out
-            </button>
-          </li>
-        </ul>
-      )}
-    </div>
+          
   );
 };
 
