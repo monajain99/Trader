@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import alpacaApi from "../services/trades";
+import { deleteTrade} from "../services/trades";
 
 const Trades = ({ accountId, currentUserId}) => {
-  console.log(accountId);
   const [trades, setTrades] = useState({});
   const [loaded, setLoaded] = useState(false);
+  const [redirect, setRedirect] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -13,13 +13,12 @@ const Trades = ({ accountId, currentUserId}) => {
       setTrades(data.data.trade_items);
       setLoaded(true);
     })();
-  }, []);
+  }, [loaded]);
 
   if (!loaded) return null;
   let tradeItems = trades.map((trade, idx) => {
     let val = 0
     val = val + (trade.price);
-    console.log (val)
   });
 
   return (
@@ -27,9 +26,7 @@ const Trades = ({ accountId, currentUserId}) => {
       <div>
         {
           trades.map((trade, idx) => {
-            let val = 0
-            val = val + trade.price * trade.volume
-            
+                 
             return (
               <>
                 <div>Company Name{trade.name}</div>
@@ -38,10 +35,11 @@ const Trades = ({ accountId, currentUserId}) => {
                 <div>No of Shares {trade.volume}</div>
                 <div>Purchase Date {trade.transaction_date}</div>
                 <div>Trade Value {trade.price * trade.volume}</div>
-                <button
-                  onClick={}
-                >
-                </button>
+                <button onClick={ () => {
+                  deleteTrade(trade.id)
+                    setLoaded(false);;
+						      }}>
+					      </button>
               </>
             );
           })

@@ -41,10 +41,12 @@ def addTrade():
 
 @trade_routes.route('/', methods=['DELETE'])
 def deleteTrade():
+    print(request.json)
     id = request.json["id"]
+    print(id)
     trade = Trade.query.filter(Trade.id == id).first()
     if (trade):
         db.session.delete(trade)
         db.session.commit()
         return "Trade Deleted"
-    return "no Trades"
+    return "no Trade"

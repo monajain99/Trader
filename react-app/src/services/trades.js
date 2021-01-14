@@ -1,9 +1,4 @@
-
-
-
-
-
-
+import axios from "axios";
 import apisauce from "apisauce";
 // import config from "./config"
 
@@ -11,6 +6,26 @@ const API_KEY = "PK0CDPFB1RM8SA4URUGW";
 const SECRET_KEY = "Z8StsoZwwKFH0TLnJL8LvMfyyI6otN7bkEocWQZe";
 const BASE_URL = "https://paper-api.alpaca.markets";
 
+export const deleteTrade = async (id) => {
+  const response = await axios.delete(`/api/trade/`, { data: { 'id': id } });
+  return response.data;
+};
+
+export const addTrade = async (data) => {
+  console.log("this is trade data", data);
+  const response = await axios.create(`/api/trade/`, {
+    data: {
+      // "id": account_id,
+      // "name": name,
+      // "ticker": ticker,
+      // "price": price,
+      // "volume": volume,
+      // "stock_id": stock_id,
+      // "transaction_date": transaction_date
+    },
+  });
+  return response.data;
+};
 
 
 
