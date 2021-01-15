@@ -11,23 +11,6 @@ export const deleteTrade = async (id) => {
   return response.data;
 };
 
-export const addTrade = async (data) => {
-  console.log("this is trade data", data);
-  const response = await axios.create(`/api/trade/`, {
-    data: {
-      // "id": account_id,
-      // "name": name,
-      // "ticker": ticker,
-      // "price": price,
-      // "volume": volume,
-      // "stock_id": stock_id,
-      // "transaction_date": transaction_date
-    },
-  });
-  return response.data;
-};
-
-
 
 export const alpacaApi = (baseURL = BASE_URL) => {
   const api = apisauce.create({

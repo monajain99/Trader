@@ -9,7 +9,16 @@ stock_routes = Blueprint('stocks', __name__)
 @stock_routes.route('/')
 def stocks():
     stocks = Stock.query.all()
+    print (stocks)
     return {"stocks": [stock.to_dict() for stock in stocks]}
+
+# @stock_routes.route('/<int:id>')
+# def getstock(ticker):
+#     print('route hit')
+#     print('rrrrrrrrr',ticker)
+#     stock = Stock.query.filter(Stock.ticker==ticker).first()
+#     # print('rrrrrrrrr',stock)
+#     return stock.to_dict()
 
 
 # @stock_routes.route('/add', methods=[POST, DELETE, UPDATE])

@@ -1,11 +1,9 @@
 from flask import Blueprint, jsonify, session, request
 from app.models import Trade, User, Stock, Account
-# from app.forms import Trade
-# from app.forms import  AddAccount
+
 from app.models import db
 
 trade_routes = Blueprint('trade', __name__)
-
 
 @trade_routes.route('/<int:id>', methods=['GET'])
 def getTrade(id):
@@ -17,16 +15,26 @@ def getTrade(id):
 @trade_routes.route('/', methods=['POST'])
 def addTrade():
     data = request.json
-    name=data["name"]
+    print(data)
+
     ticker=data["ticker"]
     volume=data["volume"]
     price=data["price"]
     transaction_date=data["transaction_date"]
     stock_id=data["stock_id"]
     account_id=data["account_id"]
-        
+    
+    stock = Stock.query.filter(Stock.ticker == ticker).one()
+    print(stock.name)
+    print(ticker)
+    print("Rashhhmi")
+
+    #if (stock):
+    #   return stock.to_dict()
+    #return "No stock"
+
     trade = Trade(
-        name=name,
+        name=stock.name,
         ticker=ticker,
         volume=volume,
         price=price,
@@ -35,8 +43,28 @@ def addTrade():
         account_id=account_id
     )
     db.session.add(trade)
+    
+    account = Account.query.filter(
+    Account.id == account_id).first()
+    account.balance = int(account.balance) - (int(price) * int(volume))
+    
+   # new_balance = Account(account.balance, account.user_id)
+    db.session.add(account)
     db.session.commit()
-    return trade.to_dict()
+
+
+
+
+
+
+
+
+
+
+    db.session.commit()
+    print("Vijay scess")
+   # return trade.to_dict()
+    return "Added succesufl"
 
 
 @trade_routes.route('/', methods=['DELETE'])

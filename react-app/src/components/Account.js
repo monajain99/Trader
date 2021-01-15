@@ -25,7 +25,6 @@ if (!loaded) return null;
   return (
     <div>
       Buying power {accountBalance}
-      {console.log(accountId)}
       <Trades currentUserId={currentUserId} accountId={accountId} />
     </div>
   );

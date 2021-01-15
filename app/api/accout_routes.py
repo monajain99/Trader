@@ -4,9 +4,13 @@ from app.models import db
 
 account_routes = Blueprint('account', __name__)
 
+# @account_routes.route('/')
+# def userAccount(id):
+#     account = User.query.filter(Account.user_id == id).first()
+#     return {'Account': [balance.to_dict()]}
 
 @account_routes.route('/<int:id>')
-def user_account(id):
+def user_trades(id):
     balance = Account.query.filter(Account.user_id == id).first()
     return {'balance': [balance.to_dict()]}
 
