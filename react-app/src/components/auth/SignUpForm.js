@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
+import {
+  Form,
+  Jumbotron as Jumbo,
+  Container,
+  Button,
+  Row,
+  Col,
+} from "react-bootstrap";
+
 
 const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [username, setUsername] = useState("");
@@ -45,56 +54,83 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        <label>User Name</label>
-        <input
-          type="text"
-          name="username"
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type="text"
-          name="email"
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type="password"
-          name="password"
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type="password"
-          name="repeat_password"
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <div>
-        <label>Full Name</label>
-        <input
-          type="text"
-          name="full_name"
-          onChange={updateFullName}
-          value={full_name}
-          required={true}
-        ></input>
-      </div>
-      <button type="submit">Sign Up</button>
-    </form>
+    <Jumbo className="bg=lt">
+      <Container>
+        <Row>
+          <Col>
+            <h1 className="display-4">Sign in to be a Pro Trader!</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <p className="lead">We Bring You everything for stocks! </p>
+          </Col>
+        </Row>
+        <Form onSubmit={onSignUp}>
+          <Form.Group controlId="formBasicEmail">
+            <Form.Label>Username</Form.Label>
+            <Row>
+              <Col lg={4}>
+                <Form.Control
+                  type="text"
+                  onChange={updateUsername}
+                  value={username}
+                />
+              </Col>
+            </Row>
+          </Form.Group>
+          <Form.Label>Email</Form.Label>
+          <Row>
+            <Col lg={4}>
+              <Form.Control
+                type="text"
+                onChange={updateEmail}
+                value={email}
+              />
+              <Form.Text className="text-muted"></Form.Text>
+            </Col>
+          </Row>
+          <Form.Label>Password</Form.Label>
+          <Row>
+            <Col lg={4}>
+              <Form.Control
+                type="password"
+                onChange={updatePassword}
+                value={password}
+              />
+              <Form.Text className="text-muted"></Form.Text>
+            </Col>
+          </Row>
+          <Form.Label>Repeat Password</Form.Label>
+          <Row>
+            <Col lg={4}>
+              <Form.Control
+                type="password"
+                onChange={updateRepeatPassword}
+                value={repeatPassword}
+                required={true}
+              />
+            </Col>
+          </Row>
+          <Form.Group controlId="formBasicPassword">
+            <Form.Label>Full Name</Form.Label>
+            <Row>
+              <Col lg={4}>
+                <Form.Control
+                  type="text"
+                  onChange={updateFullName}
+                  value={full_name}
+                  required={true}
+                />
+              </Col>
+            </Row>
+          </Form.Group>
+          <Button variant="info" type="submit">
+            Sign Up
+          </Button>
+        </Form>
+      </Container>
+    </Jumbo>
   );
 };
 
