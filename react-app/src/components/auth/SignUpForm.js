@@ -20,6 +20,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
+    console.log(username,email,password,full_name);
     if (password === repeatPassword) {
       const user = await signUp(username, email, password, full_name);
       if (!user.errors) {
@@ -71,7 +72,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
             <Form.Label>Username</Form.Label>
             <Row>
               <Col lg={4}>
-                <Form.Control
+                <input
                   type="text"
                   onChange={updateUsername}
                   value={username}
@@ -82,7 +83,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           <Form.Label>Email</Form.Label>
           <Row>
             <Col lg={4}>
-              <Form.Control
+              <input
                 type="text"
                 onChange={updateEmail}
                 value={email}
@@ -93,7 +94,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           <Form.Label>Password</Form.Label>
           <Row>
             <Col lg={4}>
-              <Form.Control
+              <input
                 type="password"
                 onChange={updatePassword}
                 value={password}
@@ -104,7 +105,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           <Form.Label>Repeat Password</Form.Label>
           <Row>
             <Col lg={4}>
-              <Form.Control
+              <input
                 type="password"
                 onChange={updateRepeatPassword}
                 value={repeatPassword}
@@ -116,7 +117,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
             <Form.Label>Full Name</Form.Label>
             <Row>
               <Col lg={4}>
-                <Form.Control
+                <input
                   type="text"
                   onChange={updateFullName}
                   value={full_name}

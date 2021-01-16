@@ -11,6 +11,7 @@ import { getAccount } from "./services/account";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Account from "./components/Account";
+import News from "./components/StockExchange"
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -18,8 +19,6 @@ function App() {
   const history = useHistory();
   const [currentUser, setCurrentUser] = useState("");
   const [currentUserId, setCurrentUserId] = useState("");
-
-
 
   useEffect(() => {
     (async() => {
@@ -44,6 +43,8 @@ function App() {
         authenticated={authenticated}
       />
       <Switch>
+        
+        
         <Route path="/login" exact={true}>
           <LoginForm
             authenticated={authenticated}
@@ -69,6 +70,11 @@ function App() {
           authenticated={authenticated}
         >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute
+          path="/profile"
+          exact={true}
+          authenticated={authenticated}>
           <Account
             authenticate={authenticate}
             setAuthenticated={setAuthenticated}
@@ -79,12 +85,6 @@ function App() {
         <Route path="/" exact={true} authenticated={authenticated}>
           {authenticated ? <Redirect to="/profile" /> : " "}
           <h1>My Home Page</h1>
-          <Account
-            authenticate={authenticate}
-            setAuthenticated={setAuthenticated}
-            currentUser={currentUser}
-            currentUserId={currentUserId}
-          />
         </Route>
       </Switch>
     </BrowserRouter>

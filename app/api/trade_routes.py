@@ -7,7 +7,8 @@ trade_routes = Blueprint('trade', __name__)
 
 @trade_routes.route('/<int:id>', methods=['GET'])
 def getTrade(id):
-    trades = Trade.query.filter(Trade.account_id == id).all()
+    account = Account.query.filter(Account.user_id == id).first()
+    trades = Trade.query.filter(Trade.account_id == account.id).all()
     if (trades):
         return {'trade_items': [trade.to_dict() for trade in trades]}
     return "No trades"
@@ -15,7 +16,6 @@ def getTrade(id):
 @trade_routes.route('/', methods=['POST'])
 def addTrade():
     data = request.json
-    print(data)
 
     ticker=data["ticker"]
     volume=data["volume"]
@@ -25,10 +25,7 @@ def addTrade():
     account_id=data["account_id"]
     
     stock = Stock.query.filter(Stock.ticker == ticker).one()
-    print(stock.name)
-    print(ticker)
-    print("Rashhhmi")
-
+    
     #if (stock):
     #   return stock.to_dict()
     #return "No stock"
@@ -44,8 +41,7 @@ def addTrade():
     )
     db.session.add(trade)
     
-    account = Account.query.filter(
-    Account.id == account_id).first()
+    account = Account.query.filter(Account.id == account_id).first()
     account.balance = int(account.balance) - (int(price) * int(volume))
     
    # new_balance = Account(account.balance, account.user_id)
@@ -74,7 +70,14 @@ def deleteTrade():
     print(id)
     trade = Trade.query.filter(Trade.id == id).first()
     if (trade):
+        account_id = trade.account_id
+        price = trade.price
+        volume = trade.volume
+        account = Account.query.filter(
+        Account.id == account_id).first()
+        account.balance = int(account.balance) + (int(price) * int(volume))
+        db.session.add(account)
         db.session.delete(trade)
         db.session.commit()
-        return "Trade Deleted"
+        return jsonify(account.balance)
     return "no Trade"

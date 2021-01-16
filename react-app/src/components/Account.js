@@ -5,27 +5,37 @@ import { getAccount } from "../services/account"
 import Trades from "./Trades"
 
 const Account = ({ setAuthenticated, currentUser, currentUserId }) => {
-  // console.log(currentUserId);
+  console.log(currentUserId);
   const [loaded, setLoaded] = useState(false);
   const [accountBalance, setAccountBalance] = useState();
   const [accountId, setAccountId] = useState("")
-  const [portfolio, setPortfolio] = useState();
+  // const [portfolio, setPortfolio] = useState();
+  const [refresh, setRefresh] = useState(false);
+
   
   
   useEffect(() => {
     (async () => {
-      const data = await axios.get(`/api/account/${currentUserId}`);
-      setAccountBalance(data.data.balance[0].balance);
-      setAccountId(data.data.balance[0].id)
-      setLoaded(true)
+      const response = await axios.get(`/api/account/${currentUserId}`);
+      const data = response.data;
+      console.log(data);
+      setAccountBalance(data.balance.balance);
+      setAccountId(data.balance.id);
+      setLoaded(true);
+      setRefresh(true)
     })();
-  }, []);
+  }, [loaded, refresh]);
 
 if (!loaded) return null;
+  
   return (
     <div>
       Buying power {accountBalance}
-      <Trades currentUserId={currentUserId} accountId={accountId} />
+      <Trades
+        currentUserId={currentUserId}
+        accountId={accountId}
+        setRefresh={setRefresh}
+      />
     </div>
   );
 };

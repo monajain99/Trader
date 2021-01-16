@@ -14,6 +14,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -58,14 +59,15 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           </div>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email </Form.Label>
-                        <Row>
-                            <Col lg={4}>
-                                <Form.Control 
-              name="email"
-              type="text"
-              value={email}
-              onChange={updateEmail}/>
-                  </Col>
+            <Row>
+              <Col lg={4}>
+                   <input
+                  name="email"
+                  type="text"
+                  value={email}
+                  onChange={updateEmail}
+                />
+              </Col>
             </Row>
           </Form.Group>
 
@@ -73,7 +75,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
             <Form.Label>Password</Form.Label>
             <Row>
               <Col lg={4}>
-                <Form.Control
+                <input
                   name="password"
                   type="password"
                   value={password}

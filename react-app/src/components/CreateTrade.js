@@ -1,34 +1,36 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { addTrade } from "../services/trades";
+import {
+  Form,
+  Jumbotron as Jumbo,
+  Container,
+  Button,
+  Row,
+  Col,
+} from "react-bootstrap";
 
-function AddTrade({ currentUserId, accountId }) {
+function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
   const [ticker, setTicker] = useState("");
   const [price, setPrice] = useState("");
   const [volume, setVol] = useState("");
   const [name, setName] = useState("");
   const [stock_id, setStock_id] = useState("");
 
-
   useEffect(() => {
     (async () => {
-      const stock = await axios.get(`/api/stocks`, { data: { 'ticker': ticker } });
-      console.log('sssssssssss', stock.data.stocks)
-      // stock.data.stocks.filter
+      const stock = await axios.get(`/api/stocks`, {
+        data: { ticker: ticker },
+      });
       setStock_id(stock.data.stocks[0].id);
-      setName(stock.data.stocks[0].name)
+      setName(stock.data.stocks[0].name);
     })();
-  },[])
-  // const [tradeDate, setDate] = useState("");
+  }, []);
 
   const account_id = accountId;
-  // const account_id = "1";
-
 
   const createTrade = async (e) => {
     e.preventDefault();
-    
-    
     const response = await axios.post(`/api/trade/`, {
       account_id,
       ticker,
@@ -37,6 +39,8 @@ function AddTrade({ currentUserId, accountId }) {
       stock_id,
       transaction_date: "20202022",
     });
+    setRefresh(false);
+    setRefeshFromBuy(false);
   };
 
   const updateTicker = (e) => {
@@ -51,44 +55,51 @@ function AddTrade({ currentUserId, accountId }) {
 
   return (
     <>
-      <h1>Create Trade</h1>
-      <div>
-        <form onSubmit={createTrade}>
-          <div>
-            <div>
-              <label>Ticker</label>
-              <input
-                name="ticker"
-                type="text"
-                placeholder="ex. $AAPL"
-                onChange={updateTicker}
-              />
-            </div>
-            <div>
-              <label>Price</label>
-              <input
-                name="price"
-                type="integer"
-                placeholder="ex. $20"
-                onChange={updatePrice}
-              />
-            </div>
-            <div>
-              <label>volume</label>
-              <input
-                name="volume"
-                type="integer"
-                placeholder="ex. 100"
-                onChange={updateVolume}
-              />
-            </div>
-            <button type="submit">Submit</button>
-          </div>
-        </form>
-      </div>
+      <Jumbo className="bg=lt">
+        <Container-small>
+          <Row>
+            <Col>
+              <h1 className="display-">Buy Stocks</h1>
+            </Col>
+          </Row>
+          <Form onSubmit={createTrade}>
+            <Form.Label>Stock Symbol </Form.Label>
+            <Row>
+              <Col lg={2}>
+                <Form.Control
+                  name="ticker"
+                  type="text"
+                  onChange={updateTicker}
+                />
+              </Col>
+            </Row>
+            <Form.Label>Buy Price </Form.Label>
+            <Row>
+              <Col lg={2}>
+                <Form.Control
+                  name="price"
+                  type="integer"
+                  onChange={updatePrice}
+                />
+              </Col>
+            </Row>
+            <Form.Label>Volume </Form.Label>
+            <Row>
+              <Col lg={2}>
+                <Form.Control
+                  name="volume"
+                  type="integer"
+                  placeholder="ex. 100"
+                  onChange={updateVolume}
+                />
+              </Col>
+            </Row>
+            <Button type="submit">Buy</Button>
+          </Form>
+        </Container-small>
+      </Jumbo>
     </>
   );
 }
 
-
-export default AddTrade
+export default AddTrade;
