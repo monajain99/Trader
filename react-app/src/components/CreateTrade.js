@@ -40,7 +40,7 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
       transaction_date: "20202022",
     });
     setRefresh(false);
-    setRefeshFromBuy(false);
+    setRefeshFromBuy(true);
   };
 
   const updateTicker = (e) => {

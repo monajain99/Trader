@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import User, db
+from app.models import User, db, Account
 from app.forms import LoginForm
 from app.forms import SignUpForm
 from flask_login import current_user, login_user, logout_user, login_required
@@ -69,13 +69,19 @@ def sign_up():
             email=form.data['email'],
             password=form.data['password'],
             full_name=form.data['full_name'],
-            buying_power=1000000
-            # image_url=form.data['image_url'],
-            # about=form.data['about']
+            buying_power='1000000'
         )
         db.session.add(user)
         db.session.commit()
+      
+        account = Account(
+             balance='1000000',
+             user_id=user.id
+        )
+        db.session.add(account)
+        db.session.commit()
         login_user(user)
+        
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}
 

@@ -16,7 +16,7 @@ class Account(db.Model):
     
     trade = db.relationship('Trade', lazy=True)
     
-    def __init__(self, balance, user_id):
+    def __init__(self,balance, user_id):
         self.balance = balance
         self.user_id = user_id
         # self.trade_id = trade_id

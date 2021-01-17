@@ -20,7 +20,6 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    console.log(username,email,password,full_name);
     if (password === repeatPassword) {
       const user = await signUp(username, email, password, full_name);
       if (!user.errors) {

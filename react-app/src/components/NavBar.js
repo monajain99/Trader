@@ -2,10 +2,12 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import DemoButton from "./auth/DemoButton";
 import "../styles/Navbar.css";
+import "../styles/Search.css";
 import LogoutButton from "./auth/LogoutButton";
 import { Row, Col, Container } from "react-bootstrap"
+import SearchInput from "./Search";
 
-// import Logo from "../assets/cropped.png";
+
 
 const NavBar = ({ setAuthenticated, authenticated, user }) => {
   let location = useLocation();
@@ -28,17 +30,17 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
                   <p className="navbar_link">Log In</p>
                 </NavLink>
               </li>
-              )}
+            )}
             {authenticated ? (
               ""
             ) : (
-                <li className="navbar_links">
-                  <NavLink to="/sign-up" exact={true} activeClassName="active">
-                    <p className="navbar_link">Sign Up</p>{" "}
-                  </NavLink>
-                </li>
-              )}
-
+              <li className="navbar_links">
+                <NavLink to="/sign-up" exact={true} activeClassName="active">
+                  <p className="navbar_link">Sign Up</p>{" "}
+                </NavLink>
+              </li>
+            )}
+            <div className="middle">{authenticated && <SearchInput />}</div>
             {authenticated ? (
               <li className="navbar_links">
                 <NavLink to="/users" exact={true} activeClassName="active">

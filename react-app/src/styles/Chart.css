@@ -1,0 +1,9 @@
+.chartContainer {
+  margin-top: auto;
+  position: absolute;
+  background-color: grey;
+  size: 50%;
+  height: 300px;
+  width: 50%
+
+}

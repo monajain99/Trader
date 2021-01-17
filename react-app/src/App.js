@@ -11,7 +11,8 @@ import { getAccount } from "./services/account";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Account from "./components/Account";
-import News from "./components/StockExchange"
+import News from "./components/News"
+import Chart from "./components/Chart"
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -43,8 +44,13 @@ function App() {
         authenticated={authenticated}
       />
       <Switch>
-        
-        
+        <Route path="/news/:symbol" exact={true}>
+          <Chart
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+          />
+        </Route>
+
         <Route path="/login" exact={true}>
           <LoginForm
             authenticated={authenticated}
@@ -74,7 +80,8 @@ function App() {
         <ProtectedRoute
           path="/profile"
           exact={true}
-          authenticated={authenticated}>
+          authenticated={authenticated}
+        >
           <Account
             authenticate={authenticate}
             setAuthenticated={setAuthenticated}
