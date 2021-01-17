@@ -17,6 +17,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
   const [full_name, setFullName] = useState("");
+  const [loaded, setLoaded] = useState("false")
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -50,7 +51,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/profile" loaded={loaded} />;
   }
 
   return (

@@ -81,6 +81,7 @@ function App() {
           path="/profile"
           exact={true}
           authenticated={authenticated}
+          
         >
           <Account
             authenticate={authenticate}
@@ -89,7 +90,7 @@ function App() {
             currentUserId={currentUserId}
           />
         </ProtectedRoute>
-        <Route path="/" exact={true} authenticated={authenticated}>
+        <Route path="/" exact={true} authenticated={authenticated} >
           {authenticated ? <Redirect to="/profile" /> : " "}
           <h1>My Home Page</h1>
         </Route>

@@ -1,9 +1,18 @@
-.chartContainer {
+.chart__Container {
   margin-top: auto;
   position: absolute;
   background-color: grey;
   size: 50%;
   height: 300px;
   width: 50%
+
+}
+
+.line__Container {
+  margin-top: auto;
+  background-color: grey;
+  size: 50%;
+  width: 50%;
+  position:auto;
 
 }

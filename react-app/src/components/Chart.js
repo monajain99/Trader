@@ -25,7 +25,7 @@ const Chart = ({ authenticated, setAuthenticated }) => {
 
   return (
     <>
-      <container className="chartContainer">
+      <div className="chart__Container">
         <CanvasJSChart
           options={{
             theme: "dark1",
@@ -36,7 +36,6 @@ const Chart = ({ authenticated, setAuthenticated }) => {
             zoomEnabled: true,
             exportEnabled: true,
             axisY: {
-              // Minimum value is 10% less than the lowest price in the dataset
               minimum: Math.min(...stockData.map((data) => data.low)) / 1.1,
               maximum: Math.max(...stockData.map((data) => data.high)) * 1.1,
               crosshair: {
@@ -64,20 +63,63 @@ const Chart = ({ authenticated, setAuthenticated }) => {
                 color: "red",
                 dataPoints: stockData.map((stockData) => ({
                   x: new Date(stockData.date),
-                  // The OHLC for the data point
-                  // The order is IMPORTANT!
                   y: [
                     stockData.open,
                     stockData.high,
                     stockData.low,
                     stockData.close,
                   ],
+                  
                 })),
               },
             ],
           }}
         />
-      </container>
+      </div>
+      {/* <container className="line__Container">
+        <CanvasJSChart
+          options={{
+            zoomEnabled: true,
+            exportEnabled: true,
+            theme: "light2", // "light1", "dark1", "dark2"
+            title: {
+              text: `Line Chart ${symbol}`,
+              fontFamily: "times new roman",
+            },
+            axisY: {
+             crosshair: {
+                enabled: true,
+                snapToDataPoint: true,
+              },
+              includeZero: false,
+              title: "Prices",
+              prefix: "$ ",
+            },
+            axisX: {
+              crosshair: {
+                enabled: true,
+                snapToDataPoint: true,
+              },
+              interval: 2,
+              intervalType: "month",
+              valueFormatString: "MMM-YY",
+              labelAngle: -45,
+            },
+            data: [
+              {
+                type: "line",
+                toolTipContent: "Day {x}: {y}%",
+                dataPoints: stockData.map((stockData) => ({
+                  x: new Date(stockData.date),
+                  // The OHLC for the data point
+                  // The order is IMPORTANT!
+                  y: [stockData.close],
+                })),
+              },
+            ],
+          }}
+        />
+      </container> */}
       <News symbol={symbol} />
     </>
   );
