@@ -16,34 +16,24 @@ const Line = ({ stockData }) => {
 
 
   return (
-    <>
+    <div>
     <container className="chartContainer">
       <CanvasJSChart
-        options={{
-      animationEnabled: true,
-      exportEnabled: true,
-      theme: "light2", // "light1", "dark1", "dark2"
-      title: {
-              text: `Line Chart ${symbol}`,
-              fontFamily: "times new roman",
-            },
-      axisY: {
-        title: "Bounce Rate",
-        suffix: "%",
-      },
-      axisX: {
-        title: "Week of Year",
-        prefix: "W",
-        interval: 2,
-      },
-      data: [
-        {
-          type: "line",
-          toolTipContent: "Day {x}: {y}%",
-          dataPoints:stockData.map((stockData) => ({
+        const options = {{
+			theme: "light2",
+			title: {
+				text: "Stock Price of NIFTY 50"
+			},
+			axisY: {
+				title: "Price in USD",
+				prefix: "$"
+			},
+			data: [{
+				type: "line",
+				xValueFormatString: "MMM YYYY",
+				yValueFormatString: "$#,##0.00",
+				dataPoints:stockData.map((stockData) => ({
             x: new Date(stockData.date),
-            // The OHLC for the data point
-            // The order is IMPORTANT!
             y: [
               stockData.close
             ],
@@ -53,10 +43,10 @@ const Line = ({ stockData }) => {
           }}
         />
     </container>
-    </>
+    </div>
   );
       
 };
   
-export default Line;
+// export default Line;
 

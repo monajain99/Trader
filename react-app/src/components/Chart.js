@@ -23,6 +23,16 @@ const Chart = ({ authenticated, setAuthenticated }) => {
     fetchStockData();
   }, [symbol]);
 
+
+    const set = stockData.map((stockData) => ({
+            x: new Date(stockData.date),
+            y: [
+              stockData.close
+            ],
+    }))
+  
+  console.log(set)
+
   return (
     <>
       <div className="chart__Container">
@@ -69,14 +79,14 @@ const Chart = ({ authenticated, setAuthenticated }) => {
                     stockData.low,
                     stockData.close,
                   ],
-                  
                 })),
               },
             ],
           }}
         />
       </div>
-      {/* <container className="line__Container">
+      <div>
+        {/* <container className="line__Container">
         <CanvasJSChart
           options={{
             zoomEnabled: true,
@@ -120,6 +130,7 @@ const Chart = ({ authenticated, setAuthenticated }) => {
           }}
         />
       </container> */}
+      </div>
       <News symbol={symbol} />
     </>
   );
