@@ -8,7 +8,6 @@ import { Row, Col, Container } from "react-bootstrap"
 import SearchInput from "./Search";
 
 
-
 const NavBar = ({ setAuthenticated, authenticated, user }) => {
   let location = useLocation();
   const currentPage = location.pathname;
@@ -17,7 +16,11 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
       <Row>
         <Col>
           <NavLink to="/" exact={true} activeClassName="active">
-            <img alt="Logo" style={{ maxWidth: 80, height: "auto" }} />
+            <img
+              alt="Logo"
+              src="./images/logo.png"
+              style={{ maxWidth: 80, height: "auto" }}
+            />
           </NavLink>
         </Col>
         <Col>

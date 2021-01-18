@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AddTrade from "./CreateTrade"
-import { deleteTrade} from "../services/trades";
+import { deleteTrade } from "../services/trades";
+import "../styles/BuyTrade.css";
+
 import {
   Form,
   Container,
@@ -43,28 +45,50 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
             setRefresh={setRefresh}
           />
 
-          {trades &&
+          {/* {trades &&
             trades.map((trade, idx) => {
-              return (
-                <div>
-                  <div>Company Name{trade.name}</div>
-                  <div>Purchase Price{trade.price}</div>
-                  <div>Symbol {trade.ticker}</div>
-                  <div>No of Shares {trade.volume}</div>
-                  <div>Purchase Date {trade.transaction_date}</div>
-                  <div>Trade Value {trade.price * trade.volume}</div>
-                  <Button
-                    onClick={() => {
-                      deleteTrade(trade.id);
-                      setRefresh(false);
-                      setRedirect(true);
-                    }}
-                  >
-                    Sell
-                  </Button>
-                </div>
-              );
-            })}
+              return ( */}
+          <div>
+            <table id="StockInfo">
+              <thead>
+                <tr>
+                  <th>Company Name</th>
+                  <th>Purchase Price</th>
+                  <th>Symbol</th>
+                  <th>No. of Shares</th>
+                  <th>Purchase Date</th>
+                  <th>Trade Value</th>
+                  <th>Sell</th>
+                </tr>
+              </thead>
+              <tbody>
+                {trades &&
+                  trades.map((trade, idx) => {
+                    return (
+                      <tr>
+                        <th>{trade.name}</th>
+                        <th>{trade.price}</th>
+                        <th>{trade.ticker}</th>
+                        <th>{trade.volume}</th>
+                        <th>{trade.transaction_date}</th>
+                        <th>{trade.price * trade.volume}</th>
+                        <th>
+                          <Button
+                            onClick={() => {
+                              deleteTrade(trade.id);
+                              setRefresh(false);
+                              setRedirect(true);
+                            }}
+                          >
+                            Sell
+                          </Button>
+                        </th>
+                      </tr>
+                    );
+                  })}
+              </tbody>
+            </table>
+          </div>
         </div>
       </>
     );

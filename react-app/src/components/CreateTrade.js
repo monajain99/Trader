@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { addTrade } from "../services/trades";
+import "../styles/BuyTrade.css";
 import {
   Form,
   Jumbotron as Jumbo,
@@ -55,8 +56,9 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
 
   return (
     <>
-      <Jumbo className="bg=lt">
-        <Container-small>
+      <div className="bg_lt">
+        {/* <div class="sellBox" style="Width: 50px">Height:25%</div> */}
+        {/* <Container-small> */}
           <Row>
             <Col>
               <h1 className="display-">Buy Stocks</h1>
@@ -96,8 +98,8 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
             </Row>
             <Button type="submit">Buy</Button>
           </Form>
-        </Container-small>
-      </Jumbo>
+        {/* </Container-small> */}
+      </div>
     </>
   );
 }

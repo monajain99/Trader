@@ -38,7 +38,7 @@ const Chart = ({ authenticated, setAuthenticated }) => {
       <div className="chart__Container">
         <CanvasJSChart
           options={{
-            theme: "dark1",
+            theme: "light1",
             title: {
               text: `Customized Candle Stick Chart ${symbol}`,
               fontFamily: "times new roman",
@@ -70,7 +70,7 @@ const Chart = ({ authenticated, setAuthenticated }) => {
               {
                 type: "candlestick",
                 risingColor: "white",
-                color: "red",
+                color: "#6b9ba5ff",
                 dataPoints: stockData.map((stockData) => ({
                   x: new Date(stockData.date),
                   y: [
