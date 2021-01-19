@@ -25,6 +25,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
       const user = await signUp(username, email, password, full_name);
       if (!user.errors) {
         setAuthenticated(true);
+        window.location.reload(false);
       }
     }
   };
@@ -56,7 +57,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
 
   return (
     <Jumbo className="bg=lt">
-      <Container>
+      <Container className="bg=lt">
         <Row>
           <Col>
             <h1 className="display-4">Sign in to be a Pro Trader!</h1>
@@ -64,7 +65,7 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
         </Row>
         <Row>
           <Col>
-            <p className="lead">We Bring You everything for stocks! </p>
+            <p className="lead">Together We Can Do it! </p>
           </Col>
         </Row>
         <Form onSubmit={onSignUp}>

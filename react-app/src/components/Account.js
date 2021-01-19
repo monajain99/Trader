@@ -24,7 +24,7 @@ if (!loaded) return null;
   
   return (
     <div>
-      <div class="BuyingPower">Buying Power: {accountBalance}</div>
+      <div class="BuyingPower">Portfolio Value: {accountBalance}</div>
         <Trades
           currentUserId={currentUserId}
           accountId={accountId}

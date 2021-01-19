@@ -64,12 +64,6 @@ function App() {
             setAuthenticated={setAuthenticated}
           />
         </Route>
-        <Route path="/" exact={true}>
-          <LandingPage
-            authenticated={authenticated}
-            setAuthenticated={setAuthenticated}
-          />
-        </Route>
         <ProtectedRoute
           path="/users"
           exact={true}
@@ -88,6 +82,7 @@ function App() {
           path="/profile"
           exact={true}
           authenticated={authenticated}
+          loaded={loaded}
         >
           <Account
             authenticate={authenticate}
@@ -97,8 +92,13 @@ function App() {
           />
         </ProtectedRoute>
         <Route path="/" exact={true} authenticated={authenticated}>
-          {authenticated ? <Redirect to="/profile" /> : " "}
-          <h1>My Home Page</h1>
+          {authenticated ? <Redirect to="/profile" loaded={loaded}/> : " "}
+          <Route path="/" exact={true}>
+            <LandingPage
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          </Route>
         </Route>
       </Switch>
     </BrowserRouter>

@@ -69,7 +69,7 @@ const Chart = ({ authenticated, setAuthenticated }) => {
             data: [
               {
                 type: "candlestick",
-                risingColor: "white",
+                risingColor: "orange",
                 color: "#6b9ba5ff",
                 dataPoints: stockData.map((stockData) => ({
                   x: new Date(stockData.date),
