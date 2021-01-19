@@ -6,7 +6,7 @@ import "../styles/Search.css";
 import LogoutButton from "./auth/LogoutButton";
 import { Row, Col, Container } from "react-bootstrap"
 import SearchInput from "./Search";
-
+import Logo from "./images/logo.png"
 
 
 const NavBar = ({ setAuthenticated, authenticated, user }) => {
@@ -17,7 +17,11 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
       <Row>
         <Col>
           <NavLink to="/" exact={true} activeClassName="active">
-            <img alt="Logo" style={{ maxWidth: 80, height: "auto" }} />
+            <img
+              src={Logo}
+              alt="ProTrader Logo"
+              style={{ maxWidth: 80, height: "auto", margin: 20 }}
+            />
           </NavLink>
         </Col>
         <Col>
@@ -43,8 +47,8 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
             <div className="middle">{authenticated && <SearchInput />}</div>
             {authenticated ? (
               <li className="navbar_links">
-                <NavLink to="/users" exact={true} activeClassName="active">
-                  <p className="navbar_link">Users</p>
+                <NavLink to="/profile" exact={true} activeClassName="active">
+                  <p className="navbar_link">Portfolio</p>
                 </NavLink>
               </li>
             ) : (

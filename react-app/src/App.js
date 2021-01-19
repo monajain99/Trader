@@ -13,6 +13,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Account from "./components/Account";
 import News from "./components/News"
 import Chart from "./components/Chart"
+import LandingPage from "./components/staticPages/Landing";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -81,7 +82,7 @@ function App() {
           path="/profile"
           exact={true}
           authenticated={authenticated}
-          
+          loaded={loaded}
         >
           <Account
             authenticate={authenticate}
@@ -90,9 +91,14 @@ function App() {
             currentUserId={currentUserId}
           />
         </ProtectedRoute>
-        <Route path="/" exact={true} authenticated={authenticated} >
-          {authenticated ? <Redirect to="/profile" /> : " "}
-          <h1>My Home Page</h1>
+        <Route path="/" exact={true} authenticated={authenticated}>
+          {authenticated ? <Redirect to="/profile" loaded={loaded}/> : " "}
+          <Route path="/" exact={true}>
+            <LandingPage
+              authenticated={authenticated}
+              setAuthenticated={setAuthenticated}
+            />
+          </Route>
         </Route>
       </Switch>
     </BrowserRouter>

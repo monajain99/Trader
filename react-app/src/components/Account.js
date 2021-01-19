@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Trades from "./Trades"
+import "../styles/BuyTrade.css";
 
 const Account = ({ setAuthenticated, currentUser, currentUserId }) => {
   const [loaded, setLoaded] = useState(false);
@@ -23,12 +24,12 @@ if (!loaded) return null;
   
   return (
     <div>
-      Buying power {accountBalance}
-      <Trades
-        currentUserId={currentUserId}
-        accountId={accountId}
-        setRefresh={setRefresh}
-      />
+      <div class="BuyingPower">Portfolio Value: {accountBalance}</div>
+        <Trades
+          currentUserId={currentUserId}
+          accountId={accountId}
+          setRefresh={setRefresh}
+        />
     </div>
   );
 };

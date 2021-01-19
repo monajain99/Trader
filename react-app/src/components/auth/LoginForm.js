@@ -21,6 +21,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
     const user = await login(email, password);
     if (!user.errors) {
       setAuthenticated(true);
+      window.location.reload(false);
     } else {
       setErrors(user.errors);
     }
@@ -35,7 +36,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/" />;
+    return <Redirect to="/profile" />;
   }
 
   return (
@@ -48,7 +49,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         </Row>
         <Row>
           <Col>
-            <p className="lead">We Bring You everything for stocks! </p>
+            <p className="lead">Together We Can Do it! </p>
           </Col>
         </Row>
         <Form onSubmit={onLogin}>
