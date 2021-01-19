@@ -38,7 +38,7 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
       price,
       volume,
       stock_id,
-      transaction_date: "20202022",
+      transaction_date: "20210118",
     });
     setRefresh(false);
     setRefeshFromBuy(true);

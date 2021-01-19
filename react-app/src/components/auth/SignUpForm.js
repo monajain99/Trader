@@ -18,6 +18,8 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [full_name, setFullName] = useState("");
   const [loaded, setLoaded] = useState("false")
+  const [errors, setErrors] = useState([]);
+
 
   const onSignUp = async (e) => {
     e.preventDefault();
@@ -26,6 +28,8 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
       if (!user.errors) {
         setAuthenticated(true);
         window.location.reload(false);
+      } else {
+        setErrors(user.errors);
       }
     }
   };
@@ -69,26 +73,23 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
           </Col>
         </Row>
         <Form onSubmit={onSignUp}>
+          <div>
+            {errors.map((error) => (
+              <div>{error}</div>
+            ))}
+          </div>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Username</Form.Label>
             <Row>
               <Col lg={4}>
-                <input
-                  type="text"
-                  onChange={updateUsername}
-                  value={username}
-                />
+                <input type="text" onChange={updateUsername} value={username} />
               </Col>
             </Row>
           </Form.Group>
           <Form.Label>Email</Form.Label>
           <Row>
             <Col lg={4}>
-              <input
-                type="text"
-                onChange={updateEmail}
-                value={email}
-              />
+              <input type="text" onChange={updateEmail} value={email} />
               <Form.Text className="text-muted"></Form.Text>
             </Col>
           </Row>

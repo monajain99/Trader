@@ -9,7 +9,7 @@
 }
 .BuyingPower{
   /* background-color: white; */
-  background-image: linear-gradient(to right, rgba(0,0,0,0),rgba(0,0,0,1));
+  /* background-image: linear-gradient(to right, rgba(0,0,0,0),rgba(0,0,0,1)); */
   margin-top: 5%;
   padding: 10px 15px;
   text-align: center;
@@ -36,7 +36,7 @@ th,td{
   width: 60%;
   position: absolute;
   right: 30px;
-  top:50%;
+  top:54%;
   font-style:italic;
   background-color:rgba(0, 0, 0, 0.4);
   color: #202020;

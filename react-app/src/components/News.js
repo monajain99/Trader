@@ -12,14 +12,15 @@ function News({ authenticated, setAuthenticated, symbol }) {
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
-        `http://newsapi.org/v2/everything?q=${symbol}&items=3\ price&from=2021-01-18&sortBy=popularity&apiKey=${apiKey}`
+        `http://newsapi.org/v2/everything?q=${symbol}&items=3\ price\ bloomberg&from=2021-01-18&sortBy=popularity&apiKey=${apiKey}`
       );
       const responseData = await response.json();
       setData(responseData.articles);
     }
     fetchData();
   }, [symbol]);
-  if (!data) return ('loading...');
+  console.log(data)
+  if (!data || data == undefined) return (<div className="newsLoading">Loading News...</div>);
   if (data) {
     return (
       <div className="all__news">

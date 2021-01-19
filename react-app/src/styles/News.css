@@ -30,6 +30,12 @@ body {
   color:#DEDEDE;
 }
 
+.newsLoading {
+  max-width: 500px;
+  padding: 130px;
+  margin-top: 500px;
+  color:#DEDEDE;
+}
 .news__title {
   padding-bottom: 10px;
   border-bottom: 1px solid white;
