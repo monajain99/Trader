@@ -6,13 +6,27 @@ import { CanvasJSChart } from "canvasjs-react-charts";
 import News from "../components/News"
 import { config } from "../services/config";
 
-import { CanvasJSReact } from "./canvasjs.react");
+import { CanvasJSReact } from "./canvasjs.react";
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const Line = ({ stockData }) => {
   const { symbol } = useParams();
   const key = config.API_KEY;
+  const [xvalue, setXvalue] = useState([]);
+  const [yvalue, setYvalue] = useState([]);
+  
+  useEffect(() => {
+    const fetchStockData = async () => {
+      const data = axios.get(
+        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&outputsize=compact&apikey=${key}`
+      );
+      const result = await data;
+      setStockData(formatStockData(result.data["Time Series (Daily)"]));
+    };
+    fetchStockData();
+  }, [symbol]);
+
 
 
   return (
