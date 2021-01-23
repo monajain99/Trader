@@ -4,7 +4,11 @@ import axios from "axios";
 import "../styles/Chart.css"
 import { CanvasJSChart } from "canvasjs-react-charts";
 import News from "../components/News"
+import Price from "../components/Price"
+import Trial from "../components/Trial"
+import LineChart from "../components/LineChart"
 import { config } from "../services/config";
+
 
 
 const Chart = ({ authenticated, setAuthenticated }) => {
@@ -24,6 +28,7 @@ const Chart = ({ authenticated, setAuthenticated }) => {
   }, [symbol]);
 
 
+
     const set = stockData.map((stockData) => ({
             x: new Date(stockData.date),
             y: [
@@ -32,6 +37,8 @@ const Chart = ({ authenticated, setAuthenticated }) => {
     }))
   
   console.log(set)
+
+
 
   return (
     <>
@@ -89,13 +96,15 @@ const Chart = ({ authenticated, setAuthenticated }) => {
         {/* <container className="line__Container">
         <CanvasJSChart
           options={{
-            zoomEnabled: true,
-            exportEnabled: true,
-            theme: "light2", // "light1", "dark1", "dark2"
-            title: {
-              text: `Line Chart ${symbol}`,
-              fontFamily: "times new roman",
-            },
+            maintainAspectRatio: false,
+  responsive: true,
+  tooltips: {enabled: false},
+  hover: {mode: null},
+  layout: {
+    padding: {
+      bottom: 15,
+    },
+  },},
             axisY: {
              crosshair: {
                 enabled: true,
@@ -132,6 +141,9 @@ const Chart = ({ authenticated, setAuthenticated }) => {
       </container> */}
       </div>
       <News symbol={symbol} />
+      <Price symbol={symbol} />
+      {/* <LineChart symbol={symbol} /> */}
+      <Trial symbol={symbol} />
     </>
   );
       

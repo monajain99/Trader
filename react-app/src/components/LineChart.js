@@ -1,66 +1,104 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import "../styles/Chart.css"
-import { CanvasJSChart } from "canvasjs-react-charts";
-import News from "../components/News"
+import React, { useRef, useState, useEffect } from "react";
+import Chart from "chart.js";
 import { config } from "../services/config";
 
-import { CanvasJSReact } from "./canvasjs.react";
-var CanvasJS = CanvasJSReact.CanvasJS;
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+export default function LineChart({ symbol }) {
+  const [stockData, setStockData] = useState([]);
 
-const Line = ({ stockData }) => {
-  const { symbol } = useParams();
-  const key = config.API_KEY;
-  const [xvalue, setXvalue] = useState([]);
-  const [yvalue, setYvalue] = useState([]);
-  
+  const canvasRef = useRef(null);
+
   useEffect(() => {
-    const fetchStockData = async () => {
-      const data = axios.get(
-        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&outputsize=compact&apikey=${key}`
-      );
-      const result = await data;
-      setStockData(formatStockData(result.data["Time Series (Daily)"]));
-    };
-    fetchStockData();
+  const key = config.API_KEY;
+
+    symbol = symbol.length === 0 ? "IBM" : symbol;
+    setStockData([]);
+    fetch(
+      `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY_ADJUSTED&symbol=${symbol}&apikey=${key}`
+    )
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        let tempData = [];
+        data = data["Time Series (Daily)"];
+
+        for (let date in data) {
+          tempData.push(parseInt(data[date]["1. open"]));
+        }
+
+        tempData = tempData.reverse();
+        console.log(tempData);
+        setStockData(tempData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [symbol]);
 
+  useEffect(() => {
+    const ctx = canvasRef.current;
+    const lineChart = new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: [...Array(stockData.length).keys()].map(() => ""),
+        datasets: [
+          {
+            label: "",
+            data: stockData,
+            borderColor: "rgb(158, 228, 147)",
+          },
+        ],
+      },
+      options: {
+        legend: {
+          display: false,
+        },
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                suggestedMin: Math.min(...stockData) * 0.95,
+                suggestedMax: Math.max(...stockData) * 1.05,
+                fontColor: "WHITE",
+              },
+              scaleLabel: {
+                display: true,
+                fontColor: "WHITE",
+                fontSize: 18,
+                labelString: "Price",
+              },
+            },
+          ],
+          xAxes: [
+            {
+              ticks: {
+                fontColor: "WHITE",
+              },
+              scaleLabel: {
+                display: true,
+                fontColor: "WHITE",
+                fontSize: 18,
+                labelString: "",
+              },
+            },
+          ],
+        },
+      },
+    });
 
+    return () => {
+      lineChart.destroy();
+    };
+  }, [stockData]);
 
   return (
     <div>
-    <container className="chartContainer">
-      <CanvasJSChart
-        const options = {{
-			theme: "light2",
-			title: {
-				text: "Stock Price of NIFTY 50"
-			},
-			axisY: {
-				title: "Price in USD",
-				prefix: "$"
-			},
-			data: [{
-				type: "line",
-				xValueFormatString: "MMM YYYY",
-				yValueFormatString: "$#,##0.00",
-				dataPoints:stockData.map((stockData) => ({
-            x: new Date(stockData.date),
-            y: [
-              stockData.close
-            ],
-                })),
-              },
-            ],
-          }}
-        />
-    </container>
+      <div id="chart-container">
+        <h1>{symbol.length === 0 ? "IBM" : symbol} Stock</h1>
+        <canvas id="chart" ref={canvasRef} width="450px" height="300px" />
+      </div>
+      <div id="buy-container"></div>
     </div>
   );
-      
-};
-  
-// export default Line;
-
+}

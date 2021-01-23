@@ -8,38 +8,58 @@ const baseUrl = "https://sandbox.iexapis.com/stable/AAPL/financials/2?token= ";
 
 function News({ authenticated, setAuthenticated, symbol }) {
   const [data, setData] = useState([]);
+  const [tradeData, setTradeData] = useState("")
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch(
+  //       `https://newsapi.org/v2/everything?q=${symbol}&items=3\ price\ bloomberg&from=2021-01-18&sortBy=popularity&apiKey=${apiKey}`
+  //     );
+  //     const responseData = await response.json();
+  //     setData(responseData.articles);
+  //   }
+  //   fetchData();
+  // }, [symbol]);
 
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
-        `http://newsapi.org/v2/everything?q=${symbol}&items=3\ price\ bloomberg&from=2021-01-18&sortBy=popularity&apiKey=${apiKey}`
+        `https://sandbox.iexapis.com/stable/stock/${symbol}/news/last/${3}?token=Tpk_a72f593783e9451990a7e3a0fceb28e5`
       );
       const responseData = await response.json();
-      setData(responseData.articles);
+      console.log(responseData)
+      setData(responseData);
     }
     fetchData();
   }, [symbol]);
-  console.log(data)
+
+
+    console.log(data);
+
+
   if (!data || data == undefined) return (<div className="newsLoading">Loading News...</div>);
   if (data) {
     return (
       <div className="all__news">
         {data &&
           data.map((data, idx) => {
-            
+
             return (
               <>
+              
                 <div className="news">
-                  <h5 className="news__title">{data.title}</h5>
-                  <p className="news__desc">{data.description}</p>
+                  <h5 className="news__title">{data.headline}</h5>
+                  <p className="news__desc">{data.summary}</p>
                   {/* <span className="news__author">{data.author}</span> <br /> */}
+                  <a href={data.url} key={idx} target="_blank"></a>
                   <a href="{data.url}">{data.url}</a> <br />
                   {/* <span className="news__url">{data.url}</span> <br /> */}
-                  <span className="news__published">{data.publishedAt}</span>
-                  <span className="news__source">{data.source.name}</span>
+                  <span className="news__published">{data.datetime}</span>
+                  <span className="news__source">{data.source}</span>
                 </div>
               </>
-            );
+            )
+     
           })}
       </div>
     );
@@ -47,3 +67,33 @@ function News({ authenticated, setAuthenticated, symbol }) {
 }
 
 export default News
+
+
+
+
+// /if (!data || data == undefined) return (<div className="newsLoading">Loading News...</div>);
+//   if (data) {
+//     return (
+//       <div className="all__news">
+//         {data &&
+//           data.map((data, idx) => {
+//             return (
+//               <>
+//                 <div className="news">
+//                   <h5 className="news__title">{data.headline}</h5>
+//                   <p className="news__desc">{data.summary}</p>
+//                   {/* <span className="news__author">{data.author}</span> <br /> */}
+//                   <a href={data.url} key={idx} target="_blank"></a>
+//                   <a href="{data.url}">{data.url}</a> <br />
+//                   {/* <span className="news__url">{data.url}</span> <br /> */}
+//                   <span className="news__published">{data.datetime}</span>
+//                   <span className="news__source">{data.source}</span>
+//                   <span className="news__source">{data.image}</span>
+//                 </div>
+//               </>
+//             );
+//           })}
+//       </div>
+//     );
+//   }
+

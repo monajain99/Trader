@@ -16,17 +16,40 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
   const [trades, setTrades] = useState([]);
   const [redirect, setRedirect] = useState(null);
   const [refeshFromBuy, setRefeshFromBuy] = useState("");
+  const [currentPrice, setCurrentPrice] = useState("");
+
+    // trades.map((trade) => console.log(trade.ticker));
+
 
   useEffect(() => {
     (async () => {
       const data = await axios.get(`/api/trade/${currentUserId}`);
-
       setTrades(data.data.trade_items);
-      // setLoaded(false);
       setRefresh(false);
       setRedirect(false);
+      
     })();
   }, [redirect, refeshFromBuy]);
+
+  async function getCurPrice(ticker)  {
+     const response = await fetch(
+        `https://sandbox.iexapis.com/stable/stock/${ticker}/quote?displayPercent=true&token=Tpk_a72f593783e9451990a7e3a0fceb28e5`
+      );
+      const responseData = await response.json();
+      return(responseData.latestPrice);
+  }  
+
+
+  const getPrice  = async (ticker) => {
+      const response = await fetch(
+        `https://sandbox.iexapis.com/stable/stock/${ticker}/quote?displayPercent=true&token=Tpk_a72f593783e9451990a7e3a0fceb28e5`
+      );
+      const responseData = await response.json();
+      return(responseData.latestPrice);
+    }
+  
+  //  getPrice('tsla')
+
 
   if (!trades) return (
     <AddTrade
@@ -36,6 +59,7 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
     />
   )
   if (trades) {
+    // console.log(getPrice('tsla'))
     return (
       <>
         <div>
@@ -54,24 +78,27 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
                 <tr>
                   <th>Company Name</th>
                   <th>Purchase Price</th>
-                  <th>Symbol</th>
-                  <th>No. of Shares</th>
-                  <th>Purchase Date</th>
-                  <th>Trade Value</th>
+                  <th>SYMBOL</th>
+                  <th>QUANTITY</th>
+                  <th>CURRENT VALUE</th>
+                  <th>GAIN/LOSS ($)</th>
                   <th>Sell</th>
                 </tr>
               </thead>
               <tbody>
                 {trades &&
                   trades.map((trade, idx) => {
+                  /*setCurrentPrice(getPrice(trade.ticker)); */
                     return (
                       <tr>
+                        {/* {key = idx} */}
+                        
                         <th>{trade.name}</th>
                         <th>{trade.price}</th>
                         <th>{trade.ticker}</th>
                         <th>{trade.volume}</th>
-                        <th>{trade.transaction_date}</th>
-                        <th>{trade.price * trade.volume}</th>
+                        <th>{trade.volume}</th>
+                        <th>${trade.price * trade.volume}</th>
                         <th>
                           <Button
                             onClick={() => {

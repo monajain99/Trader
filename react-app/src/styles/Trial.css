@@ -1,0 +1,6 @@
+
+.highcharts-axis-title,.highcharts-credits,.highcharts-grid-line,
+.highcharts-axis-line,.highcharts-tick{
+  font-size: 2px !important;
+  stroke-width:0;
+}

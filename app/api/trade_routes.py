@@ -13,6 +13,7 @@ def getTrade(id):
         return {'trade_items': [trade.to_dict() for trade in trades]}
     return "No trades"
 
+
 @trade_routes.route('/', methods=['POST'])
 def addTrade():
     data = request.json
