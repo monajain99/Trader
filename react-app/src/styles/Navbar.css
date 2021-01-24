@@ -86,3 +86,29 @@ p:hover{
   transform: translate(-50%, -50%);
   color: rgb(227, 227, 231);
 }
+
+
+.vertical-menu {
+  width: 100px;
+  height: 500px;
+  position: absolute;
+  left: 0px;
+}
+
+.vertical-menu a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+  
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu a.active {
+  background-color: #4CAF50;
+  color: white;
+}
