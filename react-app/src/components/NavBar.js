@@ -13,21 +13,18 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
   const currentPage = location.pathname;
   return (
     <Container>
-      <div class="vertical-menu">
-        <a href="#" class="active">Portfolio</a>
-        <a href="#">Home</a>
-      </div>
       <Row>
         <Col>
-          <div className="middle">{authenticated && <SearchInput />}</div>
-
           <NavLink to="/" exact={true} activeClassName="active">
             <img
               src={Logo}
               alt="ProTrader Logo"
-              style={{ maxWidth: 80, height: "auto", margin: 20 }}
+              style={{ maxWidth: 60, height: "auto", margin: 20 }}
             />
           </NavLink>
+        </Col>
+        <Col>
+          <div className="middle">{authenticated && <SearchInput />}</div>
         </Col>
         <Col>
           <ul className="NavbarContainer">

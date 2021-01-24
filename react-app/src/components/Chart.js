@@ -6,7 +6,6 @@ import { CanvasJSChart } from "canvasjs-react-charts";
 import News from "../components/News"
 import Price from "../components/Price"
 import Trial from "../components/Trial"
-import LineChart from "../components/LineChart"
 import { config } from "../services/config";
 
 

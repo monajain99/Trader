@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import "../styles/BuyTrade.css";
+import Account from "./Account";
 
 function Price({ authenticated, setAuthenticated, symbol }) {
   const [data, setData] = useState("");
@@ -29,28 +30,62 @@ function Price({ authenticated, setAuthenticated, symbol }) {
     //   </div>
 
     <div className="stock-container">
-      <div>
-        <div className="stock-titles">
-          <div>name{tradeData.companyName}</div>
-
-          <div>changePercent{tradeData.changePercent}</div>
-          <div>change{tradeData.change}</div>
-          <div>previousClose{tradeData.previousClose}</div>
-          <div>latestTime{tradeData.latestTime}</div>
-          <div>latestPrice{tradeData.latestPrice}</div>
-          <div>
-            {/* extendedChange{tradeData.extendedChange} */}
-            <div>Market Cap{tradeData.marketCap}</div>
-            <div>"PE Ratio(TTM)" {tradeData.peRatio}</div>
-            <div>"52 week High"{tradeData.week52High}</div>
-            <div>"52 Week Low"{tradeData.week52Low}</div>
-            <div>"YTD Change "{tradeData.ytdChange}</div>
-            <div>"Volume "{tradeData.latestVolume}</div>
-          </div>
+      <div className="stock-titles">
+        <div style={{ color: "grey", fontSize: 20 }}>
+          {tradeData.companyName}
+        </div>
+        <div style={{ color: "white", fontSize: 30 }}>
+          ${tradeData.latestPrice}
+        </div>
+        <div style={{ color: "white" }}>
+          ${tradeData.change} ~ (%
+          {Math.round(tradeData.changePercent * 100) / 100})
+        </div>
+        <div style={{ color: "#66b2b2	", fontSize: 13 }}>
+          Previous Close: ${tradeData.previousClose}
+        </div>
+        <div style={{ color: "#66b2b2	", fontSize: 13 }}>
+          Latest Time: {tradeData.latestTime}
         </div>
       </div>
-      //{" "}
+      <div
+        style={{
+          color: "grey",
+          fontSize: 20,
+          position: "absolute",
+          top: "90%",
+          left: "12%",
+        }}
+      >
+        Key Information
+      </div>
+      <div className="keyInfo">
+        {/* extendedChange{tradeData.extendedChange} */}
+        <div style={{ color: "grey", fontSize: 13 }}>Market Cap</div>
+        <div style={{ color: "white", fontSize: 20 }}>{tradeData.marketCap}</div>
+        <div style={{ color: "grey", fontSize: 13 }}>PE Ratio(TTM)</div>
+        <div style={{ color: "white", fontSize: 20 }}>{tradeData.peRatio}</div>
+        <div style={{ color: "grey", fontSize: 13 }}>52 Week High</div>
+        <div style={{ color: "white", fontSize: 20 }}>
+          {tradeData.week52High}
+        </div>
+        <div style={{ color: "grey", fontSize: 13 }}>52 Week Low</div>
+        <div style={{ color: "white", fontSize: 20 }}>
+          {tradeData.week52Low}
+        </div>
+        <div style={{ color: "grey", fontSize: 13 }}>
+          YTD Change
+        </div>
+        <div style={{ color: "white", fontSize: 20 }}>{tradeData.ytdChange}
+        </div>
+        <div style={{ color: "grey", fontSize: 13 }}>
+          Volume
+        </div>
+        <div style={{ color: "white", fontSize: 20 }}>{tradeData.latestVolume}
+        </div>
+      </div>
     </div>
+    //{" "}
   );
 };
 

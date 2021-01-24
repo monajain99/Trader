@@ -77,13 +77,15 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
         {/* <Container-small> */}
         <Row>
           <Col>
-            <h1 className="display-">Buy Stocks</h1>
+            <p className="display-" style={{ color:'grey'}}>
+              BUY STOCKS
+            </p>
           </Col>
         </Row>
         <Form onSubmit={createTrade}>
           <Form.Label>Stock Symbol </Form.Label>
           <Row>
-            <Col lg={2}>
+            <Col lg={10}>
               <Form.Control name="ticker" type="text" onChange={updateTicker} />
             </Col>
           </Row>
@@ -104,7 +106,7 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
           </Row> */}
           <Form.Label>Volume </Form.Label>
           <Row>
-            <Col lg={2}>
+            <Col lg={10}>
               <Form.Control
                 name="volume"
                 type="integer"

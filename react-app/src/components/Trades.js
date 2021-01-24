@@ -74,6 +74,7 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
               return ( */}
           <div>
             <table id="StockInfo">
+
               <thead>
                 <tr>
                   <th>Company Name</th>
