@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/BuyTrade.css";
 import Account from "./Account";
+import numeral from "numeral"
 
 function Price({ authenticated, setAuthenticated, symbol }) {
   const [data, setData] = useState("");
@@ -62,26 +63,26 @@ function Price({ authenticated, setAuthenticated, symbol }) {
       <div className="keyInfo">
         {/* extendedChange{tradeData.extendedChange} */}
         <div style={{ color: "grey", fontSize: 13 }}>Market Cap</div>
-        <div style={{ color: "white", fontSize: 20 }}>{tradeData.marketCap}</div>
+        <div style={{ color: "white", fontSize: 20 }}>
+          {numeral(Number(tradeData.marketCap)).format("($ 0 a)")}
+        </div>
         <div style={{ color: "grey", fontSize: 13 }}>PE Ratio(TTM)</div>
         <div style={{ color: "white", fontSize: 20 }}>{tradeData.peRatio}</div>
         <div style={{ color: "grey", fontSize: 13 }}>52 Week High</div>
         <div style={{ color: "white", fontSize: 20 }}>
-          {tradeData.week52High}
+          {numeral(Number(tradeData.week52High)).format("($ 0 a)")}
         </div>
         <div style={{ color: "grey", fontSize: 13 }}>52 Week Low</div>
         <div style={{ color: "white", fontSize: 20 }}>
-          {tradeData.week52Low}
+          {numeral(Number(tradeData.week52Low)).format("($ 0 a)")}
         </div>
-        <div style={{ color: "grey", fontSize: 13 }}>
-          YTD Change
+        <div style={{ color: "grey", fontSize: 13 }}>YTD Change</div>
+        <div style={{ color: "white", fontSize: 20 }}>
+          {numeral(Number(tradeData.ytdChange)).format("($ 0 a)")}
         </div>
-        <div style={{ color: "white", fontSize: 20 }}>{tradeData.ytdChange}
-        </div>
-        <div style={{ color: "grey", fontSize: 13 }}>
-          Volume
-        </div>
-        <div style={{ color: "white", fontSize: 20 }}>{tradeData.latestVolume}
+        <div style={{ color: "grey", fontSize: 13 }}>Volume</div>
+        <div style={{ color: "white", fontSize: 20 }}>
+          {numeral(Number(tradeData.latestVolume)).format("( 0 a)")}
         </div>
       </div>
     </div>

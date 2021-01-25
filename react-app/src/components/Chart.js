@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import "../styles/Chart.css"
+import "../styles/Chart.css";
 import { CanvasJSChart } from "canvasjs-react-charts";
-import News from "../components/News"
-import Price from "../components/Price"
-import Trial from "../components/Trial"
+import News from "../components/News";
+import Price from "../components/Price";
+import Trial from "../components/Trial";
+import LineChart from "../components/LineChart";
 import { config } from "../services/config";
-
-
 
 const Chart = ({ authenticated, setAuthenticated }) => {
   const [stockData, setStockData] = useState([]);
   const { symbol } = useParams();
   const key = config.API_KEY;
-  
+
   useEffect(() => {
     const fetchStockData = async () => {
       const data = axios.get(
@@ -26,22 +25,16 @@ const Chart = ({ authenticated, setAuthenticated }) => {
     fetchStockData();
   }, [symbol]);
 
+  const set = stockData.map((stockData) => ({
+    x: new Date(stockData.date),
+    y: [stockData.close],
+  }));
 
-
-    const set = stockData.map((stockData) => ({
-            x: new Date(stockData.date),
-            y: [
-              stockData.close
-            ],
-    }))
-  
-  console.log(set)
-
-
+  console.log(set);
 
   return (
     <>
-      <div className="chart__Container">
+      {/* <div className="chart__Container">
         <CanvasJSChart
           options={{
             theme: "light1",
@@ -90,7 +83,7 @@ const Chart = ({ authenticated, setAuthenticated }) => {
             ],
           }}
         />
-      </div>
+      </div> */}
       <div>
         {/* <container className="line__Container">
         <CanvasJSChart
@@ -145,25 +138,21 @@ const Chart = ({ authenticated, setAuthenticated }) => {
       <Trial symbol={symbol} />
     </>
   );
-      
 };
 
-
 function formatStockData(stockData) {
-    // Convert stockData from an object to an array
-    return Object.entries(stockData).map(entries => {
-        const [date, priceData] = entries;
+  // Convert stockData from an object to an array
+  return Object.entries(stockData).map((entries) => {
+    const [date, priceData] = entries;
 
-        return {
-            date,
-            open: Number(priceData['1. open']),
-            high: Number(priceData['2. high']),
-            low: Number(priceData['3. low']),
-            close: Number(priceData['4. close'])
-        }
-    });
+    return {
+      date,
+      open: Number(priceData["1. open"]),
+      high: Number(priceData["2. high"]),
+      low: Number(priceData["3. low"]),
+      close: Number(priceData["4. close"]),
+    };
+  });
 }
 
 export default Chart;
-
-

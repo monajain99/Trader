@@ -9,7 +9,7 @@ const Trial = ({ symbol }) => {
   const [stocksData, setStocksData] = useState(null);
   const [displayData, setDisplayData] = useState([]);
   const [index, setIndex] = useState(0);
-
+  
   const item = 4;
   useEffect(() => {
     getStocks().then((data) => setStocksData(data));
@@ -115,18 +115,21 @@ const Trial = ({ symbol }) => {
           ],
         };
         return (
-          <div key={value.quote.symbol}>
-            <div>
-              <div>{value.quote.symbol}</div>
-              <div>{value.quote.companyName}</div>
-            </div>
-            <div>
+          <div className="chart__Container">
+            <div key={value.quote.symbol}>
               <div>
-                <div className="chart__Container">
+                {/* <div style={{ color: "white", fontSize: 20 }}>
+                  {value.quote.symbol}
+                </div>
+                <div style={{ color: "grey", fontSize: 20 }}>
+                  {value.quote.companyName}
+                </div> */}
+              </div>
+              <div>
+                <div>
                   <ReactHighcharts config={config} />
                 </div>
                 <div>
-                  <button type="button">{value.quote.latestPrice}</button>
                 </div>
               </div>
             </div>

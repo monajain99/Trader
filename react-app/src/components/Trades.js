@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AddTrade from "./CreateTrade"
+import MostActive from "./MostActive";
 import { deleteTrade } from "../services/trades";
 import "../styles/BuyTrade.css";
 
@@ -116,8 +117,10 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
                   })}
               </tbody>
             </table>
-          </div>
+          </div> 
+          <MostActive/>
         </div>
+        
       </>
     );
   };

@@ -1,5 +1,5 @@
 .bg_lt{
-  font-family: "Verdana";
+  /* font-family: "Verdana"; */
   padding: 20px;
   position:absolute;
   top:60%;
@@ -43,7 +43,7 @@ tbody{
 }
 
 #StockInfo{
-  font-family: "Verdana";
+  /* font-family: "Verdana"; */
   overflow-y:scroll;
   display: block;
   text-align: center;
@@ -65,7 +65,7 @@ tbody{
   height: 30%;
   position: absolute;
   left: 78%;
-  font-family: Verdana;
+  /* font-family: Verdana; */
   top: 30%;
 }
 .keyInfo{
@@ -73,7 +73,7 @@ tbody{
   height:30%;
   position: absolute;
   left: 10%;
-  font-family: Verdana;
+  /* font-family: Verdana; */
   top: 100%;
   display: grid;
   grid-template-columns: repeat(3, 3fr);

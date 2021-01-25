@@ -26,7 +26,7 @@ const ProfileButton = ({ user, setAuthenticated }) => {
 
   return (
    
-      <button onClick={onLogoutClick}>
+      <button className="general_button" onClick={onLogoutClick}>
         Log Out
       </button>
           

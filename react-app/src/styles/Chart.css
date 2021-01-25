@@ -1,12 +1,12 @@
 .chart__Container {
-  border: 3px solid #6b9ba5ff;
+  /* border: 3px solid #6b9ba5ff; */
   margin-top: auto;
   margin-left: auto;
   margin-right:auto;
   position: absolute;
   left:5%;
   top:20%;
-  background-color: grey;
+  /* background-color: grey; */
   size: 50.4%;
   height: 357px;
   width: 50.4%

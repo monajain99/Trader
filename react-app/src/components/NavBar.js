@@ -46,20 +46,10 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
                 </NavLink>
               </li>
             )}
-
             {authenticated ? (
               <li className="navbar_links">
                 <NavLink to="/profile" exact={true} activeClassName="active">
-                  <p className="navbar_link">BuyingPower</p>
-                </NavLink>
-              </li>
-            ) : (
-              ""
-            )}
-            {authenticated ? (
-              <li className="navbar_links">
-                <NavLink to="/profile" exact={true} activeClassName="active">
-                  <p className="navbar_link">Portfolio</p>
+                  <p className="demoButton">Portfolio</p>
                 </NavLink>
               </li>
             ) : (
