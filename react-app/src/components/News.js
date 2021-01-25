@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { Card, CardImgOverlay, CardLink, CardBody, CardTitle, CardText, CardImg } from "reactstrap";
 
 import axios from "axios";
 import "../styles/News.css"
@@ -46,19 +47,43 @@ function News({ authenticated, setAuthenticated, symbol }) {
 
             return (
               <>
-              
-                <div className="news">
-                  <h5 className="news__title">{data.headline}</h5>
-                  <p className="news__desc">{data.summary}</p>
-                  {/* <span className="news__author">{data.author}</span> <br /> */}
-                  <a href={data.url} key={idx} target="_blank"></a>
-                  <a href="{data.url}">{data.url}</a> <br />
-                  {/* <span className="news__url">{data.url}</span> <br /> */}
-                  <span className="news__published">{data.datetime}</span>
-                  <span className="news__source">{data.source}</span>
-                </div>
+                <Card
+                  className="stock_card"
+                  style={{ width: "30rem", color: "grey" }}
+                >
+                  <CardBody>
+                    <CardTitle
+                      className="card_title"
+                      style={{ color: "grey", fontSize: 13 }}
+                    >
+                      {data.headline}{" "}
+                    </CardTitle>
+                    <CardText
+                      className="card_subtitle"
+                      style={{ color: "grey", fontSize: 13 }}
+                    >
+                      {data.summary}
+                    </CardText>
+                    <CardLink
+                      href={`https://cloud.iexapis.com/v1/${data.url}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {" "}
+                      {data.url}{" "}
+                    </CardLink>
+
+                    <CardText
+                      className="number"
+                      style={{ color: "grey", fontSize: 13 }}
+                    >
+                      {data.source}
+                      <CardImg top src={data.image} alt={data.image} />
+                    </CardText>
+                  </CardBody>
+                </Card>
               </>
-            )
+            );
      
           })}
       </div>
@@ -67,33 +92,4 @@ function News({ authenticated, setAuthenticated, symbol }) {
 }
 
 export default News
-
-
-
-
-// /if (!data || data == undefined) return (<div className="newsLoading">Loading News...</div>);
-//   if (data) {
-//     return (
-//       <div className="all__news">
-//         {data &&
-//           data.map((data, idx) => {
-//             return (
-//               <>
-//                 <div className="news">
-//                   <h5 className="news__title">{data.headline}</h5>
-//                   <p className="news__desc">{data.summary}</p>
-//                   {/* <span className="news__author">{data.author}</span> <br /> */}
-//                   <a href={data.url} key={idx} target="_blank"></a>
-//                   <a href="{data.url}">{data.url}</a> <br />
-//                   {/* <span className="news__url">{data.url}</span> <br /> */}
-//                   <span className="news__published">{data.datetime}</span>
-//                   <span className="news__source">{data.source}</span>
-//                   <span className="news__source">{data.image}</span>
-//                 </div>
-//               </>
-//             );
-//           })}
-//       </div>
-//     );
-//   }
 

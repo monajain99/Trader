@@ -4,14 +4,15 @@ import AddTrade from "./CreateTrade"
 import MostActive from "./MostActive";
 import { deleteTrade } from "../services/trades";
 import "../styles/BuyTrade.css";
-
+import numeral from "numeral";
 import {
-  Form,
-  Container,
-  Button,
-  Row,
-  Col,
-} from "react-bootstrap";
+  Table,
+  Card,
+  CardBody,
+  CardTitle,
+  Button
+} from "reactstrap";
+
 
 const Trades = ({ accountId, currentUserId, setRefresh }) => {
   const [trades, setTrades] = useState([]);
@@ -74,53 +75,96 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
             trades.map((trade, idx) => {
               return ( */}
           <div>
-            <table id="StockInfo">
-
-              <thead>
-                <tr>
-                  <th>Company Name</th>
-                  <th>Purchase Price</th>
-                  <th>SYMBOL</th>
-                  <th>QUANTITY</th>
-                  <th>CURRENT VALUE</th>
-                  <th>GAIN/LOSS ($)</th>
-                  <th>Sell</th>
-                </tr>
-              </thead>
-              <tbody>
-                {trades &&
-                  trades.map((trade, idx) => {
-                  /*setCurrentPrice(getPrice(trade.ticker)); */
-                    return (
+            <Card
+              className="stock_card stock_table"
+              style={{ width: "35rem", color: "grey" }}
+            >
+              <CardBody>
+                <Table responsive>
+                  <CardTitle
+                    className="card_title"
+                    style={{ color: "grey", fontSize: 13 }}
+                  >
+                    <thead>
                       <tr>
-                        {/* {key = idx} */}
-                        
-                        <th>{trade.name}</th>
-                        <th>{trade.price}</th>
-                        <th>{trade.ticker}</th>
-                        <th>{trade.volume}</th>
-                        <th>{trade.volume}</th>
-                        <th>${trade.price * trade.volume}</th>
-                        <th>
-                          <Button
-                            onClick={() => {
-                              deleteTrade(trade.id);
-                              setRefresh(false);
-                              setRedirect(true);
-                            }}
-                          >
-                            Sell
-                          </Button>
-                        </th>
+                        <th>Company Name</th>
+                        <th>Purchase Price</th>
+                        <th>QUANTITY</th>
+                        <th>CURRENT VALUE</th>
+                        <th>GAIN/LOSS ($)</th>
+                        <th>Sell</th>
                       </tr>
-                    );
-                  })}
-              </tbody>
-            </table>
-          </div> 
-          <MostActive/>
+                    </thead>
+                    <tbody>
+                      {trades &&
+                        trades.map((trade, idx) => {
+                          /*setCurrentPrice(getPrice(trade.ticker)); */
+                          return (
+                            <tr>
+                              {/* {key = idx} */}
+                              <td
+                                className="card_subtitle"
+                                style={{ color: "grey", fontSize: 13 }}
+                              >
+                                {trade.name}
+                              </td>
+                              <td
+                                className="number"
+                                style={{ color: "grey", fontSize: 13 }}
+                              >
+                                $
+                                {numeral(Number(trade.price)).format("( 0.00)")}
+                              </td>
+                              <td
+                                className="number"
+                                style={{ color: "grey", fontSize: 13 }}
+                              >
+                                {numeral(Number(trade.volume)).format("( 0)")}
+                              </td>
+                              <td
+                                className="number"
+                                style={{ color: "grey", fontSize: 13 }}
+                              >
+                                $
+                                {numeral(Number(trade.volume)).format(
+                                  "( 0.00)"
+                                )}
+                              </td>
+                              <td
+                                className="number"
+                                style={{ color: "grey", fontSize: 13 }}
+                              >
+                                $
+                                {numeral(
+                                  Number(trade.price * trade.volume)
+                                ).format("( 0.00)")}
+                              </td>
+                              <td>
+                                <Button
+                                  className="btn-icon btn-simple"
+                                  color="info"
+                                  size="sm"
+                                  onClick={() => {
+                                    deleteTrade(trade.id);
+                                    setRefresh(false);
+                                    setRedirect(true);
+                                  }}
+                                >
+                                  {" "}
+                                  <i className="fa fa-edit" />
+                                </Button>
+                              </td>
+                            </tr>
+                          );
+                        })}
+                    </tbody>
+                  </CardTitle>
+                </Table>
+              </CardBody>
+            </Card>
+          </div>
+          <MostActive />
         </div>
-        
       </>
     );
   };

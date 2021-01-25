@@ -20,7 +20,7 @@ const SearchInput = (props) => {
         value={value}
         autoComplete="off"
         onChange={(e) => setValue(e.target.value)}
-        placeholder="Research Stock"
+        placeholder="Search By symbol"
       ></input>
       <button className="general_button" type="submit">
         Search

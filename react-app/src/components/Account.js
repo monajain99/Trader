@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Trades from "./Trades"
 import "../styles/BuyTrade.css";
+import numeral from "numeral";
+
 
 const Account = ({ setAuthenticated, currentUser, currentUserId }) => {
   const [loaded, setLoaded] = useState(false);
@@ -24,8 +26,9 @@ if (!loaded) return null;
   
   return (
     <div>
-      <div className="user_balance">
-        Portfolio Value {accountBalance}
+      <div className="section_title user_balance">
+        <i className="fas fa-chart-line card_icon"></i>Portfolio Value{" "}
+        {numeral(Number(accountBalance)).format("($ 0.000 a)")}
       </div>
       <Trades
         currentUserId={currentUserId}

@@ -3,13 +3,18 @@ import axios from "axios";
 import { addTrade } from "../services/trades";
 import "../styles/BuyTrade.css";
 import {
-  Form,
-  Jumbotron as Jumbo,
-  Container,
+  FormGroup,
+  Label,
+  Input,
+  FormText,
   Button,
+  Card,
+  CardBody,
+  CardTitle,
   Row,
   Col,
-} from "react-bootstrap";
+} from "reactstrap";
+import {Form} from "react-bootstrap"
 
 function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
   const [ticker, setTicker] = useState("");
@@ -72,52 +77,69 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
 
   return (
     <>
-      <div className="bg_lt">
-        {/* <div class="sellBox" style="Width: 50px">Height:25%</div> */}
-        {/* <Container-small> */}
-        <Row>
-          <Col>
-            <p className="display-" style={{ color:'grey'}}>
-              BUY STOCKS
-            </p>
-          </Col>
-        </Row>
-        <Form onSubmit={createTrade}>
-          <Form.Label>Stock Symbol </Form.Label>
-          <Row>
-            <Col lg={10}>
-              <Form.Control name="ticker" type="text" onChange={updateTicker} />
-            </Col>
-          </Row>
-          <button type="button" onClick={getPrice}>
-            Get Price
-          </button>
-          <div>Last Trade Price {price}</div>
+      <div>
+        <Card
+          className="stock_card stock_table bg_lt"
+          style={{ width: "20rem", color: "grey" }}
+        >
+          <CardBody>
+           
+                <CardTitle
+                  className="card_title"
+                  style={{ color: "grey", fontSize: 13 }}
+                >
+                  Buy Stocks
+                </CardTitle>
+              
+            <form onSubmit={createTrade}>
+              <Label
+                className="card_subtitle"
+                style={{ color: "grey", fontSize: 13 }}
+              >
+                Stock Symbol{" "}
+              </Label>
+             
+                  <Form.Control
+                    name="ticker"
+                    type="text"
+                    onChange={updateTicker}
+                  />
+               
+              <Button
+                className="btn-icon btn-simple"
+                color="info"
+                size="sm"
+                type="button"
+                onClick={getPrice}
+              >
+                Get price: {price}
+              </Button>
+              <div>
 
-          {/* <Form.Label>Buy Price </Form.Label>
-          <Row>
-            <Col lg={2}>
-              <Form.Control
-                name="price"
-                type="integer"
-                onChange={updatePrice}
-              />
-            </Col>
-          </Row> */}
-          <Form.Label>Volume </Form.Label>
-          <Row>
-            <Col lg={10}>
-              <Form.Control
-                name="volume"
-                type="integer"
-                placeholder="ex. 100"
-                onChange={updateVolume}
-              />
-            </Col>
-          </Row>
-          <Button type="submit">Buy</Button>
-        </Form>
-        {/* </Container-small> */}
+              </div>
+              <Label className="card_subtitle"
+                style={{ color: "grey", fontSize: 13 }}
+              >
+                Volume{" "}</Label>
+              
+                  <Input
+                    name="volume"
+                    type="integer"
+                    placeholder="ex. 100"
+                    onChange={updateVolume}
+                  />
+                
+              <Button
+                className="btn-icon btn-simple"
+                color="info"
+                size="sm"
+                type="submit"
+              >
+                Buy
+              </Button>
+            </form>
+          </CardBody>
+        </Card>
       </div>
     </>
   );

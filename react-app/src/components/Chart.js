@@ -1,158 +1,165 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import "../styles/Chart.css";
-import { CanvasJSChart } from "canvasjs-react-charts";
-import News from "../components/News";
-import Price from "../components/Price";
-import Trial from "../components/Trial";
-import LineChart from "../components/LineChart";
-import { config } from "../services/config";
+import moment from "moment";
+import News from "./News"
+import Price from "./Price"
 
-const Chart = ({ authenticated, setAuthenticated }) => {
-  const [stockData, setStockData] = useState([]);
+const ReactHighcharts = require("react-highcharts");
+
+const Chart = () => {
+  const [stocksData, setStocksData] = useState(null);
+  const [displayData, setDisplayData] = useState([]);
+  const [index, setIndex] = useState(0);
   const { symbol } = useParams();
-  const key = config.API_KEY;
+  const URL = `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${symbol}&types=quote,chart&range=1d&last=5&token=pk_6f789411fea3492293da22e99ff8d631`;
 
+  const item = 4;
   useEffect(() => {
-    const fetchStockData = async () => {
-      const data = axios.get(
-        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symbol}&apikey=${key}`
+    getStocks().then((data) => setStocksData(data));
+  }, []);
+
+  const getStocks = () => {
+    return axios({
+      url: URL,
+      method: "GET",
+    }).then((response) => {
+      var resp = response.data;
+      setDisplayData(
+        Object.keys(resp)
+          .slice(index, item)
+          .map((key) => ({ [key]: resp[key] }))
       );
-      const result = await data;
-      setStockData(formatStockData(result.data["Time Series (Daily)"]));
-    };
-    fetchStockData();
-  }, [symbol]);
+      return resp;
+    });
+  };
+  const showData = () => {
+    return displayData.map((data) => {
+      return Object.entries(data).map(([key, value]) => {
+        var config = {
+          scales: {
+            xAxes: [
+              {
+                display: false,
+              },
+            ],
+            yAxes: [
+              {
+                display: false,
+              },
+            ],
+          },
+          xAxis: [
+            {
+              labels: {
+                style: {
+                  "font-size": "0px",
+                },
+              },
+            },
+          ],
+          yAxis: [
+            {
+              labels: {
+                style: {
+                  "font-size": "10px",
+                },
+              },
+            },
+          ],
+          theme: "light1",
+          title: {
+            text: `1 Day Chart for ${symbol}`,
+          },
+          maintainAspectRatio: false,
+          responsive: true,
 
-  const set = stockData.map((stockData) => ({
-    x: new Date(stockData.date),
-    y: [stockData.close],
-  }));
+          hover: { mode: null },
+          layout: {
+            padding: {
+              bottom: 15,
+            },
+          },
+          tooltip: {
+            shared: true,
+            formatter: function () {
+              return (
+                numberFormat.format(this.y, 0) +
+                "</b><br/>" +
+                moment(this.x).format("MMMM Do YYYY, h:mm")
+              );
+            },
+          },
+          legend: {
+            enabled: false,
+          },
+          elements: {
+            point: {
+              radius: 0,
+            },
+            line: {
+              borderCapStyle: "round",
+              borderJoinStyle: "round",
+              tension: 1,
+              color: "#373A46",
+            },
+          },
+          chart: {
+            height: 350,
+            width: 950,
+            backgroundColor: "#373A46",
+            type: "line",
+          },
 
-  console.log(set);
+          credits: {
+            enabled: false,
+          },
+          series: [
+            {
+              name: " ",
+              data: getData(value),
+              type: "spline",
+            },
+          ],
+        };
+        return (
+          <div className="chart__Container">
+            <div key={value.quote.symbol}>
+              <div>
+                <ReactHighcharts config={config} />
+              </div>
+            </div>
+          </div>
+        );
+      });
+    });
+  };
+
+  const options = { style: "currency", currency: "USD" };
+  const numberFormat = new Intl.NumberFormat("en-US", options);
+  const getData = (stock) => {
+    var chartData = [];
+    stock.chart.map((data) => {
+      const minute = data.minute;
+      const date = data.date;
+      const time = date + " " + minute;
+      var newdate = new Date(time);
+      var chart = [];
+      chart.push(newdate.getTime());
+      chart.push(data.high);
+      chartData.push(chart);
+    });
+    return chartData;
+  };
 
   return (
     <>
-      {/* <div className="chart__Container">
-        <CanvasJSChart
-          options={{
-            theme: "light1",
-            title: {
-              text: `Customized Candle Stick Chart ${symbol}`,
-              fontFamily: "times new roman",
-            },
-            zoomEnabled: true,
-            exportEnabled: true,
-            axisY: {
-              minimum: Math.min(...stockData.map((data) => data.low)) / 1.1,
-              maximum: Math.max(...stockData.map((data) => data.high)) * 1.1,
-              crosshair: {
-                enabled: true,
-                snapToDataPoint: true,
-              },
-              includeZero: false,
-              title: "Prices",
-              prefix: "$ ",
-            },
-            axisX: {
-              crosshair: {
-                enabled: true,
-                snapToDataPoint: true,
-              },
-              interval: 2,
-              intervalType: "month",
-              valueFormatString: "MMM-YY",
-              labelAngle: -45,
-            },
-            data: [
-              {
-                type: "candlestick",
-                risingColor: "orange",
-                color: "#6b9ba5ff",
-                dataPoints: stockData.map((stockData) => ({
-                  x: new Date(stockData.date),
-                  y: [
-                    stockData.open,
-                    stockData.high,
-                    stockData.low,
-                    stockData.close,
-                  ],
-                })),
-              },
-            ],
-          }}
-        />
-      </div> */}
-      <div>
-        {/* <container className="line__Container">
-        <CanvasJSChart
-          options={{
-            maintainAspectRatio: false,
-  responsive: true,
-  tooltips: {enabled: false},
-  hover: {mode: null},
-  layout: {
-    padding: {
-      bottom: 15,
-    },
-  },},
-            axisY: {
-             crosshair: {
-                enabled: true,
-                snapToDataPoint: true,
-              },
-              includeZero: false,
-              title: "Prices",
-              prefix: "$ ",
-            },
-            axisX: {
-              crosshair: {
-                enabled: true,
-                snapToDataPoint: true,
-              },
-              interval: 2,
-              intervalType: "month",
-              valueFormatString: "MMM-YY",
-              labelAngle: -45,
-            },
-            data: [
-              {
-                type: "line",
-                toolTipContent: "Day {x}: {y}%",
-                dataPoints: stockData.map((stockData) => ({
-                  x: new Date(stockData.date),
-                  // The OHLC for the data point
-                  // The order is IMPORTANT!
-                  y: [stockData.close],
-                })),
-              },
-            ],
-          }}
-        />
-      </container> */}
-      </div>
+      <div>{showData()}</div>
       <News symbol={symbol} />
       <Price symbol={symbol} />
-      {/* <LineChart symbol={symbol} /> */}
-      <Trial symbol={symbol} />
     </>
   );
 };
-
-function formatStockData(stockData) {
-  // Convert stockData from an object to an array
-  return Object.entries(stockData).map((entries) => {
-    const [date, priceData] = entries;
-
-    return {
-      date,
-      open: Number(priceData["1. open"]),
-      high: Number(priceData["2. high"]),
-      low: Number(priceData["3. low"]),
-      close: Number(priceData["4. close"]),
-    };
-  });
-}
 
 export default Chart;

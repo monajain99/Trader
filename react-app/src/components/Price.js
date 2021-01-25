@@ -3,6 +3,7 @@ import axios from "axios";
 import "../styles/BuyTrade.css";
 import Account from "./Account";
 import numeral from "numeral"
+import { Card, CardBody, CardTitle, CardText, CardLink } from "reactstrap";
 
 function Price({ authenticated, setAuthenticated, symbol }) {
   const [data, setData] = useState("");
@@ -30,7 +31,7 @@ function Price({ authenticated, setAuthenticated, symbol }) {
     //     <button onClick={fetchData}>Search</button>
     //   </div>
 
-    <div className="stock-container">
+    <>
       <div className="stock-titles">
         <div style={{ color: "grey", fontSize: 20 }}>
           {tradeData.companyName}
@@ -58,7 +59,9 @@ function Price({ authenticated, setAuthenticated, symbol }) {
           left: "12%",
         }}
       >
-        Key Information
+        <div className="section_title" style={{ color: "white", fontSize: 20 }}>
+          <i className="fas fa-chart-line card_icon"></i>Key Informations
+        </div>{" "}
       </div>
       <div className="keyInfo">
         {/* extendedChange{tradeData.extendedChange} */}
@@ -85,7 +88,7 @@ function Price({ authenticated, setAuthenticated, symbol }) {
           {numeral(Number(tradeData.latestVolume)).format("( 0 a)")}
         </div>
       </div>
-    </div>
+    </>
     //{" "}
   );
 };
