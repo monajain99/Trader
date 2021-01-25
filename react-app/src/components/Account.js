@@ -24,12 +24,14 @@ if (!loaded) return null;
   
   return (
     <div>
-      <div className="BuyingPower">Portfolio Value {accountBalance}</div>
-        <Trades
-          currentUserId={currentUserId}
-          accountId={accountId}
-          setRefresh={setRefresh}
-        />
+      <div className="user_balance">
+        Portfolio Value {accountBalance}
+      </div>
+      <Trades
+        currentUserId={currentUserId}
+        accountId={accountId}
+        setRefresh={setRefresh}
+      />
     </div>
   );
 };

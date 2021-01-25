@@ -8,7 +8,6 @@ import { Row, Col, Container } from "react-bootstrap"
 import SearchInput from "./Search";
 import Logo from "./images/logo.png"
 
-
 const NavBar = ({ setAuthenticated, authenticated, user }) => {
   let location = useLocation();
   const currentPage = location.pathname;
@@ -20,9 +19,12 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
             <img
               src={Logo}
               alt="ProTrader Logo"
-              style={{ maxWidth: 80, height: "auto", margin: 20 }}
+              style={{ maxWidth: 60, height: "auto", margin: 20 }}
             />
           </NavLink>
+        </Col>
+        <Col>
+          <div className="middle">{authenticated && <SearchInput />}</div>
         </Col>
         <Col>
           <ul className="NavbarContainer">
@@ -44,11 +46,10 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
                 </NavLink>
               </li>
             )}
-            <div className="middle">{authenticated && <SearchInput />}</div>
             {authenticated ? (
               <li className="navbar_links">
                 <NavLink to="/profile" exact={true} activeClassName="active">
-                  <p className="navbar_link">Portfolio</p>
+                  <p className="demoButton">Portfolio</p>
                 </NavLink>
               </li>
             ) : (

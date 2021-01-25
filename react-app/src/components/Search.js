@@ -14,13 +14,15 @@ const SearchInput = (props) => {
   return (
     <form className="searchForm" onSubmit={handleSearch}>
       <input
+        className="searchbar"
         id="searchInput"
         type="search"
         value={value}
+        autoComplete="off"
         onChange={(e) => setValue(e.target.value)}
-        placeholder="🔍 Research Stock"
+        placeholder="Research Stock"
       ></input>
-      <button className="searchBtn" type="submit">
+      <button className="general_button" type="submit">
         Search
       </button>
     </form>

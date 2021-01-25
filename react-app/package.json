@@ -13,13 +13,15 @@
     "chart.js": "^2.9.4",
     "http-proxy-middleware": "^1.0.5",
     "moment": "^2.29.1",
+    "numeral": "^2.0.6",
     "react": "^16.13.1",
     "react-bootstrap": "^1.4.3",
     "react-dom": "^16.13.1",
     "react-highcharts": "^16.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "react-stockcharts": "^0.7.8"
+    "react-stockcharts": "^0.7.8",
+    "reactstrap": "^8.9.0"
   },
   "scripts": {
     "start": "react-scripts start",

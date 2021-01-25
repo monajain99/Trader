@@ -2,20 +2,14 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import moment from "moment";
-import logo from "../components/images/logo.png";
-import "../styles/Trial.css";
 const ReactHighcharts = require("react-highcharts");
 
-
 const Trial = ({ symbol }) => {
-  const URL =
-    `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${symbol}&types=quote,chart&range=1d&last=5&token=pk_6f789411fea3492293da22e99ff8d631`;
+  const URL = `https://cloud.iexapis.com/stable/stock/market/batch?symbols=${symbol}&types=quote,chart&range=1d&last=5&token=pk_6f789411fea3492293da22e99ff8d631`;
   const [stocksData, setStocksData] = useState(null);
   const [displayData, setDisplayData] = useState([]);
   const [index, setIndex] = useState(0);
-  const [showButton, setShowButton] = useState(false);
-  const [disabledNext, setDisabledNext] = useState(true);
-  const [disabledPrev, setDisabledPrev] = useState(false);
+  
   const item = 4;
   useEffect(() => {
     getStocks().then((data) => setStocksData(data));
@@ -39,6 +33,18 @@ const Trial = ({ symbol }) => {
     return displayData.map((data) => {
       return Object.entries(data).map(([key, value]) => {
         var config = {
+          scales: {
+            xAxes: [
+              {
+                display: false,
+              },
+            ],
+            yAxes: [
+              {
+                display: false,
+              },
+            ],
+          },
           xAxis: [
             {
               labels: {
@@ -52,15 +58,24 @@ const Trial = ({ symbol }) => {
             {
               labels: {
                 style: {
-                  "font-size": "0px",
+                  "font-size": "10px",
                 },
               },
             },
           ],
+          theme: "light1",
           title: {
-            text: "",
+            text: `1 Day Chart for ${symbol}`,
           },
+          maintainAspectRatio: false,
+          responsive: true,
 
+          hover: { mode: null },
+          layout: {
+            padding: {
+              bottom: 15,
+            },
+          },
           tooltip: {
             shared: true,
             formatter: function () {
@@ -74,9 +89,19 @@ const Trial = ({ symbol }) => {
           legend: {
             enabled: false,
           },
+          elements: {
+            point: {
+              radius: 0,
+            },
+            line: {
+              borderCapStyle: "round",
+              borderJoinStyle: "round",
+              tension: 1,
+            },
+          },
           chart: {
-            height: 150,
-            width: 150,
+            height: 350,
+            width: 950,
           },
           credits: {
             enabled: false,
@@ -90,20 +115,21 @@ const Trial = ({ symbol }) => {
           ],
         };
         return (
-          <div className="stocks" key={value.quote.symbol}>
-            <div className="flex-1 stocks-text">
-              <div className="flex-1">{value.quote.symbol}</div>
-              <div className="flex-1">{value.quote.companyName}</div>
-            </div>
-            <div className="flex-2">
-              <div className="chart">
-                <div className="flex-2">
+          <div className="chart__Container">
+            <div key={value.quote.symbol}>
+              <div>
+                {/* <div style={{ color: "white", fontSize: 20 }}>
+                  {value.quote.symbol}
+                </div>
+                <div style={{ color: "grey", fontSize: 20 }}>
+                  {value.quote.companyName}
+                </div> */}
+              </div>
+              <div>
+                <div>
                   <ReactHighcharts config={config} />
                 </div>
-                <div className="flex-1 button">
-                  <button type="button" className="btn">
-                    {value.quote.latestPrice}
-                  </button>
+                <div>
                 </div>
               </div>
             </div>
@@ -129,68 +155,12 @@ const Trial = ({ symbol }) => {
     });
     return chartData;
   };
-  const togglePrev = (e) => {
-    let startIndex = index - item;
-    let endindex = startIndex + item;
-    let disabledNext = endindex <= Object.keys(stocksData).length - 1;
-    let disabledPrev = startIndex > 1;
-    setDisplayData(
-      Object.keys(stocksData)
-        .slice(startIndex, endindex)
-        .map((key) => ({ [key]: stocksData[key] }))
-    );
-    setIndex(startIndex);
-    setDisabledNext(disabledNext);
-    setDisabledPrev(disabledPrev);
-  };
-
-  const toggleNext = (e) => {
-    let startIndex = index + item;
-    let endIndex = startIndex + item;
-    if (startIndex >= stocksData.length) startIndex = stocksData.length;
-    let disabledNext = endIndex <= Object.keys(stocksData).length - 1;
-    let disabledPrev = startIndex != 0;
-    setDisplayData(
-      Object.keys(stocksData)
-        .slice(startIndex, endIndex)
-        .map((key) => ({ [key]: stocksData[key] }))
-    );
-    setIndex(startIndex);
-    setDisabledNext(disabledNext);
-    setDisabledPrev(disabledPrev);
-  };
 
   return (
-    <div
-      className="stocks-card"
-      onMouseEnter={() => setShowButton(true)}
-      onMouseLeave={() => setShowButton(false)}
-    >
-      <div className="flex-column">
-        <div className="flex-1 left-slider">
-          {showButton && disabledPrev ? (
-            <button
-              type="submit"
-              className="left"
-              onClick={(e) => togglePrev(e)}
-            >
-              <img src={logo} width="300" height="30" alt="submit" />
-            </button>
-          ) : null}
-        </div>
-        <div className="flex-4">{showData()}</div>
-        <div className="flex-1 right-slider">
-          {showButton && disabledNext ? (
-            <button
-              type="submit"
-              className="right"
-              onClick={(e) => toggleNext(e)}
-            >
-              <img src={logo} width="30" height="30" alt="submit" />
-            </button>
-          ) : null}
-        </div>
-      </div>
+    <div>
+      <div></div>
+      <div>{showData()}</div>
+      <div></div>
     </div>
   );
 };
