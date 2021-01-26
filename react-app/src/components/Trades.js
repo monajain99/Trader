@@ -66,7 +66,7 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
           {/* {trades &&
             trades.map((trade, idx) => {
               return ( */}
-          <div>
+
           <div>
             <Card
               className="stock_card stock_table"
@@ -179,7 +179,6 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
           />
           </div>
           </div>
-        </div>
       </>
     );
   };

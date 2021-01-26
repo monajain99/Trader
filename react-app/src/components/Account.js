@@ -29,10 +29,10 @@ if (!loaded) return null;
     <div className="content_wrapper">
       <div className="content_wrapper2">
         <MostActive />
-        <div />
-        <div className="content_wrapper2">
+      </div>
+      <div className="content_wrapper2">
           <div className="section_title user_balance">
-            <i className="fas fa-chart-line card_icon"></i>Portfolio Value{" "}
+            <i className="fas fa-chart-line card_icon"></i>Portfolio Value 
             {numeral(Number(accountBalance)).format("($ 0.000 a)")}
           </div>
           <Trades
@@ -40,7 +40,6 @@ if (!loaded) return null;
             accountId={accountId}
             setRefresh={setRefresh}
           />
-        </div>
       </div>
     </div>
   );

@@ -42,7 +42,7 @@ function MostActive() {
       {gainerStock.map((value, index) => {
         if (index < 3) {
           return (
-            <li key={index}>
+            <div key={index}>
               <Card
                 className="stock_card"
                 style={{ width: "20rem", color: "grey" }}
@@ -72,7 +72,7 @@ function MostActive() {
                   </CardText>
                 </CardBody>
               </Card>
-            </li>
+            </div>
           );
         }
       })}
