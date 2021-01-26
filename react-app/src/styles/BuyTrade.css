@@ -1,22 +1,25 @@
 .bg_lt{
   /* font-family: "Verdana"; */
-  padding: 20px;
+  /* padding: 20px;
   top:60%;
-  left: 40%;
+  left: 40%; */
   width: 40%;
   color:white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
   font-size: 13px;
   font-weight: bold;
-  margin-left: 175px;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  background-color: #3c3c4d !important;
+  background-color:blue !important;
   font-family: Cousine;
 
 }
+.content_wrapper{
+  background: blue;
+  display: flex;
 
+}
 /* thead{
   color:grey;
   padding: 50px;
@@ -45,7 +48,16 @@ tbody{
   
   /* background-color:rgba(0, 0, 0, 0.4); */
 }
+.card_wrapper{
+  background: red;
+  width: 100%;
+  display: flex;
 
+}
+.card_wrapper2{
+  background: red;
+  width: 100%;
+}
 .stock-titles{
   width: 30%;
   height: 20%;

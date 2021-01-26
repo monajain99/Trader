@@ -62,16 +62,11 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
   if (trades) {
     return (
       <>
-        <div>
-          <AddTrade
-            accountId={accountId}
-            setRefeshFromBuy={setRefeshFromBuy}
-            setRefresh={setRefresh}
-          />
-
+       
           {/* {trades &&
             trades.map((trade, idx) => {
               return ( */}
+          <div>
           <div>
             <Card
               className="stock_card stock_table"
@@ -176,8 +171,14 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
                 </Table>
               </CardBody>
             </Card>
+             <div>
+          <AddTrade
+            accountId={accountId}
+            setRefeshFromBuy={setRefeshFromBuy}
+            setRefresh={setRefresh}
+          />
           </div>
-          <MostActive />
+          </div>
         </div>
       </>
     );

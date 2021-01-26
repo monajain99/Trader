@@ -32,13 +32,11 @@
 .section_title{
   font-family: Cousine;
   font-size: 25px;
-  margin-left: 175px;
 }
 .user_balance{
   font-family: 'Barlow', sans-serif;
   font-weight: 800;
   font-size: 30px;
-  margin-left: 175px;
   color: white;
 }
 .searchbar{

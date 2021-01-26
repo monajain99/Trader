@@ -3,7 +3,8 @@ import axios from "axios";
 import Trades from "./Trades"
 import "../styles/BuyTrade.css";
 import numeral from "numeral";
-
+import MostActive from "./MostActive";
+import { Row, Col, Container } from "react-bootstrap/";
 
 const Account = ({ setAuthenticated, currentUser, currentUserId }) => {
   const [loaded, setLoaded] = useState(false);
@@ -25,16 +26,23 @@ const Account = ({ setAuthenticated, currentUser, currentUserId }) => {
 if (!loaded) return null;
   
   return (
-    <div>
-      <div className="section_title user_balance">
-        <i className="fas fa-chart-line card_icon"></i>Portfolio Value{" "}
-        {numeral(Number(accountBalance)).format("($ 0.000 a)")}
+    <div className="content_wrapper">
+      <div className="content_wrapper2">
+        <MostActive />
+        <div />
+        <div className="content_wrapper2">
+          <div className="section_title user_balance">
+            <i className="fas fa-chart-line card_icon"></i>Portfolio Value{" "}
+            {numeral(Number(accountBalance)).format("($ 0.000 a)")}
+          </div>
+          <Trades
+            currentUserId={currentUserId}
+            accountId={accountId}
+            setRefresh={setRefresh}
+          />
+        </div>
       </div>
-      <Trades
-        currentUserId={currentUserId}
-        accountId={accountId}
-        setRefresh={setRefresh}
-      />
+      //{" "}
     </div>
   );
 };
