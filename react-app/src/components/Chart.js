@@ -52,11 +52,14 @@ const Chart = () => {
           },
           xAxis: [
             {
+              lineWidth: 0,
+              minorGridLineWidth: 0,
+              lineColor: "transparent",
               labels: {
-                style: {
-                  "font-size": "0px",
-                },
+                enabled: false,
               },
+              minorTickLength: 0,
+              tickLength: 0,
             },
           ],
           yAxis: [
@@ -125,6 +128,14 @@ const Chart = () => {
               name: " ",
               data: getData(value),
               type: "spline",
+              color: {
+                linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+                stops: [
+                  [0, "#7175BF"], // start
+                  [3.5, "#597DC2"], // middle
+                  [1, "#3366AA"], // end
+                ],
+              },
             },
           ],
         };
@@ -161,7 +172,7 @@ const Chart = () => {
   return (
     <>
       <div>{showData()}</div>
-      <News symbol={symbol} />
+        <News symbol={symbol} />
       <Price symbol={symbol} />
     </>
   );

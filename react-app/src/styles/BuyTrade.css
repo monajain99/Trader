@@ -48,10 +48,9 @@ tbody{
 
 .stock-titles{
   width: 30%;
-  height: 30%;
+  height: 20%;
   position: absolute;
-  left: 78%;
-  /* font-family: Verdana; */
+  left: 50%;
   top: 30%;
 }
 .keyInfo{
@@ -59,9 +58,9 @@ tbody{
   height:30%;
   position: absolute;
   left: 10%;
-  /* font-family: Verdana; */
-  top: 100%;
+ 
+  top: 70%;
   display: grid;
   grid-template-columns: repeat(3, 3fr);
-  grid-gap: 50px;
+  grid-gap: 20px;
 }

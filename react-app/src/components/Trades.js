@@ -18,8 +18,8 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
   const [trades, setTrades] = useState([]);
   const [redirect, setRedirect] = useState(null);
   const [refeshFromBuy, setRefeshFromBuy] = useState("");
-  const [currentPrice, setCurrentPrice] = useState("");
 
+  let array = []
     // trades.map((trade) => console.log(trade.ticker));
 
 
@@ -33,13 +33,13 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
     })();
   }, [redirect, refeshFromBuy]);
 
-  async function getCurPrice(ticker)  {
-     const response = await fetch(
-        `https://sandbox.iexapis.com/stable/stock/${ticker}/quote?displayPercent=true&token=Tpk_a72f593783e9451990a7e3a0fceb28e5`
-      );
-      const responseData = await response.json();
-      return(responseData.latestPrice);
-  }  
+  // async function getCurPrice(ticker)  {
+  //    const response = await fetch(
+  //       `https://sandbox.iexapis.com/stable/stock/${ticker}/quote?displayPercent=true&token=Tpk_a72f593783e9451990a7e3a0fceb28e5`
+  //     );
+  //     const responseData = await response.json();
+  //     return(responseData.latestPrice);
+  // }  
 
 
   const getPrice  = async (ticker) => {
@@ -50,7 +50,6 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
       return(responseData.latestPrice);
     }
   
-  //  getPrice('tsla')
 
 
   if (!trades) return (
@@ -61,7 +60,6 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
     />
   )
   if (trades) {
-    // console.log(getPrice('tsla'))
     return (
       <>
         <div>
@@ -96,9 +94,19 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
                       </tr>
                     </thead>
                     <tbody>
-                      {trades &&
+                      {
+                        trades &&
                         trades.map((trade, idx) => {
-                          setCurrentPrice(getPrice(trade.ticker));
+                        {
+                          {
+                              (async () => {
+                        const response = await getPrice(trade.ticker);
+                        array[idx] = response
+                         console.log("this is the array", array)
+                         console.log("this is the index", array[idx], idx);
+                      })();
+                          }
+                          }
                           return (
                             <tr>
                               {/* {key = idx} */}
@@ -128,7 +136,12 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
                                 $
                                 {numeral(
                                   Number(trade.price * trade.volume)
-                                ).format("( 0.00)")}
+                                ).format("(0.00)")}
+                                {console.log("..rashmi1...")}
+                                {console.log(array)}
+                                {console.log(array.length)}
+                                {console.log(array[idx])}
+                                {console.log("..rashmi2...")}
                               </td>
                               <td
                                 className="number"
@@ -136,7 +149,8 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
                               >
                                 $
                                 {numeral(
-                                  Number(trade.price * trade.volume)
+                                  Number(trade.price * trade.volume) -
+                                    trade.price * trade.volume
                                 ).format("( 0.00)")}
                               </td>
                               <td>

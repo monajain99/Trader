@@ -32,30 +32,43 @@ console.log(tradeData)
     //   </div>
 
     <>
-      <div className="stock-titles">
-        <div style={{ color: "grey", fontSize: 20 }}>
-          {tradeData.companyName}
-        </div>
-        <div style={{ color: "white", fontSize: 30 }}>
-          ${tradeData.latestPrice}
-        </div>
-        <div style={{ color: "white" }}>
-          ${tradeData.change} (
-          {numeral(Number(tradeData.changePercent)).format("(0.00)")})%
-        </div>
-        <div style={{ color: "#66b2b2	", fontSize: 13 }}>
-          Previous Close: ${tradeData.previousClose}
-        </div>
-        <div style={{ color: "#66b2b2	", fontSize: 13 }}>
-          Latest Time: {tradeData.latestTime}
-        </div>
-      </div>
+      <Card
+        className="stock_card stock-titles"
+        style={{ width: "20rem", color: "grey" }}
+      >
+        <CardBody>
+          <div>
+            <CardText
+              className="card_subtitle"
+              style={{ color: "grey", fontSize: 13 }}
+            >
+              {tradeData.companyName}
+            </CardText>
+            <CardText
+              className="number"
+              style={{ color: "grey", fontSize: 13 }}
+            >
+              ${numeral(Number(tradeData.latestPrice)).format("( 0.00)")}
+            </CardText>
+            <CardText style={{ color: "#66b2b2	", fontSize: 13 }}>
+              <i className="fas fa-long-arrow-alt-up card_icon"></i>
+              {numeral(Number(tradeData.changePercent)).format("( 0.00)")}%
+            </CardText>
+            <div style={{ color: "white", fontSize: 13 }}>
+              Previous Close: ${tradeData.previousClose}
+            </div>
+            <div style={{ color: "#66b2b2	", fontSize: 13 }}>
+              Latest Time: {tradeData.latestTime}
+            </div>
+          </div>
+        </CardBody>
+      </Card>
       <div
         style={{
           color: "grey",
           fontSize: 20,
           position: "absolute",
-          top: "90%",
+          top: "60%",
           left: "12%",
         }}
       >
