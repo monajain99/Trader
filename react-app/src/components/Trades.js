@@ -98,7 +98,7 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
                     <tbody>
                       {trades &&
                         trades.map((trade, idx) => {
-                          /*setCurrentPrice(getPrice(trade.ticker)); */
+                          setCurrentPrice(getPrice(trade.ticker));
                           return (
                             <tr>
                               {/* {key = idx} */}
@@ -126,9 +126,9 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
                                 style={{ color: "grey", fontSize: 13 }}
                               >
                                 $
-                                {numeral(Number(trade.volume)).format(
-                                  "( 0.00)"
-                                )}
+                                {numeral(
+                                  Number(trade.price * trade.volume)
+                                ).format("( 0.00)")}
                               </td>
                               <td
                                 className="number"

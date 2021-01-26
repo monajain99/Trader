@@ -40,7 +40,7 @@ function MostActive() {
         <i className="fas fa-chart-line card_icon"></i>Gainers
       </div>
       {gainerStock.map((value, index) => {
-        if (index < 9) {
+        if (index < 3) {
           return (
             <li key={index}>
               <Card

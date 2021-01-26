@@ -61,9 +61,11 @@ const Chart = () => {
           ],
           yAxis: [
             {
+              gridLineWidth: 0,
+              minorGridLineWidth: 0,
               labels: {
                 style: {
-                  "font-size": "10px",
+                  fontSize: "0px",
                 },
               },
             },
@@ -71,6 +73,10 @@ const Chart = () => {
           theme: "light1",
           title: {
             text: `1 Day Chart for ${symbol}`,
+            style: {
+              color: "#FFFFFF",
+              fontWeight: "bold",
+            },
           },
           maintainAspectRatio: false,
           responsive: true,
@@ -108,8 +114,7 @@ const Chart = () => {
           chart: {
             height: 350,
             width: 950,
-            backgroundColor: "#373A46",
-            type: "line",
+            backgroundColor: "rgba(0,0,0,0)",
           },
 
           credits: {

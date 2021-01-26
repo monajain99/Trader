@@ -23,7 +23,7 @@ function Price({ authenticated, setAuthenticated, symbol }) {
     fetchData();
   }, [symbol]);
 
-
+console.log(tradeData)
   return (
     // <div>
     //   <div className="input">
@@ -40,8 +40,8 @@ function Price({ authenticated, setAuthenticated, symbol }) {
           ${tradeData.latestPrice}
         </div>
         <div style={{ color: "white" }}>
-          ${tradeData.change} ~ (%
-          {Math.round(tradeData.changePercent * 100) / 100})
+          ${tradeData.change} (
+          {numeral(Number(tradeData.changePercent)).format("(0.00)")})%
         </div>
         <div style={{ color: "#66b2b2	", fontSize: 13 }}>
           Previous Close: ${tradeData.previousClose}
