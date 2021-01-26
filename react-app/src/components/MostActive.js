@@ -35,7 +35,7 @@ function MostActive() {
   }, [gainerStock]);
 
   return (
-    <div className="card_wrapper">
+    <>
       <div className="section_title" style={{ color: "white", fontSize: 20 }}>
         <i className="fas fa-chart-line card_icon"></i>Gainers
       </div>
@@ -78,7 +78,7 @@ function MostActive() {
       })}
       <div className="section_title" style={{ color: "white", fontSize: 20 }}>
         <i className="fas fa-chart-line card_icon"></i>Most Active
-      </div>{" "}
+      </div>
       {activeStock.map((value, index) => {
         if (index < 9) {
           return (
@@ -116,7 +116,7 @@ function MostActive() {
           );
         }
       })}
-    </div>
+    </>
   );
 }
 
