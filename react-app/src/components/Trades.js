@@ -61,22 +61,16 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
   )
   if (trades) {
     return (
-      <>
-       
-          {/* {trades &&
-            trades.map((trade, idx) => {
-              return ( */}
+      <div className="trade_wrapper">
 
-          <div>
+          <div className="trades">
             <Card
-              className="stock_card stock_table"
-              style={{ width: "35rem", color: "grey" }}
+              className="trades_table stock_table"
             >
               <CardBody>
                 <Table responsive>
                   <CardTitle
                     className="card_title"
-                    style={{ color: "grey", fontSize: 13 }}
                   >
                     <thead>
                       <tr>
@@ -97,8 +91,7 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
                               (async () => {
                         const response = await getPrice(trade.ticker);
                         array[idx] = response
-                         console.log("this is the array", array)
-                         console.log("this is the index", array[idx], idx);
+                      
                       })();
                           }
                           }
@@ -107,40 +100,30 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
                               {/* {key = idx} */}
                               <td
                                 className="card_subtitle"
-                                style={{ color: "grey", fontSize: 13 }}
                               >
                                 {trade.name}
                               </td>
                               <td
                                 className="number"
-                                style={{ color: "grey", fontSize: 13 }}
                               >
                                 $
                                 {numeral(Number(trade.price)).format("( 0.00)")}
                               </td>
                               <td
                                 className="number"
-                                style={{ color: "grey", fontSize: 13 }}
                               >
                                 {numeral(Number(trade.volume)).format("( 0)")}
                               </td>
                               <td
                                 className="number"
-                                style={{ color: "grey", fontSize: 13 }}
                               >
                                 $
                                 {numeral(
                                   Number(trade.price * trade.volume)
                                 ).format("(0.00)")}
-                                {console.log("..rashmi1...")}
-                                {console.log(array)}
-                                {console.log(array.length)}
-                                {console.log(array[idx])}
-                                {console.log("..rashmi2...")}
                               </td>
                               <td
                                 className="number"
-                                style={{ color: "grey", fontSize: 13 }}
                               >
                                 $
                                 {numeral(
@@ -150,8 +133,7 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
                               </td>
                               <td>
                                 <Button
-                                  className="btn-icon btn-simple"
-                                  color="info"
+                                  className="btn-icon btn-simple edit_button"
                                   size="sm"
                                   onClick={() => {
                                     deleteTrade(trade.id);
@@ -160,7 +142,7 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
                                   }}
                                 >
                                   {" "}
-                                  <i className="fa fa-edit" />
+                                  <i className="fa fa-edit edit_icon" />
                                 </Button>
                               </td>
                             </tr>
@@ -179,7 +161,7 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
           />
           </div>
           </div>
-      </>
+      </div>
     );
   };
 }

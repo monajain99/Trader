@@ -3,18 +3,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 .number{
   color:white !important;
-  font-family: Cousine;
-  font-size: 15px !important;
+  font-family: "Cousine" !important;
+  font-size: 11px !important;
 }
-.stock_card{
-  background-color: #3c3c4d !important;
-  margin-left: 175px;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
-}
 .card_title{
-  font-family: 'Barlow', sans-serif;
+  font-family: "Cousine" !important;
   color: white !important;
   font-weight: 800;
   text-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -23,21 +17,30 @@
 .card_subtitle{
   font-family: 'Barlow', sans-serif;
   color: #7c82ff !important;
+  margin-bottom: 10px;
+  font-weight: bold;
 
 }
 .card_icon{
-  margin-right: 5px
+  margin-right: 5px;
+  color: #5EB5F8;
 }
 
+
+
 .section_title{
-  font-family: Cousine;
-  font-size: 25px;
+  font-family: 'Cousine' !important;
+  font-size: 15px !important;
+  text-align: left;
+  margin-bottom: 20px;
+  text-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 .user_balance{
   font-family: 'Barlow', sans-serif;
   font-weight: 800;
   font-size: 30px;
   color: white;
+
 }
 .searchbar{
   background: #373A46;
@@ -48,7 +51,7 @@
 .searchbar:active{
   background: #373A46;
   border: none;
-box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 .searchbar:focus{
   background: #373A46;
@@ -60,7 +63,6 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   background-image: linear-gradient(to right, #7474BF 0%, #348AC7  51%, #7474BF  100%)}
 
 .general_button {
-  margin: 10px; 
   padding: 5px 10px;
   text-align: center;
   text-transform: uppercase;
@@ -72,7 +74,10 @@ box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   border: none;
   font-weight: 800;
   font-family: Cousine;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
+
 .general_button:hover {
   background-position: right center; color: #fff;
   text-decoration: none;

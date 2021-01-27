@@ -1,22 +1,20 @@
 .bg_lt{
-
   width: 40%;
   color:white;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-radius: 5px;
   font-size: 13px;
   font-weight: bold;
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color:blue !important;
   font-family: Cousine;
-
 }
 .content_wrapper{
-  background: blue;
-  display: flex;
-
 }
+/* .content_wrapper2{
+  background:red;
+
+} */
 /* thead{
   color:grey;
   padding: 50px;
@@ -25,34 +23,65 @@ tbody{
   color:white;
   padding: 5px;
 }
-
+.trade_wrapper{
+  margin: none;
+  padding: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 500px;
+}
+.buy_form{
+  background-color: #3c3c4d !important;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 500px;
+  font-size: 11px !important;
+  margin-bottom: 20px;
+}
 .stock_table{
   overflow-y:scroll;
-  margin-right: 175px;
   border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   background-color: #3c3c4d !important;
+  font-size: 9px !important;;
+}
+.stock_card{
+  background-color: #3c3c4d !important;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 100%;
+  font-size: 11px !important;
+  margin-bottom: 20px;
+}
+.trades_table{
+  background-color: #3c3c4d !important;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 100%;
+  font-size: 11px !important;
+  margin-bottom: 20px;
+  height: 250px;
+  overflow: scroll;
+}
+.table thead th{
+  vertical-align: middle !important;
+  border-bottom: none !important;
+  font-size: 10px !important;
+  color: #656874;
+  border-top: none !important;
+}
 
-  /* display: block; */
-  /* text-align: center; */
-  /* border-radius: 5px; */
-  /* width: 50%; */
-  /* height: 300px; */
-  /* font-size: 13px; */
-  /* position: absolute; */
-  /* right: 40px; */
-  /* top:25%; */
-  
-  /* background-color:rgba(0, 0, 0, 0.4); */
+.table td, .table th {
+  border-top: none !important;
+  border-bottom: none !important;
 }
 .card_wrapper{
-  background: red;
   width: 100%;
   display: flex;
 
 }
 .card_wrapper2{
-  background: blue;
   width: 400px;
 }
 .stock-titles{
@@ -72,4 +101,38 @@ tbody{
   display: grid;
   grid-template-columns: repeat(3, 3fr);
   grid-gap: 20px;
+}
+
+.edit_button{
+  height: 16px;
+  width: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.edit_icon{
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+
+}
+
+
+
+input{
+  background: #373A46 !important;
+  border: none !important;
+  color: #8c8d96 !important;
+  font-weight: 700 !important;
+}
+input:active{
+  background: #373A46 !important;
+  border: none !important;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px !important;
+}
+input:focus{
+  background: #373A46 !important;
+  border: none !important;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px !important;
 }

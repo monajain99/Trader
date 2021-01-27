@@ -77,20 +77,16 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
 
   return (
     <>
-      <div>
-        <Card
-          className="stock_card stock_table bg_lt"
-          style={{ width: "20rem", color: "grey" }}
-        >
+      <div className="trades">
+        <Card className="buy_form">
           <CardBody>
-           
-                <CardTitle
-                  className="card_title"
-                  style={{ color: "grey", fontSize: 13 }}
-                >
-                  Buy Stocks
-                </CardTitle>
-              
+            <CardTitle
+              className="card_title"
+              style={{ color: "grey", fontSize: 13 }}
+            >
+              Buy Stocks
+            </CardTitle>
+
             <form onSubmit={createTrade}>
               <Label
                 className="card_subtitle"
@@ -98,43 +94,32 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
               >
                 Stock Symbol{" "}
               </Label>
-             
-                  <Form.Control
-                    name="ticker"
-                    type="text"
-                    onChange={updateTicker}
-                  />
-               
+
+              <Form.Control name="ticker" type="text" onChange={updateTicker} />
+
               <Button
-                className="btn-icon btn-simple"
-                color="info"
-                size="sm"
+                className="general_button"
                 type="button"
                 onClick={getPrice}
               >
                 Get price: {price}
               </Button>
-              <div>
-
-              </div>
-              <Label className="card_subtitle"
+              <div></div>
+              <Label
+                className="card_subtitle"
                 style={{ color: "grey", fontSize: 13 }}
               >
-                Volume{" "}</Label>
-              
-                  <Input
-                    name="volume"
-                    type="integer"
-                    placeholder="ex. 100"
-                    onChange={updateVolume}
-                  />
-                
-              <Button
-                className="btn-icon btn-simple"
-                color="info"
-                size="sm"
-                type="submit"
-              >
+                Volume{" "}
+              </Label>
+
+              <Input
+                name="volume"
+                type="integer"
+                placeholder="ex. 100"
+                onChange={updateVolume}
+              />
+
+              <Button className="general_button" type="submit">
                 Buy
               </Button>
             </form>

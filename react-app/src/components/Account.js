@@ -26,13 +26,14 @@ const Account = ({ setAuthenticated, currentUser, currentUserId }) => {
 if (!loaded) return null;
   
   return (
-    <div className="content_wrapper">
-      <div className="content_wrapper2">
-        <MostActive />
-      </div>
-      <div className="content_wrapper2">
+    <Container className="content_wrapper" fluid>
+      <Row>
+        <Col className="content_wrapper2 col-xsm-12">
+          <MostActive />
+        </Col>
+        <Col className="content_wrapper2 col-xsm-12">
           <div className="section_title user_balance">
-            <i className="fas fa-chart-line card_icon"></i>Portfolio Value 
+            <i className="fas fa-chart-line card_icon"></i>Portfolio Value
             {numeral(Number(accountBalance)).format("($ 0.000 a)")}
           </div>
           <Trades
@@ -40,8 +41,9 @@ if (!loaded) return null;
             accountId={accountId}
             setRefresh={setRefresh}
           />
-      </div>
-    </div>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
