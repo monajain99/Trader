@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from "react";
-import numeral from "numeral"
-import {
-  Card,
-  CardBody,
-  CardTitle,
-  CardText,
-  CardLink,
-} from "reactstrap";
+import numeral from "numeral";
+import { Card, CardBody, CardTitle, CardText, CardLink } from "reactstrap";
 
-function MostActive() {
+function Active() {
   const [activeStock, setActiveStock] = useState([]);
-  const [gainerStock, setGainerStock] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -19,30 +12,22 @@ function MostActive() {
       );
       const responseData = await response.json();
       setActiveStock(responseData);
+      console.log(responseData)
     }
     fetchData();
   }, [activeStock]);
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(
-        `https://sandbox.iexapis.com/stable/stock/market/list/gainers?&token=Tpk_a72f593783e9451990a7e3a0fceb28e5`
-      );
-      const responseData = await response.json();
-      setGainerStock(responseData);
-    }
-    fetchData();
-  }, [gainerStock]);
+  console.log(activeStock)
 
   return (
     <>
-      <div className="section_title user_balance">
-        <i className="fas fa-chart-line card_icon"></i>Gainers
+      <div className="section_title">
+        <i className="fas fa-chart-line card_icon"></i>Most Active
       </div>
-      {gainerStock.map((value, index) => {
-        if (index < 3) {
+      {activeStock.map((value, index) => {
+        if (index < 9) {
           return (
-            <div key={index}>
+            <li key={index}>
               <Card className="stock_card">
                 <CardBody>
                   <CardTitle className="card_title">{value.symbol}</CardTitle>
@@ -52,13 +37,13 @@ function MostActive() {
                   <CardText className="number">
                     ${numeral(Number(value.latestPrice)).format("( 0.00)")}
                   </CardText>
-                  <CardText className="positive_number">
+                  <CardText>
                     <i className="fas fa-long-arrow-alt-up card_icon"></i>
                     {numeral(Number(value.changePercent)).format("( 0.00)")}%
                   </CardText>
                 </CardBody>
               </Card>
-            </div>
+            </li>
           );
         }
       })}
@@ -66,4 +51,4 @@ function MostActive() {
   );
 }
 
-export default MostActive;
+export default Active;

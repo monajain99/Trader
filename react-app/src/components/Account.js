@@ -4,7 +4,7 @@ import Trades from "./Trades"
 import "../styles/BuyTrade.css";
 import numeral from "numeral";
 import Box from "./Box"
-import MostActive from "./MostActive";
+import Gainers from "./Gainers";
 import { Row, Col, Container } from "react-bootstrap/";
 
 const Account = ({ setAuthenticated, currentUser, currentUserId }) => {
@@ -30,7 +30,7 @@ if (!loaded) return null;
     <Container className="content_wrapper">
       <Row>
         <Col className="content_wrapper2 col-xsm-12">
-          <MostActive />
+          <Gainers />
         </Col>
         <Col className="content_wrapper2 col-xsm-12">
           <div className="section_title user_balance">

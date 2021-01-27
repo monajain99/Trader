@@ -3,9 +3,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
-import numeral from "numeral"
+import numeral from "numeral";
 import { Card, CardBody, CardTitle, CardText, CardLink } from "reactstrap";
-
 
 const ReactHighcharts = require("react-highcharts");
 
@@ -74,7 +73,7 @@ const Gainers = () => {
             },
           ],
           theme: "light1",
-          title:"none",
+          title: "none",
           maintainAspectRatio: false,
           responsive: true,
 
@@ -106,11 +105,11 @@ const Gainers = () => {
               borderJoinStyle: "round",
               tension: 1,
               color: "#373A46",
-              shadow: "rgba(2, 255, 196, 0.406)" ,
+              shadow: "rgba(2, 255, 196, 0.406)",
             },
           },
           chart: {
-            height: 350,
+            height: 175,
             width: 425,
             backgroundColor: "rgba(0,0,0,0)",
           },
@@ -149,7 +148,9 @@ const Gainers = () => {
               </CardText>
               <CardText className="positive_number">
                 <i className="fas fa-long-arrow-alt-up card_icon"></i>
-                {numeral(Number(value.quote.changePercent)).format("( 00.00)")*100}%
+                {numeral(Number(value.quote.changePercent)).format("( 00.00)") *
+                  100}
+                %
               </CardText>
             </div>
           </div>

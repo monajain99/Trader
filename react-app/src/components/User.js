@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ChartCard from "./Trash"
 import { useParams } from "react-router-dom";
 
 function User() {
@@ -33,6 +34,7 @@ function User() {
       <li>
         <strong>Email</strong> {user.email}
       </li>
+      <ChartCard/>
     </ul>
   );
 }

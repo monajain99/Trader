@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import AddTrade from "./CreateTrade"
-import MostActive from "./MostActive";
+import MostActive from "./Gainers";
 import { deleteTrade } from "../services/trades";
 import "../styles/BuyTrade.css";
 import numeral from "numeral";
@@ -33,13 +33,6 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
     })();
   }, [redirect, refeshFromBuy]);
 
-  // async function getCurPrice(ticker)  {
-  //    const response = await fetch(
-  //       `https://sandbox.iexapis.com/stable/stock/${ticker}/quote?displayPercent=true&token=Tpk_a72f593783e9451990a7e3a0fceb28e5`
-  //     );
-  //     const responseData = await response.json();
-  //     return(responseData.latestPrice);
-  // }  
 
 
   const getPrice  = async (ticker) => {
