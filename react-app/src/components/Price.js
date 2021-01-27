@@ -25,41 +25,22 @@ function Price({ authenticated, setAuthenticated, symbol }) {
 
 console.log(tradeData)
   return (
-    // <div>
-    //   <div className="input">
-    //     <input onChange={handleChange} placeholder="Search company..." />
-    //     <button onClick={fetchData}>Search</button>
-    //   </div>
-
     <>
-      <Card
-        className="stock_card stock-titles"
-        style={{ width: "20rem", color: "grey" }}
-      >
+      <Card className="stock_card stock-titles">
         <CardBody>
           <div>
-            <CardText
-              className="card_subtitle"
-              style={{ color: "grey", fontSize: 13 }}
-            >
+            <CardText className="card_subtitle">
               {tradeData.companyName}
             </CardText>
-            <CardText
-              className="number"
-              style={{ color: "grey", fontSize: 13 }}
-            >
+            <CardText className="number">
               ${numeral(Number(tradeData.latestPrice)).format("( 0.00)")}
             </CardText>
-            <CardText style={{ color: "#66b2b2	", fontSize: 13 }}>
+            <CardText>
               <i className="fas fa-long-arrow-alt-up card_icon"></i>
               {numeral(Number(tradeData.changePercent)).format("( 0.00)")}%
             </CardText>
-            <div style={{ color: "white", fontSize: 13 }}>
-              Previous Close: ${tradeData.previousClose}
-            </div>
-            <div style={{ color: "#66b2b2	", fontSize: 13 }}>
-              Latest Time: {tradeData.latestTime}
-            </div>
+            <CardText>Previous Close: ${tradeData.previousClose}</CardText>
+            <CardText>Latest Time: {tradeData.latestTime}</CardText>
           </div>
         </CardBody>
       </Card>

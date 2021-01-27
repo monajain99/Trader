@@ -5,7 +5,7 @@ import "../styles/BuyTrade.css";
 import numeral from "numeral";
 import Box from "./Box"
 import Gainers from "./Gainers";
-import { Row, Col, Container } from "react-bootstrap/";
+import { Row, Col, Button, Container } from "react-bootstrap/";
 
 const Account = ({ setAuthenticated, currentUser, currentUserId }) => {
   const [loaded, setLoaded] = useState(false);
@@ -34,8 +34,10 @@ if (!loaded) return null;
         </Col>
         <Col className="content_wrapper2 col-xsm-12">
           <div className="section_title user_balance">
-            <i className="fas fa-chart-line card_icon"></i>Portfolio Value
-            {numeral(Number(accountBalance)).format("($ 0.000 a)")}
+            <i className="fas fa-gem card_icon"></i>Portfolio{"   "}
+            <Button className="demoButton" type="button">
+              {numeral(Number(accountBalance)).format("($ 0.000 a)")}
+            </Button>
           </div>
           <Trades
             currentUserId={currentUserId}
@@ -46,7 +48,7 @@ if (!loaded) return null;
       </Row>
       <Row>
         <Col>
-          <Box/>
+          <Box />
         </Col>
       </Row>
     </Container>

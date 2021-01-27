@@ -17,17 +17,17 @@ function Active() {
     fetchData();
   }, [activeStock]);
 
-  console.log(activeStock)
+  
 
   return (
     <>
-      <div className="section_title">
-        <i className="fas fa-chart-line card_icon"></i>Most Active
+      <div className="section_title user_balance">
+        <i className="fas fa-fire card_icon"></i>Most Active
       </div>
       {activeStock.map((value, index) => {
         if (index < 9) {
           return (
-            <li key={index}>
+            <div key={index}>
               <Card className="stock_card">
                 <CardBody>
                   <CardTitle className="card_title">{value.symbol}</CardTitle>
@@ -37,13 +37,14 @@ function Active() {
                   <CardText className="number">
                     ${numeral(Number(value.latestPrice)).format("( 0.00)")}
                   </CardText>
-                  <CardText>
+                  <CardText className="positive_number">
+                    {" "}
                     <i className="fas fa-long-arrow-alt-up card_icon"></i>
                     {numeral(Number(value.changePercent)).format("( 0.00)")}%
                   </CardText>
                 </CardBody>
               </Card>
-            </li>
+            </div>
           );
         }
       })}

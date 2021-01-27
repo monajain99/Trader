@@ -116,7 +116,7 @@ const Chart = () => {
           },
           chart: {
             height: 350,
-            width: 950,
+            width: 650,
             backgroundColor: "rgba(0,0,0,0)",
           },
 
@@ -128,19 +128,26 @@ const Chart = () => {
               name: " ",
               data: getData(value),
               type: "spline",
-              color: {
-                linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
-                stops: [
-                  [0, "#7175BF"], // start
-                  [3.5, "#597DC2"], // middle
-                  [1, "#3366AA"], // end
-                ],
-              },
+              // shadow: {
+              //   color: "white",
+              //   offsetX: 0,
+              //   offsetY: 5,
+              //   opacity: 0.2,
+              //   width: 5,
+              // },
+              // color: {
+              linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
+              stops: [
+                [0, "#7175BF"], // start
+                [3.5, "#597DC2"], // middle
+                [1, "#68f9da"], // end
+              ],
+              // },
             },
           ],
         };
         return (
-          <div className="chart__Container">
+          <div>
             <div key={value.quote.symbol}>
               <div>
                 <ReactHighcharts config={config} />
@@ -171,9 +178,11 @@ const Chart = () => {
 
   return (
     <>
-      <div>{showData()}</div>
-        <News symbol={symbol} />
+      <div className="full_stock_chart">
+        {showData()}
+      </div>
       <Price symbol={symbol} />
+      <News symbol={symbol} />
     </>
   );
 };

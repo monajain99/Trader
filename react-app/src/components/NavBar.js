@@ -47,7 +47,7 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
             {authenticated ? (
               <li className="navbar_links">
                 <NavLink to="/profile" exact={true} activeClassName="active">
-                  <p className="demoButton">Portfolio</p>
+                  {/* <p className="demoButton"></p> */}
                 </NavLink>
               </li>
             ) : (

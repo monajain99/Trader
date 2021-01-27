@@ -9,11 +9,6 @@
   background-color:blue !important;
   font-family: Cousine;
 }
-.content_wrapper{
-  
-  
-
-}
 
 .positive_number{
   color: #68f9da;
@@ -71,6 +66,21 @@ tbody{
   font-size: 11px !important;
   margin-bottom: 20px;
 }
+.stock_chart{
+  width: 500px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-size: 11px !important;
+  margin-bottom: 20px;
+}
+.full_stock_chart{
+  width: 800px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  font-size: 11px !important;
+  margin-bottom: 20px;
+}
+
 .trades_table{
   background-color: #3c3c4d !important;
   border-radius: 5px;
@@ -105,7 +115,7 @@ tbody{
   width: 30%;
   height: 20%;
   position: absolute;
-  left: 50%;
+  left: 65%;
   top: 30%;
 }
 .keyInfo{
@@ -155,6 +165,5 @@ input:focus{
 .Box{
 width: 100%;
 height: 300px;
-background-color: red;
 
 }
