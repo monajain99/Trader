@@ -16,11 +16,9 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
       <Row>
         <Col>
           <NavLink to="/" exact={true} activeClassName="active">
-            <img
-              src={Logo}
-              alt="ProTrader Logo"
-              style={{ maxWidth: 60, height: "auto", margin: 20 }}
-            />
+            <div className="logo_wrapper">
+              <i className="fas fa-money-bill-wave logo_icon"></i>
+            </div>
           </NavLink>
         </Col>
         <Col>

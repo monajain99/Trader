@@ -36,83 +36,29 @@ function MostActive() {
 
   return (
     <>
-      <div className="section_title" style={{ color: "white", fontSize: 20 }}>
+      <div className="section_title user_balance">
         <i className="fas fa-chart-line card_icon"></i>Gainers
       </div>
       {gainerStock.map((value, index) => {
         if (index < 3) {
           return (
             <div key={index}>
-              <Card
-                className="stock_card"
-                style={{ width: "20rem", color: "grey" }}
-              >
+              <Card className="stock_card">
                 <CardBody>
-                  <CardTitle
-                    className="card_title"
-                    style={{ color: "grey", fontSize: 13 }}
-                  >
-                    {value.symbol}
-                  </CardTitle>
-                  <CardText
-                    className="card_subtitle"
-                    style={{ color: "grey", fontSize: 13 }}
-                  >
+                  <CardTitle className="card_title">{value.symbol}</CardTitle>
+                  <CardText className="card_subtitle">
                     {value.companyName}
                   </CardText>
-                  <CardText
-                    className="number"
-                    style={{ color: "grey", fontSize: 13 }}
-                  >
+                  <CardText className="number">
                     ${numeral(Number(value.latestPrice)).format("( 0.00)")}
                   </CardText>
-                  <CardText style={{ color: "#66b2b2	", fontSize: 13 }}>
+                  <CardText className="positive_number">
                     <i className="fas fa-long-arrow-alt-up card_icon"></i>
                     {numeral(Number(value.changePercent)).format("( 0.00)")}%
                   </CardText>
                 </CardBody>
               </Card>
             </div>
-          );
-        }
-      })}
-      <div className="section_title" style={{ color: "white", fontSize: 20 }}>
-        <i className="fas fa-chart-line card_icon"></i>Most Active
-      </div>
-      {activeStock.map((value, index) => {
-        if (index < 9) {
-          return (
-            <li key={index}>
-              <Card
-                className="stock_card"
-                style={{ width: "20rem", color: "grey" }}
-              >
-                <CardBody>
-                  <CardTitle
-                    className="card_title"
-                    style={{ color: "grey", fontSize: 13 }}
-                  >
-                    {value.symbol}
-                  </CardTitle>
-                  <CardText
-                    className="card_subtitle"
-                    style={{ color: "grey", fontSize: 13 }}
-                  >
-                    {value.companyName}
-                  </CardText>
-                  <CardText
-                    className="number"
-                    style={{ color: "grey", fontSize: 13 }}
-                  >
-                    ${numeral(Number(value.latestPrice)).format("( 0.00)")}
-                  </CardText>
-                  <CardText style={{ color: "#66b2b2	", fontSize: 13 }}>
-                    <i className="fas fa-long-arrow-alt-up card_icon"></i>
-                    {numeral(Number(value.changePercent)).format("( 0.00)")}%
-                  </CardText>
-                </CardBody>
-              </Card>
-            </li>
           );
         }
       })}

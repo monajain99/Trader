@@ -26,6 +26,24 @@
   color: #5EB5F8;
 }
 
+.logo_icon{
+color: white;
+font-size: 27px;
+}
+
+.logo_wrapper{
+  background-image: linear-gradient(to right, #7474BF 0%, #348AC7  51%, #7474BF  100%);
+  width: 40px;
+  height: 40px;
+  margin-top: 30px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow: hidden;
+}
 
 
 .section_title{

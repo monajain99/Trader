@@ -3,6 +3,7 @@ import axios from "axios";
 import Trades from "./Trades"
 import "../styles/BuyTrade.css";
 import numeral from "numeral";
+import Box from "./Box"
 import MostActive from "./MostActive";
 import { Row, Col, Container } from "react-bootstrap/";
 
@@ -26,7 +27,7 @@ const Account = ({ setAuthenticated, currentUser, currentUserId }) => {
 if (!loaded) return null;
   
   return (
-    <Container className="content_wrapper" fluid>
+    <Container className="content_wrapper">
       <Row>
         <Col className="content_wrapper2 col-xsm-12">
           <MostActive />
@@ -41,6 +42,11 @@ if (!loaded) return null;
             accountId={accountId}
             setRefresh={setRefresh}
           />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <Box/>
         </Col>
       </Row>
     </Container>
