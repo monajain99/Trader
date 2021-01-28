@@ -34,8 +34,8 @@ if (!loaded) return null;
         </Col>
         <Col className="content_wrapper2 col-xsm-12">
           <div className="section_title user_balance">
-            <i className="fas fa-gem card_icon"></i>Portfolio{"   "}
-            <Button className="demoButton" type="button">
+            <i className="fas fa-gem card_icon"></i>Portfolio{" "}
+            <Button className="portfolioButton" type="button">
               {numeral(Number(accountBalance)).format("($ 0.000 a)")}
             </Button>
           </div>

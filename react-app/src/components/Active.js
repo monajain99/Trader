@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import numeral from "numeral";
 import Loader from "react-loader-spinner";
-import { Card, CardBody, CardTitle, CardText, CardLink } from "reactstrap";
+import { Card, CardBody, CardTitle, CardText, CardLink , Col} from "reactstrap";
 
 function Active() {
   const [activeStock, setActiveStock] = useState([]);
@@ -22,25 +22,27 @@ function Active() {
   if (!activeStock) {
     return (
       <div>
-        <Loader
-          type="Puff"
-          color="#3988C7"
-          height={100}
-          width={100}
-        />
+        <Card className="trades_table stock_table">
+          <Loader
+            type="Bars"
+            color="#3988C7"
+            height={40}
+            width={40}
+            timeout={3000}
+          />
+          <CardText> Sorry not available Please try again later</CardText>
+        </Card>
       </div>
     );
   }
 
   return (
     <>
-      <div className="section_title user_balance">
-        <i className="fas fa-fire card_icon"></i>Most Active
-      </div>
+      
       {activeStock.map((value, index) => {
         if (index < 9) {
           return (
-            <div key={index}>
+            <Col className="col-4" key={index}>
               <Card className="stock_card">
                 <CardBody>
                   <CardTitle className="card_title">{value.symbol}</CardTitle>
@@ -57,7 +59,7 @@ function Active() {
                   </CardText>
                 </CardBody>
               </Card>
-            </div>
+            </Col>
           );
         }
       })}

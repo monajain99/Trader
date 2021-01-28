@@ -68,7 +68,7 @@ const Gainers = () => {
           responsive: true,
 
           hover: { mode: null },
-          
+
           tooltip: {
             shared: true,
             formatter: function () {
@@ -88,7 +88,7 @@ const Gainers = () => {
             },
           },
           chart: {
-            height: 140,
+            height: 160,
             width: 450,
             backgroundColor: "rgba(0,0,0,0)",
           },
@@ -121,7 +121,7 @@ const Gainers = () => {
                 tension: 1,
               },
               shadow: {
-                color: "white",
+                color: "#3788C7",
                 offsetX: 0,
                 offsetY: 5,
                 opacity: 0.2,
@@ -131,7 +131,7 @@ const Gainers = () => {
               color: {
                 linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
                 stops: [
-                  [0.5, "#FFFFFF"], // start
+                  [0.5, "#3788C7"], // start
                   // [1, "#ffffff"], // middle
                   // [1, "#fa2307"], // end
                 ],
@@ -147,23 +147,23 @@ const Gainers = () => {
                   <div>
                     <ReactHighcharts config={config} />
                   </div>
-                  <CardTitle className="card_title">
+                  <CardLink className="card_title">
                     {value.quote.symbol}
-                  </CardTitle>
+                  </CardLink>
                   {/* <CardText className="card_subtitle">
                     {value.quote.companyName}
                   </CardText> */}
-                  <CardText className="number">
+                  <CardLink className="number">
                     $
                     {numeral(Number(value.quote.latestPrice)).format("( 0.00)")}
-                  </CardText>
-                  <CardText className="positive_number">
+                  </CardLink>
+                  <CardLink className="positive_number">
                     <i className="fas fa-long-arrow-alt-up card_icon"></i>
                     {numeral(Number(value.quote.changePercent)).format(
                       "( 00.00)"
                     ) * 100}
                     %
-                  </CardText>
+                  </CardLink>
                 </CardBody>
               </Card>
             </div>
