@@ -73,6 +73,7 @@ p:hover{
             font-size: 16px;
             background-image: linear-gradient(to right, #7474BF 0%, #348AC7  51%, #7474BF  100%);
           }
+
 .demoButton:hover {
             background-position: right center; /* change the direction of the change here */
             text-decoration: none;
@@ -92,3 +93,19 @@ p:hover{
   color: rgb(227, 227, 231);
 }
 
+.portfolioButton {
+        height:30px;
+            background-color: white;
+            /* padding: 5px; */
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            border-radius: 20px !important;
+            border:none;
+            color:white;
+            font-weight: 800;
+            font-family: Cousine;
+            font-size: 16px;
+            background-image: linear-gradient(to right, #7474BF 0%, #348AC7  51%, #7474BF  100%);
+        }

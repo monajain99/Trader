@@ -44,7 +44,45 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
     });
   }, [trades, redirect, refeshFromBuy]);
 
-  
+  function TableRender(props) {
+    const trade = props.trade
+    const priceAvailable = props.isPriceAvailable;
+    const notAvailable = props.isPriceNotAvailable;
+    if (priceAvailable) {
+      let abc = priceAvailable.latestPrice * trade.volume;
+      return (
+        <td className="number">
+          ${numeral(Number(abc)).format("(0.00)")}
+        </td>
+      );
+    } else {
+      return (
+        <td className="number">
+          ${numeral(Number(notAvailable)).format("(0.00)")}
+        </td>
+      );
+    }
+  }
+
+  function ProfitRender(props) {
+  const trade = props.trade;
+  const priceAvailable = props.isPriceAvailable;
+  const notAvailable = props.isPriceNotAvailable;
+  if (priceAvailable) {
+    let abc =
+      ((priceAvailable.latestPrice * trade.volume) - (trade.price * trade.volume))
+    return <td className="number">${numeral(Number(abc)).format("(0.00)")}</td>;
+  } else {
+    return (
+      <td className="number">
+        ${numeral(Number(notAvailable)).format("(0.00)")}
+      </td>
+    );
+  }
+}
+
+
+
 
   if (!trades)
     return (
@@ -54,25 +92,26 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
         setRefresh={setRefresh}
       />
     );
-  if (prices.length ==0) {
-   return (
-     <div>
-       <Card className="trades_table stock_table">
-         <Loader
-           type="Bars"
-           color="#3988C7"
-           height={40}
-           width={40}
-           timeout={3000}
-       />
-       <CardText> Sorry Portfolio not available Please try again later</CardText>
-         
-       </Card>
-     </div>
-   );
- }
+  if (prices.length == 0) {
+    return (
+      <div>
+        <Card className="trades_table stock_table">
+          <Loader
+            type="Bars"
+            color="#3988C7"
+            height={40}
+            width={40}
+            timeout={3000}
+          />
+          <CardText>
+            {" "}
+            Sorry not available Please try again later
+          </CardText>
+        </Card>
+      </div>
+    );
+  }
   return (
-    
     <div className="trade_wrapper">
       <div className="trades">
         <Card className="trades_table stock_table">
@@ -92,7 +131,6 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
                 <tbody>
                   {trades &&
                     trades.map((trade, idx) => {
-              
                       return (
                         <tr>
                           {/* {key = idx} */}
@@ -103,24 +141,32 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
                           <td className="number">
                             {numeral(Number(trade.volume)).format("( 0)")}
                           </td>
-                          <td className="number">
+                          <TableRender
+                            isPriceAvailable={prices[idx]}
+                            trade={trade}
+                            isPriceNotAvailable={Number(
+                              trade.price.latestPrice * trade.volume
+                            )}
+                          />
+                          {/* <td className="number">
                             $
                             {numeral(
-                              Number(prices[idx].latestPrice * trade.volume)
+                              Number(trade.price.latestPrice * trade.volume)
                             ).format("(0.00)")}
-                            {/* {console.log("..rashmi1...")}
-                                {console.log(array)}
-                                {console.log(array.length)}
-                                {console.log(array[idx])}
-                                {console.log("..rashmi2...")} */}
-                          </td>
-                          <td className="number"> 
+                          </td> */}
+                          {/* <td className="number">
                             $
                             {numeral(
-                              Number(prices[idx].latestPrice * trade.volume) -
+                              Number(trade.price.latestPrice * trade.volume) -
                                 trade.price * trade.volume
                             ).format("( 0.00)")}
-                          </td>
+                          </td> */}
+                          <ProfitRender
+                            isPriceAvailable={prices[idx]}
+                            trade={trade}
+                            isPriceNotAvailable={Number(trade.price.latestPrice * trade.volume) - (trade.price * trade.volume)
+                            }
+                          />
                           <td>
                             <Button
                               className="btn-icon btn-simple edit_button"
