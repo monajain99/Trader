@@ -12,7 +12,7 @@ const Gainers = () => {
   const [stocksData, setStocksData] = useState(null);
   const [displayData, setDisplayData] = useState([]);
   const [index, setIndex] = useState(0);
-  const URL = `https://cloud.iexapis.com/stable/stock/market/batch?symbols=GME,AMC&types=quote,chart&range=1d&last=2&token=pk_6f789411fea3492293da22e99ff8d631`;
+  const URL = `https://cloud.iexapis.com/stable/stock/market/batch?symbols=AFG,PTC&types=quote,chart&range=1d&last=2&token=pk_6f789411fea3492293da22e99ff8d631`;
 
   const item = 2;
   useEffect(() => {
@@ -161,7 +161,7 @@ const Gainers = () => {
                     <i className="fas fa-long-arrow-alt-up card_icon"></i>
                     {numeral(Number(value.quote.changePercent)).format(
                       "( 00.00)"
-                    ) * 100}
+                    )*100}
                     %
                   </CardLink>
                 </CardBody>

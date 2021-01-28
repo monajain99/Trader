@@ -14,15 +14,26 @@
   /* background-color: red; */
 }
 .price_card{
-  margin-bottom: 40px;
+  margin-top: 20px;
   background-color: #3c3c4d !important;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   color: white !important;
+  font-size: 11px !important;
   width: 400px;
+  margin-bottom: 140px;
+}
+
+.stock_card{
+  background-color: #3c3c4d !important;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 350px;
+  font-size: 11px !important;
+  margin-bottom: 20px;
 }
 .news_wrapper{
-height:270px;
+height:160px;
 overflow: scroll;
 
 }
@@ -32,7 +43,7 @@ height:600px;
 
 }
 .news_card{
-  height: 250px;
+  height: 150px;
   width: 400px !important;
   overflow: scroll;
   margin-bottom: none !important;
@@ -45,11 +56,11 @@ height:600px;
 .info_wrapper{
 display: flex;
 flex-direction: column;
+margin-bottom:50px;
 
 }
 .keyInfo{
   width: 100%;
-
 }
 
 

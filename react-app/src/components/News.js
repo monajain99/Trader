@@ -25,7 +25,7 @@ function News ({ authenticated, setAuthenticated, symbol }) {
     async function fetchData() {
       const response = await fetch(
         // `https://sandbox.iexapis.com/stable/stock/${symbol}/news/last/${3}?token=Tpk_a72f593783e9451990a7e3a0fceb28e5`
-        `https://cloud.iexapis.com/stable/stock/${symbol}/news/last/${3}?token=pk_6f789411fea3492293da22e99ff8d631`
+        `https://cloud.iexapis.com/stable/stock/${symbol}/news/last/${2}?token=pk_6f789411fea3492293da22e99ff8d631`
       );
       const responseData = await response.json();
       console.log(responseData);
@@ -41,7 +41,9 @@ function News ({ authenticated, setAuthenticated, symbol }) {
   if (data) {
     return (
       <div className="news_wrapper1">
-        <h1>Stock NEWS</h1>
+        <div className="section_title user_balance">
+          <i className="fas fa-wifi card_icon"></i>News
+        </div>
         {data &&
           data.map((data, idx) => {
             return (
@@ -50,41 +52,37 @@ function News ({ authenticated, setAuthenticated, symbol }) {
                   className="stock_card news_card"
                   style={{ width: "30rem", color: "grey" }}
                 >
-                  <CardBody>
+                  <CardLink
+                    href={`${data.url}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <CardImg
                       top
                       src={data.image}
                       alt={data.image}
                       style={{ width: "8rem", height: "4rem" }}
-                    ></CardImg>
-
+                    />
                     <CardTitle
                       className="card_title"
-                      style={{ color: "grey", fontSize: 13 }}
+                      style={{ color: "grey", fontSize: 9 }}
                     >
                       {data.headline}{" "}
                     </CardTitle>
                     <CardText
-                      className="card_subtitle"
-                      style={{ color: "grey", fontSize: 13 }}
+                      className="card_title"
+                      style={{ color: "grey", fontSize: 10 }}
                     >
                       {data.summary}
                     </CardText>
-                    <CardLink
-                      href={`https://cloud.iexapis.com/v1/${data.url}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {" "}
-                      {data.url}{" "}
-                    </CardLink>
+
                     <CardText
                       className="number"
                       style={{ color: "grey", fontSize: 13 }}
                     >
                       {data.source}
                     </CardText>
-                  </CardBody>
+                  </CardLink>
                 </Card>
               </div>
             );

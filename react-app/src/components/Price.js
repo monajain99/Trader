@@ -25,8 +25,10 @@ function Price({ authenticated, setAuthenticated, symbol }) {
 
 console.log(tradeData)
   return (
-    <div className="right_side" >
-      <h1>STOCK Price</h1>
+    <div className="right_side">
+      <div className="section_title user_balance">
+        <i className="fas fa-chart-line card_icon"></i>Stock Price
+      </div>
       <Card className="price_card">
         <CardBody>
           <div>
@@ -37,7 +39,7 @@ console.log(tradeData)
               ${numeral(Number(tradeData.latestPrice)).format("( 0.00)")}
             </CardText>
             <CardText>
-              <i className="fas fa-long-arrow-alt-up card_icon"></i>
+              {/* <i className="fas fa-long-arrow-alt-up card_icon"></i> */}
               {numeral(Number(tradeData.changePercent)).format("( 0.00)")}%
             </CardText>
             <CardText>Previous Close: ${tradeData.previousClose}</CardText>
@@ -46,7 +48,6 @@ console.log(tradeData)
         </CardBody>
       </Card>
     </div>
-  
   );
 };
 

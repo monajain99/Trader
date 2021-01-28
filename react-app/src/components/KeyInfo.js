@@ -34,49 +34,47 @@ function KeyInfo({ authenticated, setAuthenticated, symbol }) {
         }}
       >
         <div className="section_title" style={{ color: "white", fontSize: 20 }}>
-          <i className="fas fa-chart-line card_icon"></i>Key Informations
+          <i className="fas fa-info-circle card_icon"></i>Key Informations
         </div>{" "}
       </div>
       <Row className="keyInfo">
-        <Col className="info_wrapper col-4">
+        <Col className="info_wrapper col-5">
           {/* extendedChange{tradeData.extendedChange} */}
           <h1 style={{ color: "grey", fontSize: 12 }}>Market Cap</h1>
           <h1 style={{ color: "white", fontSize: 12 }}>
-            {numeral(Number(tradeData.marketCap)).format("($ 0 a)")}
+            {numeral(Number(tradeData.marketCap)).format("($ 0.0 a)")}
           </h1>
         </Col>
-        <Col className="info_wrapper col-4">
-          <h1 style={{ color: "grey", fontSize: 12 }}>PE Ratio(TTM)</h1>
+        <Col className="info_wrapper col-5">
+          <h1 style={{ color: "grey", fontSize: 12 }}>PE Ratio [TTM]</h1>
           <h1 style={{ color: "white", fontSize: 12 }}>{tradeData.peRatio}</h1>
         </Col>
-        <Col className="info_wrapper col-4">
+        <Col className="info_wrapper col-5">
           <div style={{ color: "grey", fontSize: 12 }}>52 Week High</div>
           <div style={{ color: "white", fontSize: 12 }}>
-            {numeral(Number(tradeData.week52High)).format("($ 0 a)")}
+            {numeral(Number(tradeData.week52High)).format("($ 0.00)")}
           </div>
         </Col>
-        <Col className="info_wrapper col-4">
+        <Col className="info_wrapper col-5">
           <div style={{ color: "grey", fontSize: 12 }}>52 Week Low</div>
           <div style={{ color: "white", fontSize: 12 }}>
-            {numeral(Number(tradeData.week52Low)).format("($ 0 a)")}
+            {numeral(Number(tradeData.week52Low)).format("($ 0.00)")}
           </div>
         </Col>
-        <Col className="info_wrapper col-4">
-        <div style={{ color: "grey", fontSize: 12 }}>YTD Change</div>
-        <div style={{ color: "white", fontSize: 12 }}>
-          {numeral(Number(tradeData.ytdChange)).format("($ 0 a)")}
+        <Col className="info_wrapper col-5">
+          <div style={{ color: "grey", fontSize: 12 }}>YTD Change</div>
+          <div style={{ color: "white", fontSize: 12 }}>
+            {numeral(Number(tradeData.ytdChange)).format("(0.00)")}
           </div>
         </Col>
-                <Col className="info_wrapper col-4">
-
-        <div style={{ color: "grey", fontSize: 12 }}>Volume</div>
-        <div style={{ color: "white", fontSize: 12 }}>
-          {numeral(Number(tradeData.latestVolume)).format("( 0 a)")}
+        <Col className="info_wrapper col-5">
+          <div style={{ color: "grey", fontSize: 12 }}>Volume</div>
+          <div style={{ color: "white", fontSize: 12 }}>
+            {numeral(Number(tradeData.iexVolume)).format("(0,00 a)")}
           </div>
-          </Col>
+        </Col>
       </Row>
     </div>
-    
   );
 }
 
