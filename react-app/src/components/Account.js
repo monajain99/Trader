@@ -33,8 +33,10 @@ if (!loaded) return null;
           <Gainers />
         </Col>
         <Col className="content_wrapper2 col-xsm-12">
-          <div className="section_title user_balance">
-            <i className="fas fa-gem card_icon"></i>Portfolio{" "}
+          <div className="section_title user_balance balance_wrapper">
+            <div>
+              <i className="fas fa-gem card_icon"></i> Portfolio{" "}
+            </div>
             <Button className="portfolioButton" type="button">
               {numeral(Number(accountBalance)).format("($ 0.000 a)")}
             </Button>

@@ -14,12 +14,7 @@ import "../styles/News.css";
 const apiKey = "c902b0da948b4618a3d8749f106606b6";
 const baseUrl = "https://sandbox.iexapis.com/stable/AAPL/financials/2?token= ";
 
-let newsDate = [];
-let newsHeadline = [];
-let newsImage = [];
-let newsSummary = [];
-let newsUrl = [];
-let newsRelated = [];
+
 
 function News ({ authenticated, setAuthenticated, symbol }) {
   const [data, setData] = useState([]);
@@ -45,13 +40,14 @@ function News ({ authenticated, setAuthenticated, symbol }) {
     return <div className="newsLoading">Loading News...</div>;
   if (data) {
     return (
-      <div className="">
+      <div className="news_wrapper1">
+        <h1>Stock NEWS</h1>
         {data &&
           data.map((data, idx) => {
             return (
-              <>
+              <div className="news_wrapper">
                 <Card
-                  className="stock_card"
+                  className="stock_card news_card"
                   style={{ width: "30rem", color: "grey" }}
                 >
                   <CardBody>
@@ -90,7 +86,7 @@ function News ({ authenticated, setAuthenticated, symbol }) {
                     </CardText>
                   </CardBody>
                 </Card>
-              </>
+              </div>
             );
           })}
       </div>

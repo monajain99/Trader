@@ -5,6 +5,9 @@ import axios from "axios";
 import moment from "moment";
 import News from "./News"
 import Price from "./Price"
+import { Row, Col } from "react-bootstrap/"
+import KeyInfo from "./KeyInfo"
+
 
 const ReactHighcharts = require("react-highcharts");
 
@@ -116,7 +119,7 @@ const Chart = () => {
           },
           chart: {
             height: 350,
-            width: 650,
+            width: 500,
             backgroundColor: "rgba(0,0,0,0)",
           },
 
@@ -177,13 +180,18 @@ const Chart = () => {
   };
 
   return (
-    <>
-      <div className="full_stock_chart">
-        {showData()}
-      </div>
-      <Price symbol={symbol} />
-      <News symbol={symbol} />
-    </>
+    <div className="stock_container">
+      <Row>
+        <Col>
+          <div className="full_stock_chart">{showData()}</div>
+          <KeyInfo symbol={symbol} />
+        </Col>
+        <Col>
+          <Price symbol={symbol} />
+          <News symbol={symbol} />
+        </Col>
+      </Row>
+    </div>
   );
 };
 

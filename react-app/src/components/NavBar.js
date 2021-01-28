@@ -54,7 +54,7 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
               ""
             )}
             {authenticated ? (
-              <li className="navbar_links">
+              <li className="navbar_links spacing">
                 <LogoutButton setAuthenticated={setAuthenticated} />
               </li>
             ) : (

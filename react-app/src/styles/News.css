@@ -1,3 +1,55 @@
+.stock_container{
+  width: 100%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+.full_stock_chart{
+  width: 550px;
+  font-size: 11px !important;
+  margin-bottom: 20px;
+}
+.right_side{
+  /* background-color: red; */
+}
+.price_card{
+  margin-bottom: 40px;
+  background-color: #3c3c4d !important;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  color: white !important;
+  width: 400px;
+}
+.news_wrapper{
+height:270px;
+overflow: scroll;
+
+}
+.news_wrapper1{
+height:600px;
+
+
+}
+.news_card{
+  height: 250px;
+  width: 400px !important;
+  overflow: scroll;
+  margin-bottom: none !important;
+  margin-top: none !important;
+
+}
+.info_container{
+}
+.info_wrapper{
+display: flex;
+flex-direction: column;
+
+}
+.keyInfo{
+  width: 100%;
+
+}
 /* * {
   margin: 0;
   padding: 0;

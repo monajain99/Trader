@@ -33,6 +33,11 @@
   color:grey;
   padding: 50px;
 } */
+.balance_wrapper {
+  width: 495px;
+  display: flex;
+  justify-content: space-between;
+}
 tbody{
   color:white;
   padding: 5px;
@@ -77,13 +82,7 @@ tbody{
   margin-bottom: 20px;
   margin-top: 30px !important;
 }
-.full_stock_chart{
-  width: 800px;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  font-size: 11px !important;
-  margin-bottom: 20px;
-}
+
 
 .trades_table{
   background-color: #3c3c4d !important;
@@ -118,21 +117,10 @@ tbody{
 .stock-titles{
   width: 30%;
   height: 20%;
-  position: absolute;
   left: 65%;
   top: 30%;
 }
-.keyInfo{
-  width: 30%;
-  height:30%;
-  position: absolute;
-  left: 10%;
- 
-  top: 70%;
-  display: grid;
-  grid-template-columns: repeat(3, 3fr);
-  grid-gap: 20px;
-}
+
 
 .edit_button{
   height: 16px;
