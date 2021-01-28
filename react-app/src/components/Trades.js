@@ -71,6 +71,7 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
   if (priceAvailable) {
     let abc =
       ((priceAvailable.latestPrice * trade.volume) - (trade.price * trade.volume))
+    console.log(abc)
     return <td className="number">${numeral(Number(abc)).format("(0.00)")}</td>;
   } else {
     return (

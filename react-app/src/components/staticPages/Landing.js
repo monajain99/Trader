@@ -1,5 +1,5 @@
-import React from 'react';
-import '../../styles/Navbar.css'
+import React from "react";
+import "../../styles/Navbar.css";
 
 function LandingPage(setAuthenticated) {
   return (

@@ -76,7 +76,7 @@ function KeyInfo({ authenticated, setAuthenticated, symbol }) {
           </Col>
       </Row>
     </div>
-    //{" "}
+    
   );
 }
 

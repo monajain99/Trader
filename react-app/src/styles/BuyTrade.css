@@ -16,7 +16,7 @@
   text-shadow: rgba(2, 255, 196, 0.406) 0px 19px 38px, rgba(2, 255, 196, 0.007) 0px 15px 12px;
   font-weight: 700;
 }
-.Negative_number{
+.negative_number{
    color: #fa2307;
   font-family: 'Barlow';
   text-shadow: rgba(255, 2, 2, 0.406) 0px 19px 38px, rgba(255, 2, 2, 0.406) 0px 15px 12px;
@@ -121,7 +121,9 @@ tbody{
   top: 30%;
 }
 
-
+.number2{
+  
+}
 .edit_button{
   height: 16px;
   width: 16px;
