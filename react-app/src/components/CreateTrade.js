@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { addTrade } from "../services/trades";
 import "../styles/BuyTrade.css";
 import {
   FormGroup,
@@ -48,6 +47,7 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
       stock_id,
       transaction_date: "20210118",
     });
+    console.log(response.data)
     setRefresh(false);
     setRefeshFromBuy(true);
   };
