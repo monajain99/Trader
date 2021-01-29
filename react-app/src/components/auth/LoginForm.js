@@ -1,20 +1,12 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import { login } from "../../services/auth";
-import {
-  Form,
-  Jumbotron as Jumbo,
-  Container,
-  Button,
-  Row,
-  Col,
-} from "react-bootstrap";
+import "../../styles/LoginForm.css"
 
 const LoginForm = ({ authenticated, setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
 
   const onLogin = async (e) => {
     e.preventDefault();
@@ -40,55 +32,51 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <Jumbo className="bg=lt">
-      <Container>
-        <Row>
-          <Col>
-            <h1 className="display-4">Sign in to be a Pro Trader!</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p className="lead">Together We Can Do it! </p>
-          </Col>
-        </Row>
-        <Form onSubmit={onLogin}>
-          <div>
-            {errors.map((error) => (
-              <div>{error}</div>
-            ))}
-          </div>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Email </Form.Label>
-            <Row>
-              <Col lg={4}>
-                   <input
-                  name="email"
-                  type="text"
-                  value={email}
-                  onChange={updateEmail}
-                />
-              </Col>
-            </Row>
-          </Form.Group>
-
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
-            <Row>
-              <Col lg={4}>
-                <input
-                  name="password"
-                  type="password"
-                  value={password}
-                  onChange={updatePassword}
-                />
-              </Col>
-            </Row>
-          </Form.Group>
-          <Button type="submit">Login</Button>
-        </Form>
-      </Container>
-    </Jumbo>
+    <div className="login-form-div h-100vh pattern-cross-dots-xl flex justify-center items-center bg-fixed">
+      <form
+        onSubmit={onLogin}
+        className="login-form animate__animated animate__bounceInUp"
+      >
+        <div>
+          {errors.map((error) => (
+            <div className="errors">
+              <p>{error}</p>
+            </div>
+          ))}
+        </div>
+        <div className="input-wrapper">
+          <h1 className="form-title">ProTrader</h1>
+          <h3 className="form-sub">Login</h3>
+          <label>Email</label>
+          <input
+            className="input"
+            name="email"
+            type="text"
+            value={email}
+            onChange={updateEmail}
+          />
+        </div>
+        <div className="input-wrapper">
+          <label>Password</label>
+          <input
+            className="input"
+            name="password"
+            type="password"
+            value={password}
+            onChange={updatePassword}
+          />
+        </div>
+        <button type="submit" className="login-button">
+          Submit
+        </button>
+        <p className="cta-p">
+          Not a member?
+          <a className="cta-a" href="/sign-up">
+            Register here
+          </a>
+        </p>
+      </form>
+    </div>
   );
 };
 

@@ -15,7 +15,7 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
 
   let array = [];
   // trades.map((trade) => console.log(trade.ticker));
-
+  
   useEffect(() => {
     (async () => {
       const data = await axios.get(`/api/trade/${currentUserId}`);
@@ -26,23 +26,26 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
     })();
   }, [redirect, refeshFromBuy]);
 
+  
   useEffect(() => {
-    // console.log(trades);
-    Promise.all(
-      trades.map((trade) => {
-        return fetch(
-          // `https://sandbox.iexapis.com/stable/stock/${trade.ticker}/quote?displayPercent=true&token=Tpk_a72f593783e9451990a7e3a0fceb28e5`
+    if (trades) {
+      Promise.all(
+        trades.map((trade) => {
+          return fetch(
+            // `https://sandbox.iexapis.com/stable/stock/${trade.ticker}/quote?displayPercent=true&token=Tpk_a72f593783e9451990a7e3a0fceb28e5`
 
-          `https://cloud.iexapis.com/stable/stock/${trade.ticker}/quote?displayPercent=true&token=pk_507026b3e85f4e4a889d2c112c20b532`
-        ).then((res) => res.json());
-      })
-    ).then((data) => {
-      // console.log(data);
-      setPrices(data);
-      setRefresh(false);
-      setRedirect(false);
-    });
+            `https://cloud.iexapis.com/stable/stock/${trade.ticker}/quote?displayPercent=true&token=pk_507026b3e85f4e4a889d2c112c20b532`
+          ).then((res) => res.json());
+        })
+      ).then((data) => {
+        // console.log(data);
+        setPrices(data);
+        setRefresh(false);
+        setRedirect(false);
+      });
+    }
   }, [trades, redirect, refeshFromBuy]);
+  
 
   function TableRender(props) {
     const trade = props.trade
@@ -124,6 +127,7 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
       </div>
     );
   }
+
   return (
     <div className="trade_wrapper">
       <div className="trades">
