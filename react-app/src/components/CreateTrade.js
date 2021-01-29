@@ -47,7 +47,6 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
       stock_id,
       transaction_date: "20210118",
     });
-    // console.log(response.data)
     setRefresh(false);
     setRefeshFromBuy(true);
   };

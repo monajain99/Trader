@@ -12,7 +12,7 @@ const Gainers = () => {
   const [stocksData, setStocksData] = useState(null);
   const [displayData, setDisplayData] = useState([]);
   const [index, setIndex] = useState(0);
-  const URL = `https://cloud.iexapis.com/stable/stock/market/batch?symbols=AFG,PTC&types=quote,chart&range=1d&last=2&token=pk_6f789411fea3492293da22e99ff8d631`;
+  const URL = `https://cloud.iexapis.com/stable/stock/market/batch?symbols=SGRY,PSAC&types=quote,chart&range=1d&last=2&token=pk_6f789411fea3492293da22e99ff8d631`;
 
   const item = 2;
   useEffect(() => {
@@ -143,10 +143,7 @@ const Gainers = () => {
           <div>
             <div key={value.quote.symbol}>
               <Card className="stock_card stock_chart">
-                <CardLink
-                  href={`/news/${value.quote.symbol}`}
-                  
-                >
+                <CardLink href={`/news/${value.quote.symbol}`}>
                   <CardBody>
                     <div>
                       <ReactHighcharts config={config} />
@@ -157,17 +154,17 @@ const Gainers = () => {
                     {/* <CardText className="card_subtitle">
                     {value.quote.companyName}
                   </CardText> */}
-                    <CardLink className="number">
+                    <CardLink className="number positive_number">
                       $
                       {numeral(Number(value.quote.latestPrice)).format(
                         "( 0.00)"
                       )}
                     </CardLink>
-                    <CardLink className="positive_number">
+                    <span className="positive_number">
                       <i className="fas fa-long-arrow-alt-up card_icon"></i>$
-                      {console.log(value.quote.changePercent)}
+                      {/* {console.log(value.quote.changePercent)} */}
                       {Number(value.quote.changePercent * 100).toFixed(2)}%
-                    </CardLink>
+                    </span>
                   </CardBody>
                 </CardLink>
               </Card>

@@ -24,7 +24,7 @@ function KeyInfo({ authenticated, setAuthenticated, symbol }) {
     fetchData();
   }, [symbol]);
 
-  console.log(tradeData);
+  // console.log(tradeData);
   return (
     <div className="info_container">
       <div

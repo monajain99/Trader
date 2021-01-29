@@ -7,11 +7,9 @@ import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
 import User from "./components/User";
 import { authenticate } from "./services/auth";
-import { getAccount } from "./services/account";
 import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Account from "./components/Account";
-import News from "./components/News"
 import Chart from "./components/Chart"
 import LandingPage from "./components/staticPages/Landing";
 

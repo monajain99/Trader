@@ -14,12 +14,10 @@ function Active() {
       );
       const responseData = await response.json();
       setActiveStock(responseData);
-      console.log(activeStock);
     }
     fetchData();
   }, []);
 
-        console.log(activeStock);
 
 
   if (!activeStock) {
@@ -43,7 +41,6 @@ function Active() {
     <>
       
       {activeStock.map((value, index) => {
-        console.log(value.changePercent, "=",Math.sign(value.changePercent) === 1);
         if (index < 9) {
           return (
             <Col className="col-4" key={index}>
