@@ -32,10 +32,10 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <div className="login-form-div h-100vh pattern-cross-dots-xl flex justify-center items-center bg-fixed">
+    <div className="login-form-div">
       <form
         onSubmit={onLogin}
-        className="login-form animate__animated animate__bounceInUp"
+        className="login-form"
       >
         <div>
           {errors.map((error) => (
@@ -47,8 +47,8 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
         <div className="input-wrapper">
           <h1 className="form-title">ProTrader</h1>
           <h3 className="form-sub">Login</h3>
-          <label>Email</label>
           <input
+            placeholder="Email"
             className="input"
             name="email"
             type="text"
@@ -57,8 +57,9 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           />
         </div>
         <div className="input-wrapper">
-          <label>Password</label>
           <input
+            placeholder="Password"
+
             className="input"
             name="password"
             type="password"
@@ -81,3 +82,6 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
 };
 
 export default LoginForm;
+
+
+

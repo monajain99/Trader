@@ -54,8 +54,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   }
 
   return (
-    <div className="signup-form-div h-100vh pattern-cross-dots-xl flex justify-center items-center bg-fixed">
-      <form onSubmit={onSignUp} className="signup-form animate__animated animate__bounceInUp">
+    <div className="signup-form-div">
+      <form onSubmit={onSignUp} className="signup-form">
         <div>
           {errors.map((error) => (
             <div>{error}</div>
@@ -63,8 +63,10 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         </div>
         <div className="input-wrapper">
           <h1 className="form-title">ProTrader</h1>
-          <label>Username</label>
+          <h3 className="form-sub">Sign Up</h3>
+
           <input
+            placeholder="Username"
             type="text"
             className="input"
             name="username"
@@ -73,8 +75,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           ></input>
         </div>
         <div className="input-wrapper">
-          <label>Email</label>
           <input
+            placeholder="Email"
             className="input"
             type="text"
             name="email"
@@ -83,8 +85,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           ></input>
         </div>
         <div className="input-wrapper">
-          <label>Password</label>
           <input
+            placeholder="Password"
             className="input"
             type="password"
             name="password"
@@ -93,8 +95,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           ></input>
         </div>
         <div className="input-wrapper">
-          <label>Confirm Password</label>
           <input
+            placeholder="Confirm Password"
             className="input"
             type="password"
             name="repeat_password"
@@ -104,8 +106,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
           ></input>
         </div>
         <div className="input-wrapper">
-          <label>Full Name</label>
           <input
+            placeholder="Full Name"
             className="input"
             type="text"
             onChange={updateFullName}
@@ -115,12 +117,12 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         </div>
         <button className="signup-button" type="submit">
           Submit
-				</button>
+        </button>
         <p className="cta-p">
           Have an account?{" "}
           <a className="cta-a" href="/login">
             Sign in
-					</a>
+          </a>
         </p>
       </form>
     </div>

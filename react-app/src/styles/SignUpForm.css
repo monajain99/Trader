@@ -5,39 +5,35 @@
 	justify-content: center;
 	align-items: center;
 	align-self: center;
+	margin-top: 0px !important;
 	border-radius: 10px;
-	height: 600px;
-	width: 400px;
-	background-color: rgb(228, 235, 240);
-	box-shadow: 0 50px 100px -20px rgba(50, 50, 93, 0.25),
-		0 30px 60px -30px rgba(0, 0, 0, 0.3),
-		inset 0 -2px 6px 0 rgba(10, 37, 64, 0.35);
+	border-radius: 10px;
+	height: 750px;
+	width: 700px;
 }
 
 .input {
-	padding: 2px;
+		padding: 2px;
 	margin: 2px;
-	border-bottom: 2px solid black;
-	border-top: none;
-	border-left: none;
-	border-right: none;
+	border: .5px solid rgb(184, 182, 182) !important;
+	height: 65px;
 	font-weight: 600;
+	background-color: #282F39 !important;
 }
 
 .input:hover {
-	border-bottom: 2px solid #fec017;
+	border: .5px solid rgb(184, 182, 182) !important;
 }
 
 .input:focus {
-	outline: none;
+	border: .5px solid rgb(158, 143, 143) !important;
 }
 
 .signup-form-div {
-	margin-top: 80px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	align-self: center;
+	align-self: left;
 	overflow: hidden;
 }
 
@@ -56,8 +52,8 @@ label {
 }
 
 .signup-button {
-	color: white;
-	background-color: black;
+color: black;
+	background-color: #f5f4f0;
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-top: 10px;
@@ -68,7 +64,7 @@ label {
 }
 
 .signup-button:hover {
-	background-color: #f5f4f0;
+	background-color: #ffff;
 	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 	cursor: pointer;
 	color: black;
@@ -78,19 +74,19 @@ label {
 	text-align: center;
 	font-weight: 700;
 	font-size: 60px;
-	margin: 0;
-	padding: 0;
+	padding-bottom: 80px !important;
 	font-family: "Barlow";
+	color: #f5f4f0;
 }
 
 .form-sub {
-	text-align: center;
+	text-align: left !important;
 	font-weight: 400;
 	font-size: 30px;
-	margin: 0;
+	margin-bottom: 10Px;
 	padding: 0;
-	padding-bottom: 20px;
-	color: rgb(85, 88, 92);
+	padding-bottom: 0px;
+	color: #f5f4f0 !important;
 	font-family: "Barlow";
 }
 
@@ -99,19 +95,21 @@ label {
 	margin-top: 20px;
 	font-weight: 600;
 	font-family: "Barlow";
+	color: #adadad !important;
 }
 
 .cta-a {
 	margin-top: 20px;
-	font-size: 12px;
+	font-size: 14px !important;
 	font-weight: 600;
 	font-family: "Barlow";
-	color: rgb(85, 88, 92);
+	color: #f5f4f0 !important;
 }
 
 .cta-p:hover {
 	font-size: 12px;
 	text-shadow: none;
+	color: #757575;
 }
 
 .cta-a:hover {
@@ -119,9 +117,9 @@ label {
 }
 
 .errors {
-	background-color: #dca7a6;
-	border: 1px solid #471517;
-	color: #471517;
+	background-color: #d5d7db;
+	border: 1px solid #373a46;
+	color: #151647;
 	font-family: "Barlow";
 	font-size: 12px;
 	margin-bottom: 5px;
