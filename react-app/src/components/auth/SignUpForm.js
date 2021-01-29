@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../services/auth';
-import {
-  Form,
-  Jumbotron as Jumbo,
-  Container,
-  Button,
-  Row,
-  Col,
-} from "react-bootstrap";
+import "../../styles/SignUpForm.css";
 
 
-const SignUpForm = ({authenticated, setAuthenticated}) => {
+
+const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -60,81 +54,77 @@ const SignUpForm = ({authenticated, setAuthenticated}) => {
   }
 
   return (
-    <Jumbo className="bg=lt">
-      <Container className="bg=lt">
-        <Row>
-          <Col>
-            <h1 className="display-4">Sign in to be a Pro Trader!</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <p className="lead">Together We Can Do it! </p>
-          </Col>
-        </Row>
-        <Form onSubmit={onSignUp}>
-          <div>
-            {errors.map((error) => (
-              <div>{error}</div>
-            ))}
-          </div>
-          <Form.Group controlId="formBasicEmail">
-            <Form.Label>Username</Form.Label>
-            <Row>
-              <Col lg={4}>
-                <input type="text" onChange={updateUsername} value={username} />
-              </Col>
-            </Row>
-          </Form.Group>
-          <Form.Label>Email</Form.Label>
-          <Row>
-            <Col lg={4}>
-              <input type="text" onChange={updateEmail} value={email} />
-              <Form.Text className="text-muted"></Form.Text>
-            </Col>
-          </Row>
-          <Form.Label>Password</Form.Label>
-          <Row>
-            <Col lg={4}>
-              <input
-                type="password"
-                onChange={updatePassword}
-                value={password}
-              />
-              <Form.Text className="text-muted"></Form.Text>
-            </Col>
-          </Row>
-          <Form.Label>Repeat Password</Form.Label>
-          <Row>
-            <Col lg={4}>
-              <input
-                type="password"
-                onChange={updateRepeatPassword}
-                value={repeatPassword}
-                required={true}
-              />
-            </Col>
-          </Row>
-          <Form.Group controlId="formBasicPassword">
-            <Form.Label>Full Name</Form.Label>
-            <Row>
-              <Col lg={4}>
-                <input
-                  type="text"
-                  onChange={updateFullName}
-                  value={full_name}
-                  required={true}
-                />
-              </Col>
-            </Row>
-          </Form.Group>
-          <Button variant="info" type="submit">
-            Sign Up
-          </Button>
-        </Form>
-      </Container>
-    </Jumbo>
+    <div className="signup-form-div h-100vh pattern-cross-dots-xl flex justify-center items-center bg-fixed">
+      <form onSubmit={onSignUp} className="signup-form animate__animated animate__bounceInUp">
+        <div>
+          {errors.map((error) => (
+            <div>{error}</div>
+          ))}
+        </div>
+        <div className="input-wrapper">
+          <h1 className="form-title">ProTrader</h1>
+          <label>Username</label>
+          <input
+            type="text"
+            className="input"
+            name="username"
+            onChange={updateUsername}
+            value={username}
+          ></input>
+        </div>
+        <div className="input-wrapper">
+          <label>Email</label>
+          <input
+            className="input"
+            type="text"
+            name="email"
+            onChange={updateEmail}
+            value={email}
+          ></input>
+        </div>
+        <div className="input-wrapper">
+          <label>Password</label>
+          <input
+            className="input"
+            type="password"
+            name="password"
+            onChange={updatePassword}
+            value={password}
+          ></input>
+        </div>
+        <div className="input-wrapper">
+          <label>Confirm Password</label>
+          <input
+            className="input"
+            type="password"
+            name="repeat_password"
+            onChange={updateRepeatPassword}
+            value={repeatPassword}
+            required={true}
+          ></input>
+        </div>
+        <div className="input-wrapper">
+          <label>Full Name</label>
+          <input
+            className="input"
+            type="text"
+            onChange={updateFullName}
+            value={full_name}
+            required={true}
+          ></input>
+        </div>
+        <button className="signup-button" type="submit">
+          Submit
+				</button>
+        <p className="cta-p">
+          Have an account?{" "}
+          <a className="cta-a" href="/login">
+            Sign in
+					</a>
+        </p>
+      </form>
+    </div>
   );
-};
+}
 
 export default SignUpForm;
