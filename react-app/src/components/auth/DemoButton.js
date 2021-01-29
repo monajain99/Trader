@@ -20,9 +20,9 @@ const DemoButton = ({ setAuthenticated, authenticated, isLink = false }) => {
   }
 
   return (
-    <button className="general_button" onClick={handleLoginClick}>
+    <a className="" onClick={handleLoginClick}>
       Login as a Demo User
-    </button>
+    </a>
   );
 };
 

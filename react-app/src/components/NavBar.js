@@ -29,26 +29,28 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
             {authenticated ? (
               ""
             ) : (
-              <li className="navbar_links">
+              <button className=" nav_button">
                 <NavLink to="/login" exact={true} activeClassName="active">
-                  <p className="navbar_link">Log In</p>
+                  Log In
                 </NavLink>
-              </li>
+              </button>
             )}
             {authenticated ? (
               ""
             ) : (
-              <li className="navbar_links">
+              <button className="nav_button">
                 <NavLink to="/sign-up" exact={true} activeClassName="active">
-                  <p className="navbar_link">Sign Up</p>{" "}
+                  Sign Up
                 </NavLink>
-              </li>
+              </button>
             )}
             {authenticated ? (
-              <li className="navbar_links">
-                <NavLink to="/profile" exact={true} activeClassName="active">
-                  {/* <p className="demoButton"></p> */}
-                </NavLink>
+              <li className="">
+                <NavLink
+                  to="/profile"
+                  exact={true}
+                  activeClassName="active"
+                ></NavLink>
               </li>
             ) : (
               ""
@@ -59,13 +61,15 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
               </li>
             ) : (
               ""
-            )}
-            <li className="navbar_links">
-              <DemoButton
-                setAuthenticated={setAuthenticated}
-                authenticated={authenticated}
-              />
-            </li>
+              )}
+            {authenticated ? "" :
+              <li className="nav_button">
+                <DemoButton
+                  setAuthenticated={setAuthenticated}
+                  authenticated={authenticated}
+                />
+              </li>
+            }
           </ul>
         </Col>
       </Row>

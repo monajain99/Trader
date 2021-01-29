@@ -21,13 +21,38 @@ html,body {
     display: flex;
     list-style: none;
     justify-content: flex-end;
-    padding-bottom: 20px;
-    justify-content: center;
+    padding-bottom: 23px;
+    justify-content: space-around;
     align-content: center;
     align-items: center;
     justify-items: center;
+    width: 500px;
 }
-.navbar_links {
+
+.nav_button{
+    /* background: blue; */
+margin-top: 20px;
+padding: 5px 10px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto; 
+  color: white !important;
+  border-radius: 10px;
+  display: block;
+  border: none;
+  font-weight: 500;
+  font-family: Cousine;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  background-image: linear-gradient(to right, #7474BF 0%, #348AC7  51%, #7474BF  100%)}
+
+a{
+      color: white !important;
+      
+
+}
+  .navbar_links {
     margin-top: 20px;
     margin-left: 20px;
     display: flex;
@@ -118,6 +143,7 @@ p:hover{
             padding-left: 380px;
             font-weight: 800px;
             text-align: center;
+            font-size: 80px !important;
 
   }
  
