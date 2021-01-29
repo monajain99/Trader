@@ -22,12 +22,12 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
       setTrades(data.data.trade_items);
       setRefresh(false);
       setRedirect(false);
-      console.log(trades);
+      // console.log(trades);
     })();
   }, [redirect, refeshFromBuy]);
 
   useEffect(() => {
-    console.log(trades);
+    // console.log(trades);
     Promise.all(
       trades.map((trade) => {
         return fetch(
@@ -37,7 +37,7 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
         ).then((res) => res.json());
       })
     ).then((data) => {
-      console.log(data);
+      // console.log(data);
       setPrices(data);
       setRefresh(false);
       setRedirect(false);
@@ -72,16 +72,28 @@ const Trades = ({ accountId, currentUserId, setRefresh }) => {
     let abc =
       ((priceAvailable.latestPrice * trade.volume) - (trade.price * trade.volume))
     console.log(abc)
-    return <td className="number">${numeral(Number(abc)).format("(0.00)")}</td>;
+    return (
+      <td
+        className={Math.sign(abc) === 1 ? "positive_number" : "negative_number"}
+      >
+        ${Number(abc.toFixed(2))}
+      </td>
+    );
   } else {
     return (
-      <td className="number">
-        ${numeral(Number(notAvailable)).format("(0.00)")}
+      <td
+        className={
+          Math.sign(notAvailable) === 1 ? "positive_number" : "negative_number"
+        }
+      >
+        ${Number(notAvailable.toFixed(2))}
       </td>
     );
   }
 }
 
+  
+                                    
 
 
 

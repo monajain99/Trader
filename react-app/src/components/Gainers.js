@@ -143,28 +143,33 @@ const Gainers = () => {
           <div>
             <div key={value.quote.symbol}>
               <Card className="stock_card stock_chart">
-                <CardBody>
-                  <div>
-                    <ReactHighcharts config={config} />
-                  </div>
-                  <CardLink className="card_title">
-                    {value.quote.symbol}
-                  </CardLink>
-                  {/* <CardText className="card_subtitle">
+                <CardLink
+                  href={`/news/${value.quote.symbol}`}
+                  
+                >
+                  <CardBody>
+                    <div>
+                      <ReactHighcharts config={config} />
+                    </div>
+                    <CardLink className="card_title">
+                      {value.quote.symbol}
+                    </CardLink>
+                    {/* <CardText className="card_subtitle">
                     {value.quote.companyName}
                   </CardText> */}
-                  <CardLink className="number">
-                    $
-                    {numeral(Number(value.quote.latestPrice)).format("( 0.00)")}
-                  </CardLink>
-                  <CardLink className="positive_number">
-                    <i className="fas fa-long-arrow-alt-up card_icon"></i>
-                    {numeral(Number(value.quote.changePercent)).format(
-                      "( 00.00)"
-                    )*100}
-                    %
-                  </CardLink>
-                </CardBody>
+                    <CardLink className="number">
+                      $
+                      {numeral(Number(value.quote.latestPrice)).format(
+                        "( 0.00)"
+                      )}
+                    </CardLink>
+                    <CardLink className="positive_number">
+                      <i className="fas fa-long-arrow-alt-up card_icon"></i>$
+                      {console.log(value.quote.changePercent)}
+                      {Number(value.quote.changePercent * 100).toFixed(2)}%
+                    </CardLink>
+                  </CardBody>
+                </CardLink>
               </Card>
             </div>
           </div>

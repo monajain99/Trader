@@ -23,7 +23,7 @@ function Price({ authenticated, setAuthenticated, symbol }) {
     fetchData();
   }, [symbol]);
 
-console.log(tradeData)
+// console.log(tradeData)
   return (
     <div className="right_side">
       <div className="section_title user_balance">
@@ -35,15 +35,26 @@ console.log(tradeData)
             <CardText className="card_subtitle">
               {tradeData.companyName}
             </CardText>
-            <CardText className="number">
+            <CardText className="section_title user_balance">
               ${numeral(Number(tradeData.latestPrice)).format("( 0.00)")}
             </CardText>
-            <CardText>
+            <CardText
+              className={
+                Math.sign(tradeData.changePercent) === 1
+                  ? "positive_number"
+                  : "negative_number"
+              }
+            >
               {/* <i className="fas fa-long-arrow-alt-up card_icon"></i> */}
-              {numeral(Number(tradeData.changePercent)).format("( 0.00)")}%
+              {Number(tradeData.change).toFixed(2)} {"  "}[
+              {Number(tradeData.changePercent).toFixed(2)}%]
             </CardText>
-            <CardText>Previous Close: ${tradeData.previousClose}</CardText>
-            <CardText>Latest Time: {tradeData.latestTime}</CardText>
+            <CardLink style={{ color: "white" }}>
+              Previous Close: ${tradeData.previousClose}
+            </CardLink>
+            <CardLink style={{ color: "white" }}>
+              Last Update: {tradeData.latestTime}
+            </CardLink>
           </div>
         </CardBody>
       </Card>

@@ -30,48 +30,86 @@ function KeyInfo({ authenticated, setAuthenticated, symbol }) {
       <div
         style={{
           color: "grey",
-          fontSize: 20,
+          fontSize: 15,
         }}
       >
-        <div className="section_title" style={{ color: "white", fontSize: 20 }}>
-          <i className="fas fa-info-circle card_icon"></i>Key Informations
+        <div className="section_title user_balance">
+          <i className="fas fa-info-circle card_icon"></i>Key Information
         </div>{" "}
       </div>
       <Row className="keyInfo">
-        <Col className="info_wrapper col-5">
+        <Col className="info_wrapper col-4">
           {/* extendedChange{tradeData.extendedChange} */}
           <h1 style={{ color: "grey", fontSize: 12 }}>Market Cap</h1>
-          <h1 style={{ color: "white", fontSize: 12 }}>
+          <h1
+            style={{
+              color: "white",
+              fontSize: 15,
+              className: "section_title user_balance",
+            }}
+          >
             {numeral(Number(tradeData.marketCap)).format("($ 0.0 a)")}
           </h1>
         </Col>
-        <Col className="info_wrapper col-5">
+        <Col className="info_wrapper col-4">
           <h1 style={{ color: "grey", fontSize: 12 }}>PE Ratio [TTM]</h1>
-          <h1 style={{ color: "white", fontSize: 12 }}>{tradeData.peRatio}</h1>
+          <h1
+            style={{
+              color: "white",
+              fontSize: 15,
+              className: "section_title user_balance",
+            }}
+          >
+            {tradeData.peRatio}
+          </h1>
         </Col>
-        <Col className="info_wrapper col-5">
-          <div style={{ color: "grey", fontSize: 12 }}>52 Week High</div>
-          <div style={{ color: "white", fontSize: 12 }}>
+        <Col className="info_wrapper col-4">
+          <h1 style={{ color: "grey", fontSize: 12 }}>52 Week High</h1>
+          <h1
+            style={{
+              color: "white",
+              fontSize: 15,
+              className: "section_title user_balance",
+            }}
+          >
             {numeral(Number(tradeData.week52High)).format("($ 0.00)")}
-          </div>
+          </h1>
         </Col>
-        <Col className="info_wrapper col-5">
-          <div style={{ color: "grey", fontSize: 12 }}>52 Week Low</div>
-          <div style={{ color: "white", fontSize: 12 }}>
+        <Col className="info_wrapper col-4">
+          <h1 style={{ color: "grey", fontSize: 12 }}>52 Week Low</h1>
+          <h1
+            style={{
+              color: "white",
+              fontSize: 15,
+              className: "section_title user_balance",
+            }}
+          >
             {numeral(Number(tradeData.week52Low)).format("($ 0.00)")}
-          </div>
+          </h1>
         </Col>
-        <Col className="info_wrapper col-5">
-          <div style={{ color: "grey", fontSize: 12 }}>YTD Change</div>
-          <div style={{ color: "white", fontSize: 12 }}>
-            {numeral(Number(tradeData.ytdChange)).format("(0.00)")}
-          </div>
+        <Col className="info_wrapper col-4">
+          <h1 style={{ color: "grey", fontSize: 12 }}>YTD Change</h1>
+          <h1
+            style={{
+              color: "white",
+              fontSize: 15,
+              className: "section_title user_balance",
+            }}
+          >
+            {Number(tradeData.ytdChange).toFixed(2)}%
+          </h1>
         </Col>
-        <Col className="info_wrapper col-5">
-          <div style={{ color: "grey", fontSize: 12 }}>Volume</div>
-          <div style={{ color: "white", fontSize: 12 }}>
+        <Col className="info_wrapper col-4">
+          <h1 style={{ color: "grey", fontSize: 12 }}>Volume</h1>
+          <h1
+            style={{
+              color: "white",
+              fontSize: 15,
+              className: "section_title user_balance",
+            }}
+          >
             {numeral(Number(tradeData.iexVolume)).format("(0,00 a)")}
-          </div>
+          </h1>
         </Col>
       </Row>
     </div>

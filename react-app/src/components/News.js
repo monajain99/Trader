@@ -3,7 +3,6 @@ import {
   Card,
   CardImgOverlay,
   CardLink,
-  CardBody,
   CardTitle,
   CardText,
   CardImg,
@@ -28,13 +27,13 @@ function News ({ authenticated, setAuthenticated, symbol }) {
         `https://cloud.iexapis.com/stable/stock/${symbol}/news/last/${2}?token=pk_6f789411fea3492293da22e99ff8d631`
       );
       const responseData = await response.json();
-      console.log(responseData);
+      // console.log(responseData);
       setData(responseData);
     }
     fetchData();
   }, [symbol]);
 
-  console.log(data);
+  // console.log(data);
 
   if (!data || data == undefined)
     return <div className="newsLoading">Loading News...</div>;

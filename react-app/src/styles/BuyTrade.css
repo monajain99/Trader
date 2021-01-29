@@ -19,7 +19,7 @@
 .negative_number{
    color: #fa2307;
   font-family: 'Barlow';
-  text-shadow: rgba(255, 2, 2, 0.406) 0px 19px 38px, rgba(255, 2, 2, 0.406) 0px 15px 12px;
+  text-shadow: rgba(255, 2, 2, 0.315) 0px 19px 38px, rgba(255, 2, 2, 0) 0px 15px 12px;
   font-weight: 700;
 
 }
@@ -140,7 +140,7 @@ tbody{
 }
 
 input{
-  background: #373A46 !important;
+  background: #383849 !important;
   border: none !important;
   color: #8c8d96 !important;
   font-weight: 700 !important;

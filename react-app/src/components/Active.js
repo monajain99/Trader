@@ -14,7 +14,7 @@ function Active() {
       );
       const responseData = await response.json();
       setActiveStock(responseData);
-      console.log(responseData)
+      // console.log(responseData)
     }
     fetchData();
   }, []);
@@ -44,20 +44,28 @@ function Active() {
           return (
             <Col className="col-4" key={index}>
               <Card className="stock_card">
-                <CardBody>
-                  <CardTitle className="card_title">{value.symbol}</CardTitle>
-                  <CardText className="card_subtitle">
-                    {value.companyName}
-                  </CardText>
-                  <CardText className="number">
-                    ${numeral(Number(value.latestPrice)).format("( 0.00)")}
-                  </CardText>
-                  <CardText className="positive_number">
-                    {" "}
-                    <i className="fas fa-long-arrow-alt-up card_icon"></i>
-                    {numeral(Number(value.changePercent)).format("( 0.00)")}%
-                  </CardText>
-                </CardBody>
+                <CardLink href={`/news/${value.symbol}`}>
+                  <CardBody>
+                    <CardTitle className="card_title">{value.symbol}</CardTitle>
+                    <CardText className="card_subtitle">
+                      {value.companyName}
+                    </CardText>
+                    <CardLink className="number">
+                      ${numeral(Number(value.latestPrice)).format("( 0.00)")}
+                    </CardLink>
+                    <CardLink
+                      className={
+                        Math.sign(value.changePercent) === 1
+                          ? "positive_number"
+                          : "negative_number"
+                      }
+                    >
+                      {" "}
+                      {Number(value.change).toFixed(2)} {"  "}[
+                      {Number(value.changePercent * 100).toFixed(2)}%]
+                    </CardLink>
+                  </CardBody>
+                </CardLink>
               </Card>
             </Col>
           );

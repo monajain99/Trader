@@ -47,7 +47,7 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
       stock_id,
       transaction_date: "20210118",
     });
-    console.log(response.data)
+    // console.log(response.data)
     setRefresh(false);
     setRefeshFromBuy(true);
   };
@@ -62,7 +62,7 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
     );
     const responseData = await response.json();
     setPrice(responseData.latestPrice);
-      console.log(responseData.latestPrice);
+      // console.log(responseData.latestPrice);
   }
   
   const updateTicker = (e) => {
@@ -84,7 +84,7 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
               className="card_title"
               // style={{ color: "grey", fontSize: 13 }}
             >
-              Buy Stocks
+              <i className="fas fa-dollar-sign card_icon"></i>Buy Stocks
             </CardTitle>
 
             <form className="form" onSubmit={createTrade}>

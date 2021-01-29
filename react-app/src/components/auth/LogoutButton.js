@@ -10,7 +10,7 @@ const LogoutButton = ({setAuthenticated}) => {
   };
 
   return (
-    <button className="demoButton" onClick={onLogout}>
+    <button className="general_button" onClick={onLogout}>
       Logout
     </button>
   );
