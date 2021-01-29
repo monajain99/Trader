@@ -12,7 +12,7 @@ const Gainers = () => {
   const [stocksData, setStocksData] = useState(null);
   const [displayData, setDisplayData] = useState([]);
   const [index, setIndex] = useState(0);
-  const URL = `https://cloud.iexapis.com/stable/stock/market/batch?symbols=SGRY,PSAC&types=quote,chart&range=1d&last=2&token=pk_6f789411fea3492293da22e99ff8d631`;
+  const URL = `https://cloud.iexapis.com/stable/stock/market/batch?symbols=SIEB,GME&types=quote,chart&range=1d&last=2&token=pk_6f789411fea3492293da22e99ff8d631`;
 
   const item = 2;
   useEffect(() => {
