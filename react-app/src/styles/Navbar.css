@@ -155,6 +155,7 @@ p:hover{
     height: 100%;
     background-image: url('../components/images/Untitled.png');
     background-repeat: no-repeat;
+    height: 130% !important;
 }
 
   
