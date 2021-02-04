@@ -4,15 +4,13 @@ import '../../styles/Navbar.css'
 function LandingPage(setAuthenticated) {
   return (
     <div>
-      <div className="landing-page_intro">
-      <div className="landing_page_h1">
-
-        <h1 >Pro Trader</h1>
-        <h2>Meet the new standards of MARKET TRADING</h2>
-        <h5>Practice with trial money of 100,000</h5>
+        <div className="landing_page">
+          <div className="landing_page_h1">
+            <h2>Meet the new standards of</h2>
+            <h1>MARKET TRADING</h1>
+          </div>
         </div>
-        </div>
-    </div>
+      </div>
   );
 }
 

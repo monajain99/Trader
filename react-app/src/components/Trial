@@ -1,0 +1,57 @@
+INSERT INTO stocks (id, name, ticker) VALUES (1, 'Tesla', 'TSLA');
+INSERT INTO stocks (id, name, ticker) VALUES (2,'Facebook','FB'	);
+INSERT INTO stocks (id, name, ticker) VALUES (3, 'Nio','NIO');
+INSERT INTO stocks (id, name, ticker) VALUES (4, 'Alibaba','BABA');	
+INSERT INTO stocks (id, name, ticker) VALUES (5, 'Amc Entertainment','AMC');
+INSERT INTO stocks (id, name, ticker) VALUES (6, 'Disney','DIS');	
+INSERT INTO stocks (id, name, ticker) VALUES (7, 'Vigin Galatic','SPCE');	
+INSERT INTO stocks (id, name, ticker) VALUES (8, 'Apple',	'AAPL');
+INSERT INTO stocks (id, name, ticker) VALUES (9, 'Siebert', 'SEIB');
+INSERT INTO stocks (id, name, ticker) VALUES (10,'Gamestop','GME'	);
+INSERT INTO stocks (id, name, ticker) VALUES (11, 'Bank of America','BAC');
+INSERT INTO stocks (id, name, ticker) VALUES (12, 'Naked','NAKD');	
+INSERT INTO stocks (id, name, ticker) VALUES (13, 'BlackBerry','BB');
+INSERT INTO stocks (id, name, ticker) VALUES (14, 'Moderna','MRNA');	
+INSERT INTO stocks (id, name, ticker) VALUES (15, 'Express','EXPR');	
+INSERT INTO stocks(id, name, ticker) VALUES(16, 'American Airlines', 'AAL');
+
+INSERT INTO stocks (id, name, ticker) VALUES (17, 'Jaguar','JAGX');	
+INSERT INTO stocks(id, name, ticker) VALUES(18, 'Pfizer', 'PFE');
+
+INSERT INTO stocks (id, name, ticker) VALUES (19,'Sundial','SNDL'	);
+INSERT INTO stocks (id, name, ticker) VALUES (20, 'AMC Entertainment','AMC');
+INSERT INTO stocks (id, name, ticker) VALUES (21, 'Palantir','PLTR');	
+INSERT INTO stocks (id, name, ticker) VALUES (22, 'Signal','SIGL');
+INSERT INTO stocks (id, name, ticker) VALUES (23, 'Kahoot','KHOTF');	
+INSERT INTO stocks (id, name, ticker) VALUES (24, 'The Chef','CHEF');	
+INSERT INTO stocks(id, name, ticker) VALUES(25, 'Tenaris', 'TS');
+
+INSERT INTO stocks (id, name, ticker) VALUES (26, 'Johnson','JNJ');	
+INSERT INTO stocks(id, name, ticker) VALUES(27, 'Nokia', 'NOK');
+INSERT INTO stocks(id, name, ticker) VALUES(28, 'Atea', 'AVIR');
+INSERT INTO stocks (id, name, ticker) VALUES (29, 'Novavax','NVAX');    
+INSERT INTO stocks(id, name, ticker) VALUES(30, 'Social Capital', 'IPOE');
+
+ 
+INSERT INTO stocks(id, name, ticker) VALUES(33, 'Alphabet', 'GOOG');
+
+INSERT INTO stocks(id, name, ticker) VALUES(31, 'Uber', 'UBER');
+INSERT INTO stocks(id, name, ticker) VALUES(32, 'Twitter', 'TWTR'); 
+
+INSERT INTO stocks(id, name, ticker) VALUES(34, 'Microsoft', 'MSFT');
+INSERT INTO stocks (id, name, ticker) VALUES (35, 'AMD','AMD');   
+
+INSERT INTO stocks (id, name, ticker) VALUES(36, 'NetFlix', 'NFLX');
+INSERT INTO stocks (id, name, ticker) VALUES(37, 'Baidu', 'BIDU');
+INSERT INTO stocks (id, name, ticker) VALUES(38, 'Intel', 'INTL');
+INSERT INTO stocks (id, name, ticker) VALUES(39, 'Square', 'SQ');
+INSERT INTO stocks (id, name, ticker) VALUES(40, 'MasterCard', 'MA');
+INSERT INTO stocks (id, name, ticker) VALUES(41, 'Visa', 'V');
+INSERT INTO stocks (id, name, ticker) VALUES(42, 'Boeing', 'BA');
+INSERT INTO stocks (id, name, ticker) VALUES(43, 'Paypal', 'PYPL');
+INSERT INTO stocks (id, name, ticker) VALUES(44, 'ATT', 'ATT');
+INSERT INTO stocks (id, name, ticker) VALUES(45, 'General Motors', 'GM');
+
+
+
+"
