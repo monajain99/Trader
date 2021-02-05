@@ -1,16 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "../styles/BuyTrade.css";
-import Account from "./Account";
 import numeral from "numeral"
-import { Card, CardBody, CardTitle, CardText, CardLink } from "reactstrap";
+import { Card, CardBody, CardText, CardLink } from "reactstrap";
 
 function Price({ authenticated, setAuthenticated, symbol }) {
-  const [data, setData] = useState("");
-  const [stock, setStock] = useState("");
   const [tradeData, setTradeData] = useState("");
 
-  const handleChange = (event) => setStock(event.target.value);
 
   useEffect(() => {
     async function fetchData() {
@@ -23,7 +18,6 @@ function Price({ authenticated, setAuthenticated, symbol }) {
     fetchData();
   }, [symbol]);
 
-// console.log(tradeData)
   return (
     <div className="right_side">
       <div className="section_title user_balance">
@@ -49,12 +43,13 @@ function Price({ authenticated, setAuthenticated, symbol }) {
               {Number(tradeData.change).toFixed(2)} {"  "}[
               {Number(tradeData.changePercent).toFixed(2)}%]
             </CardText>
-            <CardLink style={{ color: "white" }}>
+            <span style={{ color: "white" }}>
               Previous Close: ${tradeData.previousClose}
-            </CardLink>
-            <CardLink style={{ color: "white" }}>
+            </span>
+             <label>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span style={{ color: "white" }}>
               Last Update: {tradeData.latestTime}
-            </CardLink>
+              </span>
+              </label>
           </div>
         </CardBody>
       </Card>

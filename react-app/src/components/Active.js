@@ -51,10 +51,13 @@ function Active() {
                     <CardText className="card_subtitle">
                       {value.companyName}
                     </CardText>
-                    <CardLink className="number">
+                  
+                    <span className="number">
                       ${numeral(Number(value.latestPrice)).format("( 0.00)")}
-                    </CardLink>
-                    <span
+                      </span>
+                     
+                     <label>
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span
                       className={
                         Math.sign(value.changePercent) === 1
                           ? "positive_number"
@@ -65,6 +68,7 @@ function Active() {
                       {Number(value.change).toFixed(2)} {"  "}[
                       {Number(value.changePercent * 100).toFixed(2)}%]
                     </span>
+                      </label>
                   </CardBody>
                 </CardLink>
               </Card>

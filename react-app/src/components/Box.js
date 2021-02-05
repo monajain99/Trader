@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Row, Col, Container } from "react-bootstrap/";
+import React from "react";
+import { Row } from "react-bootstrap/";
 import Active from "./Active"
 
 

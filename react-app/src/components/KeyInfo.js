@@ -1,17 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "../styles/BuyTrade.css";
-import Account from "./Account";
 import numeral from "numeral";
-import { Card, CardBody, CardTitle, CardText, CardLink } from "reactstrap";
 import {Row, Col} from "react-bootstrap/"
 
 function KeyInfo({ authenticated, setAuthenticated, symbol }) {
-  const [data, setData] = useState("");
-  const [stock, setStock] = useState("");
   const [tradeData, setTradeData] = useState("");
 
-  const handleChange = (event) => setStock(event.target.value);
 
   useEffect(() => {
     async function fetchData() {
@@ -24,7 +18,6 @@ function KeyInfo({ authenticated, setAuthenticated, symbol }) {
     fetchData();
   }, [symbol]);
 
-  // console.log(tradeData);
   return (
     <div className="info_container">
       <div

@@ -131,21 +131,14 @@ const Chart = () => {
               name: " ",
               data: getData(value),
               type: "spline",
-              // shadow: {
-              //   color: "white",
-              //   offsetX: 0,
-              //   offsetY: 5,
-              //   opacity: 0.2,
-              //   width: 5,
-              // },
-              // color: {
+             
               linearGradient: { x1: 0, x2: 0, y1: 0, y2: 1 },
               stops: [
                 [0, "#7175BF"], // start
                 [3.5, "#597DC2"], // middle
                 [1, "#68f9da"], // end
               ],
-              // },
+           
             },
           ],
         };

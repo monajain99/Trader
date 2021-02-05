@@ -1,20 +1,44 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import numeral from "numeral";
-import { Card, CardBody, CardTitle, CardText, CardLink } from "reactstrap";
+import { Card, CardBody, CardLink } from "reactstrap";
 
 const ReactHighcharts = require("react-highcharts");
 
 const Gainers = () => {
   const [stocksData, setStocksData] = useState(null);
+
   const [displayData, setDisplayData] = useState([]);
   const [index, setIndex] = useState(0);
-  const URL = `https://cloud.iexapis.com/stable/stock/market/batch?symbols=AVXL,ANVS&types=quote,chart&range=1d&last=2&token=pk_6f789411fea3492293da22e99ff8d631`;
+  // const gainersUrl = `https://sandbox.iexapis.com/stable/stock/market/list/gainers?filter=symbol&listLimit=2&token=Tpk_a72f593783e9451990a7e3a0fceb28e5`;
+  // const [gainerStock, setGainerStock] = useState(null);
+  const URL = `https://cloud.iexapis.com/stable/stock/market/batch?symbols=AAME,OCGN&types=quote,chart&range=1d&last=2&token=pk_6f789411fea3492293da22e99ff8d631`;
 
   const item = 2;
+  // let arr = [];
+
+  //  useEffect(() => {
+  //    async function fetchGainers() {
+  //      const response = await fetch(
+  //        gainersUrl);
+  //      const responseData = await response.json();
+  //      setGainerStock(responseData);
+  //    }
+  //    fetchGainers();
+  //  }, []);
+  
+  // if (gainerStock) {
+  //   gainerStock.map((value, ind) => {
+  //     if (ind < 2) {
+  //     arr.push(value.symbol)
+  //     }
+      
+  //   })
+  // }
+  
+
   useEffect(() => {
     getStocks().then((data) => setStocksData(data));
   }, []);
@@ -30,9 +54,9 @@ const Gainers = () => {
           .slice(index, item)
           .map((key) => ({ [key]: resp[key] }))
       );
-      return resp;
-    });
-  };
+      return resp
+          });
+          };
   const showData = () => {
     return displayData.map((data) => {
       return Object.entries(data).map(([key, value]) => {
@@ -81,11 +105,6 @@ const Gainers = () => {
           },
           legend: {
             enabled: false,
-          },
-          elements: {
-            point: {
-              radius: 0,
-            },
           },
           chart: {
             height: 160,
@@ -148,23 +167,23 @@ const Gainers = () => {
                     <div>
                       <ReactHighcharts config={config} />
                     </div>
-                    <CardLink className="card_title">
-                      {value.quote.symbol}
-                    </CardLink>
-                    {/* <CardText className="card_subtitle">
-                    {value.quote.companyName}
-                  </CardText> */}
-                    <CardLink className="number positive_number">
-                      $
-                      {numeral(Number(value.quote.latestPrice)).format(
-                        "( 0.00)"
-                      )}
-                    </CardLink>
-                    <span className="positive_number">
+                    <span className="card_title">{value.quote.symbol}</span>
+                    
+                    <label>
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      <span className="number positive_number">
+                        $
+                        {numeral(Number(value.quote.latestPrice)).format(
+                          "( 0.00)"
+                        )}
+                      </span>
+                    </label>
+                    <label>
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span className="positive_number">
                       <i className="fas fa-long-arrow-alt-up card_icon"></i>$
-                      {/* {console.log(value.quote.changePercent)} */}
                       {Number(value.quote.changePercent * 100).toFixed(2)}%
                     </span>
+                      </label>
                   </CardBody>
                 </CardLink>
               </Card>
@@ -194,10 +213,17 @@ const Gainers = () => {
 
   return (
     <>
+      
       <div className="section_title user_balance">
         <i className="fas fa-chart-line card_icon"></i>Gainers
       </div>
-          <div>{showData()}</div>
+     
+      <>
+      
+        {showData()}
+       
+      </>
+      
     </>
   );
 };

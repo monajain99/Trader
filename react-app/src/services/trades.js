@@ -6,7 +6,6 @@ export const deleteTrade = async (id) => {
 };
 
 export const addTrade = async (data) => {
-  // console.log("this is trade data", data);
   const response = await axios.create(`/api/trade/`, {
     data: {
       // "id": account_id,

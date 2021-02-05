@@ -28,11 +28,13 @@
 .news_wrapper{
 height:160px;
 overflow: scroll;
+border: 2px;
+  border-color: black;
 
 }
 .news_wrapper1{
 height:600px;
-
+ 
 
 }
 .news_card{
@@ -43,6 +45,8 @@ height:600px;
   margin-top: none !important;
   padding: 10px;
   font-family: "Cousine";
+  border: 2px;
+  border-color: black;
 }
 .info_container{
 

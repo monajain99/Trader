@@ -50,7 +50,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   };
 
   if (authenticated) {
-    return <Redirect to="/profile" loaded={loaded} />;
+    return <Redirect to="/profile" loaded={loaded} setLoaded={setLoaded} />;
   }
 
   return (

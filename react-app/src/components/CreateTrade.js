@@ -2,26 +2,18 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../styles/BuyTrade.css";
 import {
-  FormGroup,
-  Label,
-  Input,
-  FormText,
-  Button,
+  
   Card,
   CardBody,
   CardTitle,
-  Row,
-  Col,
+  
 } from "reactstrap";
-import {Form} from "react-bootstrap"
 
 function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
   const [ticker, setTicker] = useState("");
   const [price, setPrice] = useState("");
   const [volume, setVol] = useState("");
-  const [name, setName] = useState("");
   const [stock_id, setStock_id] = useState("");
-  const [tradeData, setTradeData] = useState("");
 
 
   useEffect(() => {
@@ -30,7 +22,6 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
         data: { ticker: ticker },
       });
       setStock_id(stock.data.stocks[0].id);
-      setName(stock.data.stocks[0].name);
     })();
   }, []);
 
@@ -61,15 +52,12 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
     );
     const responseData = await response.json();
     setPrice(responseData.latestPrice);
-      // console.log(responseData.latestPrice);
   }
   
   const updateTicker = (e) => {
     setTicker(e.target.value);
   };
-  // const updatePrice = (e) => {
-  //   setPrice(e.target.value);
-  // };
+ 
   const updateVolume = (e) => {
     setVol(e.target.value);
   };
@@ -81,7 +69,6 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
           <CardBody>
             <CardTitle
               className="card_title"
-              // style={{ color: "grey", fontSize: 13 }}
             >
               <i className="fas fa-dollar-sign card_icon"></i>Buy Stocks
             </CardTitle>
@@ -90,7 +77,6 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
               <div className="input_wrapper1">
                 <label
                   className="card_subtitle"
-                  // style={{ color: "grey", fontSize: 13 }}
                 >
                   Stock Symbol{" "}
                 </label>
@@ -113,7 +99,6 @@ function AddTrade({ setRefeshFromBuy, accountId, setRefresh }) {
               <div className="input_wrapper1">
                 <label
                   className="card_subtitle"
-                  // style={{ color: "grey", fontSize: 13 }}
                 >
                   Volume{" "}
                 </label>

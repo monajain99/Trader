@@ -43,8 +43,7 @@ label {
 }
 
 .login-button {
-	color: black;
-	background-color: #f5f4f0;
+	color: white;
 	padding-left: 20px;
 	padding-right: 20px;
 	padding-top: 10px;
@@ -52,6 +51,7 @@ label {
 	border-radius: 4px;
 	width: 80%;
 	border: none;
+
 }
 
 .login-button:hover {

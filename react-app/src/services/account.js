@@ -9,11 +9,3 @@ export const getAccount = async ({ user_id }) => {
   return await response.json();
 };
 
-// get Trades
-// api/trade/{'<account:id>'}
-
-// add trade POST
-// api/trade
-
-// delete trade DELETE
-// api/trade
