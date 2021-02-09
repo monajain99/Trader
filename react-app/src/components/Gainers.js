@@ -12,11 +12,13 @@ const Gainers = () => {
 
   const [displayData, setDisplayData] = useState([]);
   const [index, setIndex] = useState(0);
+  const item = 2;
+
+  const URL = `https://cloud.iexapis.com/stable/stock/market/batch?symbols=AUVI,ZSAN&types=quote,chart&range=1d&last=2&token=pk_6f789411fea3492293da22e99ff8d631`;
+
+  // const URL = `https://sandbox.iexapis.com/stable/stock/market/list/gainers?listLimit=2&types=quote,chart&range=1d&last=2&token=Tpk_a72f593783e9451990a7e3a0fceb28e5`;
   // const gainersUrl = `https://sandbox.iexapis.com/stable/stock/market/list/gainers?filter=symbol&listLimit=2&token=Tpk_a72f593783e9451990a7e3a0fceb28e5`;
   // const [gainerStock, setGainerStock] = useState(null);
-  const URL = `https://cloud.iexapis.com/stable/stock/market/batch?symbols=AAME,OCGN&types=quote,chart&range=1d&last=2&token=pk_6f789411fea3492293da22e99ff8d631`;
-
-  const item = 2;
   // let arr = [];
 
   //  useEffect(() => {
@@ -28,16 +30,15 @@ const Gainers = () => {
   //    }
   //    fetchGainers();
   //  }, []);
-  
+
   // if (gainerStock) {
   //   gainerStock.map((value, ind) => {
   //     if (ind < 2) {
   //     arr.push(value.symbol)
   //     }
-      
+
   //   })
   // }
-  
 
   useEffect(() => {
     getStocks().then((data) => setStocksData(data));
@@ -54,9 +55,9 @@ const Gainers = () => {
           .slice(index, item)
           .map((key) => ({ [key]: resp[key] }))
       );
-      return resp
-          });
-          };
+      return resp;
+    });
+  };
   const showData = () => {
     return displayData.map((data) => {
       return Object.entries(data).map(([key, value]) => {
@@ -168,7 +169,7 @@ const Gainers = () => {
                       <ReactHighcharts config={config} />
                     </div>
                     <span className="card_title">{value.quote.symbol}</span>
-                    
+
                     <label>
                       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                       <span className="number positive_number">
@@ -179,11 +180,12 @@ const Gainers = () => {
                       </span>
                     </label>
                     <label>
-                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<span className="positive_number">
-                      <i className="fas fa-long-arrow-alt-up card_icon"></i>$
-                      {Number(value.quote.changePercent * 100).toFixed(2)}%
-                    </span>
-                      </label>
+                      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                      <span className="positive_number">
+                        <i className="fas fa-long-arrow-alt-up card_icon"></i>$
+                        {Number(value.quote.changePercent * 100).toFixed(2)}%
+                      </span>
+                    </label>
                   </CardBody>
                 </CardLink>
               </Card>
@@ -213,17 +215,11 @@ const Gainers = () => {
 
   return (
     <>
-      
       <div className="section_title user_balance">
         <i className="fas fa-chart-line card_icon"></i>Gainers
       </div>
-     
-      <>
-      
-        {showData()}
-       
-      </>
-      
+
+      <>{showData()}</>
     </>
   );
 };
