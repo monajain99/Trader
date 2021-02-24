@@ -14,7 +14,7 @@ const Gainers = () => {
   const [index, setIndex] = useState(0);
   const item = 2;
 
-  const URL = `https://cloud.iexapis.com/stable/stock/market/batch?symbols=CTB,BNR&types=quote,chart&range=1d&last=2&token=pk_6f789411fea3492293da22e99ff8d631`;
+  const URL = `https://cloud.iexapis.com/stable/stock/market/batch?symbols=BAYP,ARD&types=quote,chart&range=1d&last=2&token=pk_6f789411fea3492293da22e99ff8d631`;
 
   // const URL = `https://sandbox.iexapis.com/stable/stock/market/list/gainers?listLimit=2&types=quote,chart&range=1d&last=2&token=Tpk_a72f593783e9451990a7e3a0fceb28e5`;
   // const gainersUrl = `https://sandbox.iexapis.com/stable/stock/market/list/gainers?filter=symbol&listLimit=2&token=Tpk_a72f593783e9451990a7e3a0fceb28e5`;
